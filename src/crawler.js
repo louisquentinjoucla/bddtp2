@@ -7,14 +7,32 @@ const fs = require('fs')
 
 URL_BESTIAIRE_1 = 'http://legacy.aonprd.com/bestiary/monsterIndex.html'
 URL_BESTIAIRE_2 = 'http://legacy.aonprd.com/bestiary2/additionalMonsterIndex.html'
+URL_BESTIAIRE_3 = 'http://legacy.aonprd.com/bestiary3/monsterIndex.html'
+URL_BESTIAIRE_4 = 'http://legacy.aonprd.com/bestiary4/monsterIndex.html'
+URL_BESTIAIRE_5 = 'http://legacy.aonprd.com/bestiary5/index.html'
 
-get_monsters_url(URL_BESTIAIRE_1).then(data => build_db(data));
+URLS = [URL_BESTIAIRE_1, URL_BESTIAIRE_2, URL_BESTIAIRE_3, URL_BESTIAIRE_4, URL_BESTIAIRE_5]
+//URLS = [URL_BESTIAIRE_5]
+//get_monsters_url(URL_BESTIAIRE_1).then(data => push_bestiaire(data));
+//URLS = ['http://legacy.aonprd.com/bestiary3/monsterIndex.html']
+monsters = new Set()
+build_db(URLS)
 
 
-async function build_db(data) {
+async function build_db(URLS){
+    for(let i=0; i< URLS.length; i++){
+        await get_monsters_url(URLS[i]).then(data => push_bestiaire(data));
+    }
+    console.log('Writing into monster.json...')
+    fs.writeFileSync("../JSON/monster.json", JSON.stringify([...monsters]))
+    console.log('Done')
+}
+
+async function push_bestiaire(data) {
     for(let i=0; i<data.length; i++){
         let f = await scrap_monster(data[i]);
         console.log(f);
+        monsters.add(f);
     }
 }
 async function scrap_monster(url){
@@ -23,7 +41,7 @@ async function scrap_monster(url){
             let $ = cheerio.load(html);
             let name = url.split('#')[1];
             let spells=[]
-            $('#'+url.split('#')[1]).nextUntil('h1').find('a').each((i,elem) =>{
+            $('[id="'+url.split('#')[1]+'"]').nextUntil('h1').find('a').each((i,elem) =>{
                 if(/\.\.\/coreRulebook\/spells\//.test(elem.attribs.href)){
                     spells.push(elem.firstChild.data);
                 }
@@ -32,7 +50,7 @@ async function scrap_monster(url){
         }, function(){
             console.log('\n\x1b[31m%s\x1b[0m', "Error while crawling monster from " + url);
         });
-    });
+    }).catch(e => console.error(e));
 }
 
 
