@@ -1,0 +1,27 @@
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #151922;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .5rem;
+}
+
+.indicator {
+    height: .5rem;
+    width: .5rem;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+.indicator.online {
+    background-color: #27BE56;
+}
+
+.indicator.offline {
+    background-color: #FF7E23;
+}
