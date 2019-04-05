@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>Pathfinder</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <main id="app">
+
+            <label>
+                Name :
+                <input type="text" v-model="query.name">
+            </label>
+
+            <button @click="send(query)">SEND</button>
+
+
+            <div>
+                <div v-for="message in messages">{{ message }}</div>
+            </div>
+
+            <footer>
+                <div class="indicator" :class="[connected ? 'online' : 'offline']"></div>
+                {{ connected ? "Connected to WebSockets server" : "Not connected to WebSockets server" }}
+            </footer>
+
+        </main>
+
+
+        <script src="vue.min.js"></script>
+        <script src="script.js"></script>
+
+    </body>
+</html>

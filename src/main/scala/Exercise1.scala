@@ -7,6 +7,7 @@ import akka.http.scaladsl.model.ws.{Message, TextMessage}
 import akka.http.scaladsl.server.Directives._
 import akka.stream.scaladsl.Flow
 import akka.http.scaladsl.server.Route
+import akka.http.scaladsl.model.StatusCodes
 
 //Source
 object Exercise1 extends App {
@@ -33,7 +34,7 @@ object Exercise1 extends App {
   implicit val system = ActorSystem("akka-system")
   implicit val materializer = ActorMaterializer()
   implicit val execution = system.dispatcher
-  val route = MainService.route ~ QueryService.route
+  val route = MainService.route ~ SocketService.route
 
   //Start server
   val binding = Http().bindAndHandle(route, "localhost", 8080)
@@ -44,10 +45,26 @@ object Exercise1 extends App {
 
 //WebServices
 trait WebService { def route: Route }
+
 //Default service
-object MainService extends WebService { override def route: Route = pathEndOrSingleSlash { complete("Welcome to websocket server") } }
+object MainService extends WebService {
+  override def route: Route = get {
+    (pathEndOrSingleSlash & redirectToTrailingSlashIfMissing(StatusCodes.TemporaryRedirect)) {
+      getFromFile("src/resources/www/index.html")
+    } ~ {
+      getFromDirectory("src/resources/www")
+    }
+  }
+}
+
 //Query service
-object QueryService extends WebService { override def route: Route = path("q") { get { handleWebSocketMessages(service) } }
+object SocketService extends WebService {
+  override def route: Route = path("ws") {
+    get {
+      handleWebSocketMessages(service)
+    }
+  }
+
   val service: Flow[Message, Message, _] = Flow[Message].map {
     case TextMessage.Strict(txt) => TextMessage("ECHO: " + txt)
     case _ => TextMessage("Message type unsupported")
