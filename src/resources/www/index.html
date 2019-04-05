@@ -7,21 +7,41 @@
 
         <main id="app">
 
-            <label>
-                Name :
-                <input type="text" v-model="query.name">
-            </label>
+            <div class="search">
+                <img src="logo.png">
+                <input type="text" name="query" v-model="query.name" placeholder="🔍 Search something !" autocomplete="off" @keyup.enter="submit()">
 
-            <button @click="send(query)">SEND</button>
+                <div class="advanced" :class="{extend:query.advanced}">
+                    <div class="name" @click="query.advanced = !query.advanced">Advanced search {{ query.advanced ? "⯆" : "⯈" }}</div>
+                    <div class="filters">
+                        <div class="name">Components:</div>
+                        <div class="filter" v-for="filter in components" @click="q('components', filter)" :class="{active:query.components.includes(filter)}">{{ filter }}</div>
+                    </div>
 
+                    <div class="filters">
+                        <div class="name">Classes:</div>
+                        <div class="filter" v-for="filter in classes" @click="q('classes', filter)" :class="{active:query.classes.includes(filter)}">{{ filter }}</div>
+                    </div>
 
-            <div>
+                    <div class="filters">
+                        <div class="name">Schools:</div>
+                        <div class="filter" v-for="filter in schools" @click="q('schools', filter)" :class="{active:query.schools.includes(filter)}">{{ filter }}</div>
+                    </div>
+
+                    <div class="filters">
+                        <div class="name">Miscelleanous:</div>
+                        <textarea class="filter" :class="{active:query.misc}" v-model="query.misc" placeholder="Search in description, casting time, range, ..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="results">
                 <div v-for="message in messages">{{ message }}</div>
             </div>
 
             <footer>
                 <div class="indicator" :class="[connected ? 'online' : 'offline']"></div>
-                {{ connected ? "Connected to WebSockets server" : "Not connected to WebSockets server" }}
+                {{ connected ? "Connected to server" : "Not connected to server" }}
             </footer>
 
         </main>

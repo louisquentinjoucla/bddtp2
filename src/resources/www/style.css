@@ -1,3 +1,143 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url(background.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: Calibri;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.search::before {
+    background-image: url(background.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    content: '';
+    margin: -35px;
+    filter: blur(20px);
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.search {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 5px 3px 30px black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.advanced {
+    max-height: 1.3rem;
+    overflow: hidden;
+    transition: 1s max-height;
+}
+
+.advanced.extend {
+    max-height: 100rem;
+}
+
+.advanced > .name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+
+input[name="query"] {
+    margin: .5rem 0;
+    font-size: 1.5rem;
+    padding: .5rem;
+    border: 1px solid #ced4da;
+    border-radius: .5rem;
+    max-width: 600px;
+    width: 90%;
+}
+
+input[name="query"]:focus {
+    outline: none;
+    border-color: #4D90FE;
+}
+
+.filters {
+    max-width: 600px;
+    width: 100%;
+    margin-top: .5rem;
+}
+
+.filters .name {
+    font-weight: bold;
+    color: white;
+}
+
+.filter {
+    font-size: 0.8rem;
+    display: inline-block;
+    margin: .25rem;
+    padding: .25rem .75rem;
+    background-color: white;
+    border-radius: 1.5rem;
+    transition: .2s background-color;
+    cursor: pointer;
+}
+
+.filter:hover {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.filter.active {
+    background-color: #007bff;
+    color: white;
+}
+
+textarea.filter {
+    width: 97.5%;
+    resize: none;
+    height: 2rem;
+    font-family: inherit;
+}
+
+textarea.filter:focus {
+    outline: none;
+}
+
+.results {
+    margin: 2.5rem 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.results > div {
+    padding: .5rem;
+    background-color: white;
+    border: 1px solid #ced4da;
+    border-radius: .5rem;
+    box-shadow: 5px 3px 30px black;
+    width: 100%;
+}
+
 footer {
     position: fixed;
     bottom: 0;
@@ -16,6 +156,7 @@ footer {
     width: .5rem;
     border: 1px solid black;
     border-radius: 50%;
+    margin-right: .5rem;
 }
 
 .indicator.online {
