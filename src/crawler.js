@@ -18,7 +18,7 @@ monsters = new Set()
 let spells = [];
 
 console.log('\t\t\x1b[34m%s\x1b[0m','+---------------------------+');
-console.log('\t\t\x1b[35m%s\x1b[0m','| Welcome to PROLOCRAWL 4.0 |');
+console.log('\t\t\x1b[35m%s\x1b[0m','| Welcome to PROLOCRAWL 5.0 |');
 console.log('\t\t\x1b[34m%s\x1b[0m','+---------------------------+\n');
 
 
@@ -164,15 +164,23 @@ async function scrap_spell(url,i) {
                 resolve();
             }
 
-            let spell = {
-                name: format_spell_name($('.SpellDiv .heading').children()['0'].children[0].data),
-                level: $('.SpellDiv .SPDet').children()['1'].next.data,
-                resistance: get_resistance($('.SpellDiv .SPDet').text()),
-                components: get_components($('.SpellDiv .SPDet').children()['3'].next.data),
-                description: $('.SPDesc').text()
-            }
+            let spell = {}
+            spell.name = format_spell_name($('.SpellDiv .heading').children()['0'].children[0].data)
+            spell.resistance = get_resistance($('.SpellDiv .SPDet').text())
+            spell.components = get_components($('.SpellDiv .SPDet').children()['3'].next.data)
+            spell.description = $('.SPDesc').text()
+
+            $('b').each(function(i, elem) {
+                let attr = $(elem).text().replace(/\'/,'')
+                if(attr !== "Components" && attr !== "Spell Resistance"){
+                    if(elem.next)
+                        spell[attr] = elem.next.data.replace(/;/g,'').trim()
+                }
+              });
+
+   
             let color = (i % 2 == 0) ? '\n\x1b[94m%s\x1b[0m' : '\n\x1b[1m%s\x1b[0m';
-            console.log(color, `Name: ${(spell.name+" ".repeat(30)).substr(0, 30)} | level: ${(spell.level.repeat(10)).substr(0, 14)} | resistance: ${(spell.resistance+" ".repeat(10)).substr(0, 7)}| Components: ${(spell.components+" ".repeat(20)).substr(0, 10)} |`);
+            console.log(color, `Name: ${(spell.name+" ".repeat(30)).substr(0, 30)} | level: ${(spell['Level'].repeat(10)).substr(0, 14)} | resistance: ${(spell.resistance+" ".repeat(10)).substr(0, 7)}| Components: ${(spell.components+" ".repeat(20)).substr(0, 10)} |`);
             resolve(spells.push(spell));
         }, function(){
             console.log('\n\x1b[31m%s\x1b[0m', "Error for url " + url);
