@@ -42,7 +42,7 @@ async function build_db(URLS){
         await get_monsters_url(URLS[i]).then(data => push_bestiaire(data));
     }
     console.log('Writing into monster.json...')
-    fs.writeFileSync("../JSON/monster.json", JSON.stringify([...monsters]))
+    fs.writeFileSync("../JSON/resources/monsters.json", JSON.stringify([...monsters]))
     console.log('Done')
 }
 
@@ -135,12 +135,12 @@ async function crawl_spells(){
     }
 
     console.log('\n\x1b[32m%s\x1b[0m', 'Success !');
-    console.log('\n\x1b[5m%s\x1b[0m', `Writing ${spells.length} spells to JSON/spells.json...`);
+    console.log('\n\x1b[5m%s\x1b[0m', `Writing ${spells.length} spells to JSON/resources/spells.json...`);
     if(!fs.existsSync('../JSON')){
         fs.mkdirSync('../JSON');
     }
 
-    await fs.writeFile('../JSON/spells.json', JSON.stringify(spells), function(err) {
+    await fs.writeFile('../JSON/resources/spells.json', JSON.stringify(spells), function(err) {
         if (err) {
             console.log('\n\x1b[31m%s\x1b[0m', err);
         } else {

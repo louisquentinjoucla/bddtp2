@@ -34,7 +34,7 @@ object Exercise1 extends App {
   //Retrieve data from JSON file (monsters)
   val monsters = spark.sqlContext.read
     .option("multiLine", true)
-    .json("src/resources/JSON/monster.json")
+    .json("src/resources/JSON/monsters.json")
 
   //Create a batch view (Spells -> Spells data)
   //This view store in its values spells raw json data
