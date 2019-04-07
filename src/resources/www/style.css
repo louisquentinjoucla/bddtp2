@@ -36,7 +36,7 @@ main {
     background-size: cover;
     background-attachment: fixed;
     content: '';
-    margin: -20px;
+    margin: -35px;
     filter: blur(20px);
     z-index: -1;
     position: absolute;

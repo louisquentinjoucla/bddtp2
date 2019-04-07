@@ -47,7 +47,7 @@
             </div>
 
             <transition name="slide">
-                <div class="results" v-if="results.length">
+                <div class="results" v-if="response">
                     <h1 class="container">{{ results.length > 20 ? "20+" : results.length.toString() }} results</h1>
                     <transition-group name="list" tag="div">
                         <div v-for="result in results" class="result container" :key="result.name">
