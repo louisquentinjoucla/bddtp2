@@ -6,6 +6,7 @@ scalaVersion := "2.12.8"
 
 lazy val akkaVersion = "2.5.22"
 lazy val akkaHttpVersion = "10.0.9"
+lazy val circeVersion = "0.10.0"
 
 libraryDependencies ++= Seq(
   //Spark
@@ -16,5 +17,8 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-stream" % akkaVersion,
   "com.typesafe.akka" %% "akka-http-core" % akkaHttpVersion,
   "com.typesafe.akka" %% "akka-http" % akkaHttpVersion,
+  //Circe
+  "io.circe" %% "circe-core" % circeVersion,
+  "io.circe" %% "circe-generic" % circeVersion,
+  "io.circe" %% "circe-parser" % circeVersion,
 )
-
