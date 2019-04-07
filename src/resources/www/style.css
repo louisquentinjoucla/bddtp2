@@ -5,15 +5,17 @@ body {
     background-size: cover;
     background-attachment: fixed;
     font-family: Calibri;
-    height: 100vh;
+
     width: 100vw;
     display: flex;
+    align-items: flex-start;
     justify-content: center;
-    align-items: center;
     overflow-x: hidden;
 }
 
 main {
+    margin-top: 10vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -25,7 +27,7 @@ main {
     background-size: cover;
     background-attachment: fixed;
     content: '';
-    margin: -35px;
+    margin: -20px;
     filter: blur(20px);
     z-index: -1;
     position: absolute;
@@ -36,6 +38,8 @@ main {
 }
 
 .search {
+    max-width: 600px;
+    width: 90%;
     position: relative;
     overflow: hidden;
     border-radius: 1rem;
@@ -64,14 +68,38 @@ main {
     cursor: pointer;
 }
 
-input[name="query"] {
+.query {
+    width: 90%;
     margin: .5rem 0;
-    font-size: 1.5rem;
-    padding: .5rem;
     border: 1px solid #ced4da;
     border-radius: .5rem;
-    max-width: 600px;
-    width: 90%;
+    overflow: hidden;
+    display: flex;
+}
+
+.query button {
+    font-size: 1.5rem;
+    width: 3rem;
+    background-color: #e9ecef;
+    border: none;
+    border-left: 1px solid #ced4da;
+    cursor: pointer;
+    transition: .2s background-color;
+}
+
+.query button:hover {
+    background-color: #DAE0E5;
+}
+
+.query button:focus {
+    outline: none;
+}
+
+input[name="query"] {
+    font-size: 1.5rem;
+    padding: .5rem;
+    border: none;
+    flex-grow: 1;
 }
 
 input[name="query"]:focus {
@@ -123,19 +151,48 @@ textarea.filter:focus {
 }
 
 .results {
-    margin: 2.5rem 0;
+    padding: 1.5rem;
+    margin-top: 10vh;
     width: 100%;
-    display: flex;
-    flex-direction: column;
+    border-top: 1px solid #ced4da;
+    background-color: rgba(255,255,255,.97);
+    box-shadow: 5px 3px 30px black;
 }
 
-.results > div {
+.result h2 {
+    color: #1A0DAB;
+}
+
+.result h4 {
+    color: #006621;
+}
+
+.result h2, .result h4, .result p {
+    margin: 0;
+}
+
+.result {
     padding: .5rem;
-    background-color: white;
-    border: 1px solid #ced4da;
     border-radius: .5rem;
-    box-shadow: 5px 3px 30px black;
-    width: 100%;
+    margin-bottom: 2rem;
+    transition: all .4s;
+    cursor: pointer;
+}
+
+.result:hover {
+    background-color: rgba(230, 230, 230, 0.5);
+}
+
+.result .details {
+    font-size: 0.9rem;
+    opacity: 0.5;
+}
+
+.result .details ul {
+    margin: 0;
+    margin-top: .5rem;
+    padding: 0;
+    list-style-type: none;
 }
 
 footer {
@@ -148,7 +205,6 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: .5rem;
 }
 
 .indicator {
@@ -165,4 +221,35 @@ footer {
 
 .indicator.offline {
     background-color: #FF7E23;
+}
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+
+.list-enter, .list-leave-to {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.slide-enter-active, .slide-leave-active {
+    transition: all .5s;
+}
+
+.slide-enter, .slide-leave-to {
+    opacity: 0;
+    transform: translateY(60px);
 }

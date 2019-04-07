@@ -9,10 +9,19 @@
 
             <div class="search">
                 <img src="logo.png">
-                <input type="text" name="query" v-model="query.name" placeholder="🔍 Search something !" autocomplete="off" @keyup.enter="submit()">
+                <div class="query">
+                    <input type="text" name="query" v-model="query.name" placeholder="Search something !" autocomplete="off" @keyup.enter="submit()">
+                    <button @click="submit()">🔍</button>
+                </div>
 
                 <div class="advanced" :class="{extend:query.advanced}">
                     <div class="name" @click="query.advanced = !query.advanced">Advanced search {{ query.advanced ? "⯆" : "⯈" }}</div>
+
+                    <div class="filters">
+                        <div class="name">Level:</div>
+                        <div class="filter" v-for="filter in 9" @click="q('levels', filter)" :class="{active:query.levels.includes(filter)}">{{ filter }}</div>
+                    </div>
+
                     <div class="filters">
                         <div class="name">Components:</div>
                         <div class="filter" v-for="filter in components" @click="q('components', filter)" :class="{active:query.components.includes(filter)}">{{ filter }}</div>
@@ -35,9 +44,24 @@
                 </div>
             </div>
 
-            <div class="results">
-                <div v-for="message in messages">{{ message }}</div>
-            </div>
+            <transition name="slide">
+                <div class="results" v-if="results.length">
+                    <h1 class="container">{{ results.length > 20 ? "20+" : results.length.toString() }} results</h1>
+                    <transition-group name="list" tag="div">
+                        <div v-for="result in results" class="result container" :key="result.name">
+                            <h2>{{ format('spell.name', result.name) }}</h2>
+                            <h4>{{ format('spell.components', result.components) }}</h4>
+                            <p>{{ result.description }}</p>
+                            <details class="details">
+                                <summary>Details</summary>
+                                <ul>
+                                   <li v-for="(value, prop) in result" v-if="!/^(?:name|components|description)$/.test(prop)">{{ prop }} : {{ value }}</li>
+                                </ul>
+                            </details>
+                        </div>
+                    </transition-group>
+                </div>
+            </transition>
 
             <footer>
                 <div class="indicator" :class="[connected ? 'online' : 'offline']"></div>
