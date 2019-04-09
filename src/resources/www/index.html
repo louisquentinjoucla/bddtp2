@@ -12,7 +12,7 @@
             <div class="search">
                 <img src="logo.png">
                 <div class="query">
-                    <input type="text" name="query" v-model="query.name" placeholder="Search something !" autocomplete="off" @keyup.enter="submit()">
+                    <input type="text" name="query" v-model="query.name" placeholder="Search something !" autocomplete="off" @keyup.enter="submit()" @keyup="delayed_submit()">
                     <button @click="submit()">🔍</button>
                 </div>
 

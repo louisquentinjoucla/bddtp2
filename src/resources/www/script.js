@@ -12,6 +12,7 @@
             misc:"",
             limit:10
         },
+        delay:null,
         response:null,
         connected:false,
         init:false,
@@ -53,7 +54,10 @@
                 data.query[type].includes(element) ? data.query[type].splice(data.query[type].indexOf(element), 1) : data.query[type].push(element)
                 this.submit()
             },
-            submit() { this.send(data.query) },
+            submit() {
+                clearTimeout(data.delay)
+                this.send(data.query)
+            },
             format(type, data) {
                 switch (type) {
                     case "text": return (data
@@ -70,6 +74,10 @@
                         .replace(/\bDF\b/g, "Divine Focus")
                     default: return data
                 }
+            },
+            delayed_submit() {
+                clearTimeout(data.delay)
+                data.delay = setTimeout(() => this.submit(), 100)
             }
         },
         computed:{
