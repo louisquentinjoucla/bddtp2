@@ -13,6 +13,7 @@
         },
         response:null,
         connected:false,
+        init:false,
         components:[], classes:[], schools:[], levels:[]
     }
 
@@ -26,6 +27,7 @@
             delete first.type
             for (let filters in first)
                 data[filters] = first[filters]
+            data.init = true
         } 
         //Else accept response
         else {
@@ -46,7 +48,10 @@
         data,
         methods:{
             send(message) { ws.send(JSON.stringify(message)) },
-            q(type, element) { data.query[type].includes(element) ? data.query[type].splice(data.query[type].indexOf(element), 1) : data.query[type].push(element) },
+            q(type, element) {
+                data.query[type].includes(element) ? data.query[type].splice(data.query[type].indexOf(element), 1) : data.query[type].push(element)
+                this.submit()
+            },
             submit() { this.send(data.query) },
             format(type, data) {
                 switch (type) {

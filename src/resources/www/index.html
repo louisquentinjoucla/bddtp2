@@ -48,7 +48,10 @@
 
             <transition name="slide">
                 <div class="results" v-if="response">
-                    <h1 class="container">{{ results.length > 20 ? "20+" : results.length.toString() }} results</h1>
+                    <h1 class="container">
+                        {{ results.length > 20 ? "20+" : results.length.toString() }} results<br>
+                        <small>{{ Math.min(results.length, 20) }} of {{ response.n }} results</small>
+                    </h1>
                     <transition-group name="list" tag="div">
                         <div v-for="result in results" class="result container" :key="result.name">
                             <h2>{{ format('spell.name', result.name) }}</h2>

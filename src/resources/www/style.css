@@ -64,6 +64,7 @@ main {
     max-height: 1.3rem;
     overflow: hidden;
     transition: 1s max-height;
+    width: 100%;
 }
 
 .advanced.extend {
@@ -166,6 +167,12 @@ textarea.filter:focus {
     border-top: 1px solid #ced4da;
     background-color: rgba(255,255,255,.97);
     box-shadow: 5px 3px 30px black;
+    min-height: 100vh;
+}
+
+.results h1 small {
+    opacity: 0.5;
+    font-size: 1.1rem;
 }
 
 .result h2 {

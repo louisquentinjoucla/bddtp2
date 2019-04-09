@@ -23,7 +23,6 @@ package object WebServices {
   def start():Unit = {
     //Debug
     println("Starting server...")
-
     //Setup WebSockets server with akka
     implicit val system = ActorSystem("akka-system")
     implicit val materializer = ActorMaterializer()
@@ -36,9 +35,8 @@ package object WebServices {
 
 }
 
-
 //Response
-case class Response(status:String, results:Array[Json] = Array[Json]())
+case class Response(status:String, results:Array[Json] = Array[Json](), n:Long = 0)
 
 //WebServices
 trait WebService { def route: Route }
@@ -70,7 +68,7 @@ object SocketService extends WebService {
         case Right(json) => {
           //Retrieve query
           val query = json.hcursor
-          TextMessage(Response("", ServingLayer.process(query)).asJson.noSpaces)
+          TextMessage(ServingLayer.process(query).asJson.noSpaces)
         }
       }
     }

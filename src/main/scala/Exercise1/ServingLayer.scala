@@ -19,7 +19,7 @@ package object ServingLayer {
     .appName("Exercise 1")
     .getOrCreate()
 
-  def process(query:HCursor):Array[Json] = {
+  def process(query:HCursor):Response = {
     //Read query parameters
     val name = query.get[String]("name").getOrElse("")
     val components = query.get[Seq[String]]("components").getOrElse(List())
@@ -38,6 +38,9 @@ package object ServingLayer {
     var name_view = BatchLayer.views("src/resources/batchviews/spells/name/all")
     if ((name.length > 0)&&(name.toLowerCase.charAt(0).toString.matches("[a-z]"))) {
         name_view = BatchLayer.views(s"src/resources/batchviews/spells/name/${name.toLowerCase.charAt(0)}")
+    }
+    if (name.length > 1) {
+      name_view = name_view.filter{case (key, value) => key.contains(name)}
     }
 
     //Search by classes and possibly by level 
@@ -107,17 +110,21 @@ package object ServingLayer {
     if (schools_view.count() > 0) view = view.join(schools_view).map{case (spell, (left, right)) => (spell, left)}
     if (components_view.count() > 0) view = view.join(components_view).map{case (spell, (left, right)) => (spell, left)}
 
-    return view.take(21).map{case (spell, spell_data) => spell_data.toList(0).asJson}
+    //Remove possibles duplicates
+    view = view.groupByKey().map{case (spell, duplicates) => (spell, duplicates.toList(0))}
+    val results =  view.take(21).map{case (spell, spell_data) => spell_data.toList(0).asJson}
+
+    return Response("", results, view.count())
   }
 
-  def init_filters():Array[Json] = {
+  def init_filters():Response = {
      val components_filter = Global.directory("src/resources/batchviews/spells/components")
      val schools_filter = Global.directory("src/resources/batchviews/spells/schools")
      val levels_filter = Global.directory("src/resources/batchviews/spells/levels")
      val classes_filter = Global.directory("src/resources/batchviews/spells/classes")
 
-    return List(Map("type" -> Seq("init"), "components" -> components_filter, "schools" -> schools_filter, "levels" -> levels_filter, "classes" -> classes_filter).asJson).toArray
-
+    val results = List(Map("type" -> Seq("init"), "components" -> components_filter, "schools" -> schools_filter, "levels" -> levels_filter, "classes" -> classes_filter).asJson).toArray
+    return Response("", results)
   }
 
 }
