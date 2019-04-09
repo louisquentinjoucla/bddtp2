@@ -78,7 +78,7 @@ async function scrap_monster(url){
                     spells.add(spellname);
                 }
             });
-            resolve({name: name, spells:[...spells]})
+            resolve({name: name.trim(), spells:[...spells]})
         }, function(){
             console.log('\n\x1b[31m%s\x1b[0m', "Error while crawling monster from " + url);
         });
@@ -218,7 +218,7 @@ function get_components(str_compo) {
     raw_components.forEach(function(item){
         let matchs = item.match(regex_compo);
         if(matchs !== null){
-            components.push(matchs[0]);
+            components.push(matchs[0].replace(/\\/gm,"_"));
         }
     });
     return components;
