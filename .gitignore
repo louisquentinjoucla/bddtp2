@@ -1,3 +1,6 @@
+# Batch views
+src/resources/batchviews
+
 # Logs
 logs
 *.log
