@@ -1,5 +1,7 @@
 //Imports and packages
 package com.exercise1
+import akka.actor.ActorSystem
+import akka.http.scaladsl.Http
 import com.exercise1.Global
 import com.exercise1.BatchLayer
 import akka.http.scaladsl.model.ws.{Message, TextMessage}
@@ -7,6 +9,7 @@ import akka.http.scaladsl.server.Directives._
 import akka.stream.scaladsl.Flow
 import akka.http.scaladsl.server.Route
 import akka.http.scaladsl.model.StatusCodes
+import akka.stream.ActorMaterializer
 import io.circe.generic.auto._
 import io.circe.syntax._
 import io.circe.parser._
@@ -14,6 +17,25 @@ import io.circe.Json
 
 //-------------------------------------------------------------------------------------------
 //Web services
+
+package object WebServices {
+
+  def start():Unit = {
+    //Debug
+    println("Starting server...")
+
+    //Setup WebSockets server with akka
+    implicit val system = ActorSystem("akka-system")
+    implicit val materializer = ActorMaterializer()
+    val route = MainService.route ~ SocketService.route
+
+    //Start server
+    val binding = Http().bindAndHandle(route, "localhost", 8080)
+    println("Server is online")
+  }
+
+}
+
 
 //Response
 case class Response(status:String, results:Array[Json] = Array[Json]())
