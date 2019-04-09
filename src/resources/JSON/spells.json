@@ -123,7 +123,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "Alarm creates a subtle ward on an area you select. Once the spell effect is in place, it thereafter sounds a mental or audible alarm each time a creature of Tiny or larger size enters the warded area or touches it. A creature that speaks the password (determined by you at the time of casting) does not set off the alarm. You decide at the time of casting whether the alarm will be mental or audible in nature.Mental Alarm: A mental alarm alerts you (and only you) so long as you remain within 1 mile of the warded area. You note a single mental ping that awakens you from normal sleep but does not otherwise disturb concentration. A silence spell has no effect on a mental alarm.Audible Alarm: An audible alarm produces the sound of a hand bell, and anyone within 60 feet of the warded area can hear it clearly. Reduce the distance by 10 feet for each interposing closed door and by 20 feet for each substantial interposing wall.In quiet conditions, the ringing can be heard faintly as far as 180 feet away. The sound lasts for 1 round. Creatures within a silence spell cannot hear the ringing. Ethereal or astral creatures do not trigger the alarm.Alarm can be made permanent with a permanency spell.Home, Ambush",
         "School": "abjuration",
@@ -305,7 +305,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "An invisible barrier surrounds you and moves with you. The space within this barrier is impervious to most magical effects, including spells, spell-like abilities, and supernatural abilities.Likewise, it prevents the functioning of any magic items or spells within its confines.An antimagic field suppresses any spell or magical effect used within, brought into, or cast into the area, but does not dispel it.Time spent within an antimagic field counts against the suppressed spell's duration.Summoned creatures of any type wink out if they enter an antimagic field. They reappear in the same spot once the field goes away. Time spent winked out counts normally against the duration of the conjuration that is maintaining the creature. If you cast antimagic field in an area occupied by a summoned creature that has spell resistance, you must make a caster level check (1d20 + caster level) against the creature's spell resistance to make it wink out.(The effects of instantaneous conjurations are not affected by an antimagic field because the conjuration itself is no longer in effect, only its result.) A normal creature can enter the area, as can normal missiles.Furthermore, while a magic sword does not function magically within the area, it is still a sword (and a masterwork sword at that). The spell has no effect on golems and other constructs that are imbued with magic during their creation process and are thereafter self-supporting (unless they have been summoned, in which case they are treated like any other summoned creatures). Elementals, undead, and outsiders are likewise unaffected unless summoned. These creatures' spell-like or supernatural abilities may be temporarily nullified by the field.Dispel magic does not remove the field.Two or more antimagic fields sharing any of the same space have no effect on each other. Certain spells, such as wall of force, prismatic sphere, and prismatic wall, remain unaffected by antimagic field.Artifacts and deities are unaffected by mortal magic such as this.Should a creature be larger than the area enclosed by the barrier, any part of it that lies outside the barrier is unaffected by the field.Magic, ProtectionSelect a number of spell schools equal to half your tier. Spells and effects of the chosen schools are unaffected by the antimagic field.",
         "School": "abjuration",
@@ -322,7 +322,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You cause an object or location to emanate magical vibrations that repel either a specific kind of intelligent creature or creatures of a particular alignment, as defined by you. The kind of creature to be affected must be named specifically. A creature subtype is not specific enough. Likewise, the specific alignment to be repelled must be named.Creatures of the designated kind or alignment feel an urge to leave the area or to avoid the affected item.A compulsion forces them to abandon the area or item, shunning it and never willingly returning to it while the spell is in effect. A creature that makes a successful saving throw can stay in the area or touch the item but feels uncomfortable doing so. This distracting discomfort reduces the creature's Dexterity score by 4 points.Antipathy counters and dispels sympathy.",
         "School": "enchantment (compulsion) [mind-affecting, emotion]",
@@ -559,7 +559,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "The affected creature gains greater vitality and stamina. The spell grants the subject a +4 enhancement bonus to Constitution, which adds the usual benefits to hit points, Fortitude saves, Constitution checks, and so forth. Hit points gained by a temporary increase in Constitution score are not temporary hit points. They go away when the subject's Constitution drops back to normal. They are not lost first as temporary hit points are.",
         "School": "transmutation",
@@ -576,7 +576,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "Mass bear's endurance works like bear's endurance, except that it affects multiple creatures.",
         "School": "transmutation",
@@ -902,7 +902,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "The subject becomes stronger. The spell grants a +4 enhancement bonus to Strength, adding the usual benefits to melee attack rolls, melee damage rolls, and other uses of the Strength modifier.Rage, Strength",
         "School": "transmutation",
@@ -919,7 +919,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions like bull's strength, except that it affects multiple creatures.Ferocity",
         "School": "transmutation",
@@ -1232,7 +1232,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "Clairaudience/clairvoyance creates an invisible magical sensor at a specific location that enables you to hear or see (your choice) almost as if you were there. You don't need line of sight or line of effect, but the locale must be known--a place familiar to you, or an obvious one. Once you have selected the locale, the sensor doesn't move, but you can rotate it in all directions to view the area as desired. Unlike other scrying spells, this spell does not allow magically or supernaturally enhanced senses to work through it. If the chosen locale is magically dark, you see nothing. If it is naturally pitch black, you can see in a 10-foot radius around the center of the spell's effect. Clairaudience/clairvoyance functions only on the plane of existence you are currently occupying.",
         "School": "divination (scrying)",
@@ -1249,7 +1249,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "This spell functions like interposing hand, except that the hand can also push or strike one opponent that you select. The floating hand can move as far as 60 feet and can attack in the same round. Since this hand is directed by you, its ability to notice or attack invisible or concealed creatures is no better than yours.The hand attacks once per round, and its attack bonus equals your caster level + your Intelligence, Wisdom, or Charisma modifier (for a wizard, cleric, or sorcerer, respectively) + 11 for the hand's Strength score (33), -1 for being Large. The hand deals 1d8+11 points of damage on each attack, and any creature struck must make a Fortitude save (against this spell's save DC) or be stunned for 1 round. Directing the spell to a new target is a move action.The clenched fist can also interpose itself as interposing hand does, or it can bull rush an opponent as forceful hand does. Its CMB for bull rush checks uses your caster level in place of its base attack bonus, with a +11 bonus for its Strength score and a +1 bonus for being Large.Strength",
         "School": "evocation [force]",
@@ -1429,7 +1429,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You can understand the spoken words of creatures or read otherwise incomprehensible written messages. The ability to read does not necessarily impart insight into the material, merely its literal meaning. The spell enables you to understand or read an unknown language, not speak or write it.Written material can be read at the rate of one page (250 words) per minute. Magical writing cannot be read, though the spell reveals that it is magical. This spell can be foiled by certain warding magic (such as the secret page and illusory script spells). It does not decipher codes or reveal messages concealed in otherwise normal text.Comprehend languages can be made permanent with a permanency spell.Knowledge, Language",
         "School": "divination",
@@ -1462,7 +1462,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell causes confusion in the targets, making them unable to determine their actions. Roll on the following table at the start of each subject's turn each round to see what it does in that round.d%Behavior 01-25Act normally 26-50Do nothing but babble incoherently 51-75Deal 1d8 points of damage + Str modifier to self with item in hand 76-100Attack nearest creature (for this purpose, a familiar counts as part of the subject's self) A confused character who can't carry out the indicated action does nothing but babble incoherently. Attackers are not at any special advantage when attacking a confused character. Any confused character who is attacked automatically attacks its attackers on its next turn, as long as it is still confused when its turn comes. Note that a confused character will not make attacks of opportunity against any creature that it is not already devoted to attacking (either because of its most recent action or because it has just been attacked).Lust, Madness, Trickery",
         "School": "enchantment (compulsion) [mind-affecting]",
@@ -1615,7 +1615,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell has two different applications, both of which control water in different ways. The first version of this spell causes water in the area to swiftly evaporate or to sink into the ground below, lowering the water's depth. The second version causes the water to surge and rise, increasing its overall depth and possibly flooding nearby areas.Lower Water: This causes water or similar liquid to reduce its depth by as much as 2 feet per caster level (to a minimum depth of 1 inch). The water is lowered within a squarish depression whose sides are up to caster level x 10 feet long. In extremely large and deep bodies of water, such as a deep ocean, the spell creates a whirlpool that sweeps ships and similar craft downward, putting them at risk and rendering them unable to leave by normal movement for the duration of the spell. When cast on water elementals and other water-based creatures, this spell acts as a slow spell (Will negates). The spell has no effect on other creatures.Raise Water: This causes water or similar liquid to rise in height, just as the lower water version causes it to lower. Boats raised in this way slide down the sides of the hump that the spell creates. If the area affected by the spell includes riverbanks, a beach, or other land nearby, the water can spill over onto dry land.With either version of this spell, you may reduce one horizontal dimension by half and double the other horizontal dimension to change the overall area of effect.Water",
         "School": "transmutation [water]",
@@ -1941,7 +1941,7 @@
         "resistance": false,
         "components": [
             "V",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell causes an object to radiate darkness out to a 20-foot radius. This darkness causes the illumination level in the area to drop one step, from bright light to normal light, from normal light to dim light, or from dim light to darkness. This spell has no effect in an area that is already dark. Creatures with light vulnerability or sensitivity take no penalties in normal light. All creatures gain concealment (20% miss chance) in dim light. All creatures gain total concealment (50% miss chance) in darkness.Creatures with darkvision can see in an area of dim light or darkness without penalty. Nonmagical sources of light, such as torches and lanterns, do not increase the light level in an area of darkness. Magical light sources only increase the light level in an area if they are of a higher spell level than darkness.If darkness is cast on a small object that is then placed inside or under a lightproof covering, the spell's effect is blocked until the covering is removed.This spell does not stack with itself. Darkness can be used to counter or dispel any light spell of equal or lower spell level.The illumination level in the area drops to darkness regardless of the existing lighting conditions. Non-mythic spells and effects can't increase the light level in the area. Creatures with darkvision and the power to see in darkness have difficulty seeing through this darkness, and can see as well as a human can in dim light. Creatures in the area of darkness take a -2 penalty on saves against fear.",
         "School": "evocation [darkness]",
@@ -2074,7 +2074,7 @@
         "resistance": false,
         "components": [
             "V",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions as darkness, except that objects radiate darkness in a 60-foot radius and the light level is lowered by two steps. Bright light becomes dim light and normal light becomes darkness. Areas of dim light and darkness become supernaturally dark. This functions like darkness, but even creatures with darkvision cannot see within the spell's confines.This spell does not stack with itself. Deeper darkness can be used to counter or dispel any light spell of equal or lower spell level.Darkness",
         "School": "evocation [darkness]",
@@ -2144,7 +2144,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions like sending, but the message can also contain a suggestion (see the suggestion spell), which the subject does its best to carry out. A successful Will save negates the suggestion effect but not the contact itself. The demand, if received, is understood even if the subject's Intelligence score is as low as 1. If the message is impossible or meaningless according to the circumstances that exist for the subject at the time the demand is issued, the message is understood but the suggestion is ineffective.The demand's message to the creature must be 25 words or less, including the suggestion. The creature can also give a short reply immediately.Charm, Nobility",
         "School": "enchantment (compulsion) [mind-affecting]",
@@ -2362,7 +2362,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "You detect surface thoughts. The amount of information revealed depends on how long you study a particular area or subject.1st Round: Presence or absence of thoughts (from conscious creatures with Intelligence scores of 1 or higher).2nd Round: Number of thinking minds and the Intelligence score of each. If the highest Intelligence is 26 or higher (and at least 10 points higher than your own Intelligence score), you are stunned for 1 round and the spell ends. This spell does not let you determine the location of the thinking minds if you can't see the creatures whose thoughts you are detecting.3rd Round: Surface thoughts of any mind in the area. A target's Will save prevents you from reading its thoughts, and you must cast detect thoughts again to have another chance. Creatures of animal intelligence (Int 1 or 2) have simple, instinctual thoughts.Each round, you can turn to detect thoughts in a new area. The spell can penetrate barriers, but 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt blocks it.Knowledge",
         "School": "divination [mind-affecting]",
@@ -2379,7 +2379,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You can detect the aura that surrounds undead creatures. The amount of information revealed depends on how long you study a particular area.1st Round: Presence or absence of undead auras.2nd Round: Number of undead auras in the area and the strength of the strongest undead aura present. If you are of good alignment, and the strongest undead aura's strength is overwhelming (see below), and the creature has HD of at least twice your character level, you are stunned for 1 round and the spell ends.3rd Round: The strength and location of each undead aura. If an aura is outside your line of sight, then you discern its direction but not its exact location.Aura Strength: The strength of an undead aura is determined by the HD of the undead creature, as given on the table below.Lingering Aura: An undead aura lingers after its original source is destroyed. If detect undead is cast and directed at such a location, the spell indicates an aura strength of dim (even weaker than a faint aura). How long the aura lingers at this dim level depends on its original power, as given on the table below.HDStrengthLingering Aura Duration 1 or lowerFaint1d6 rounds 2-4Moderate1d6 minutes 5-10Strong1d6 x 10 minutes 11 or higherOverwhelming1d6 days Each round, you can turn to detect undead in a new area. The spell can penetrate barriers, but 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt blocks it.",
         "School": "divination",
@@ -2525,7 +2525,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "A thin, green ray springs from your pointing finger. You must make a successful ranged touch attack to hit. Any creature struck by the ray takes 2d6 points of damage per caster level (to a maximum of 40d6). Any creature reduced to 0 or fewer hit points by this spell is entirely disintegrated, leaving behind only a trace of fine dust. A disintegrated creature's equipment is unaffected.When used against an object, the ray simply disintegrates as much as a 10-foot cube of nonliving matter. Thus, the spell disintegrates only part of any very large object or structure targeted.The ray affects even objects constructed entirely of force, such as forceful hand or a wall of force, but not magical effects such as a globe of invulnerability or an antimagic field.A creature or object that makes a successful Fortitude save is partially affected, taking only 5d6 points of damage. If this damage reduces the creature or object to 0 or fewer hit points, it is entirely disintegrated.Only the first creature or object struck can be affected; that is, the ray affects only one target per casting.Ash, DestructionThe damage dealt increases to 3d6 points of damage per caster level (maximum 60d6) plus 1d4 points of Constitution damage. A creature that succeeds at its saving throw takes 5d8 points of damage plus 1 point of Constitution damage. A creature whose Constitution score is reduced to 0 by this spell is entirely disintegrated.Augmented (7th): If you expend two uses of mythic power, you fire two rays. Alternatively, you may fire only one ray, but if the target is a non-mythic creature and it fails its saving throw, it's automatically disintegrated regardless of its current hp.",
         "School": "transmutation",
@@ -2839,7 +2839,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "The transmuted creature becomes more poised, articulate, and personally forceful. The spell grants a +4 enhancement bonus to Charisma, adding the usual benefits to Charisma-based skill checks and other uses of the Charisma modifier. Bards, paladins, and sorcerers (and other spellcasters who rely on Charisma) affected by this spell do not gain any additional bonus spells for the increased Charisma, but the save DCs for spells they cast while under this spell's effect do increase.",
         "School": "transmutation",
@@ -2856,7 +2856,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions like eagle's splendor, except that it affects multiple creatures.",
         "School": "transmutation",
@@ -3481,7 +3481,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "A burning globe of fire rolls in whichever direction you point and burns those it strikes. It moves 30 feet per round. As part of this movement, it can ascend or jump up to 30 feet to strike a target. If it enters a space with a creature, it stops moving for the round and deals 3d6 points of fire damage to that creature, though a successful Reflex save negates that damage. A flaming sphere rolls over barriers less than 4 feet tall. It ignites flammable substances it touches and illuminates the same area as a torch would.The sphere moves as long as you actively direct it (a move action for you); otherwise, it merely stays at rest and burns. It can be extinguished by any means that would put out a normal fire of its size. The surface of the sphere has a spongy, yielding consistency and so does not cause damage except by its flame. It cannot push aside unwilling creatures or batter down large obstacles. A flaming sphere winks out if it exceeds the spell's range.",
         "School": "evocation [fire]",
@@ -3634,7 +3634,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell grants you a powerful sixth sense in relation to yourself or another. Once foresight is cast, you receive instantaneous warnings of impending danger or harm to the subject of the spell. You are never surprised or flat-footed. In addition, the spell gives you a general idea of what action you might take to best protect yourself and gives you a +2 insight bonus to AC and on Reflex saves. This insight bonus is lost whenever you would lose a Dexterity bonus to AC.When another creature is the subject of the spell, you receive warnings about that creature. You must communicate what you learn to the other creature for the warning to be useful, and the creature can be caught unprepared in the absence of such a warning. Shouting a warning, yanking a person back, and even telepathically communicating (via an appropriate spell) can all be accomplished before some danger befalls the subject, provided you act on the warning without delay. The subject, however, does not gain the insight bonus to AC and Reflex saves.KnowledgeThe spell's insight bonus increases to +3. If you cast the spell on another creature, you and the target are simultaneously warned by the spell, and the target gains the spell's insight bonuses.",
         "School": "divination",
@@ -3702,7 +3702,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "The target becomes smarter. The spell grants a +4 enhancement bonus to Intelligence, adding the usual benefits to Intelligencebased skill checks and other uses of the Intelligence modifier.Wizards (and other spellcasters who rely on Intelligence) affected by this spell do not gain any additional bonus spells for the increased Intelligence, but the save DCs for spells they cast while under this spell's effect do increase. This spell doesn't grant extra skill ranks.",
         "School": "transmutation",
@@ -3719,7 +3719,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions like fox's cunning, except that it affects multiple creatures.",
         "School": "transmutation",
@@ -3786,7 +3786,7 @@
         "resistance": false,
         "components": [
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "The subject and all its gear become insubstantial, misty, and translucent. Its material armor (including natural armor) becomes worthless, though its size, Dexterity, deflection bonuses, and armor bonuses from force effects still apply. The subject gains DR 10/ magic and becomes immune to poison, sneak attacks, and critical hits. It can't attack or cast spells with verbal, somatic, material, or focus components while in gaseous form. This does not rule out the use of certain spells that the subject may have prepared using the feats Silent Spell, Still Spell, and Eschew Materials. The subject also loses supernatural abilities while in gaseous form. If it has a touch spell ready to use, that spell is discharged harmlessly when the gaseous form spell takes effect.A gaseous creature can't run, but it can fly at a speed of 10 feet and automatically succeeds on all Fly skill checks. It can pass through small holes or narrow openings, even mere cracks, with all it was wearing or holding in its hands, as long as the spell persists. The creature is subject to the effects of wind, and it can't enter water or other liquid. It also can't manipulate objects or activate items, even those carried along with its gaseous form. Continuously active items remain active, though in some cases their effects may be moot.AirThe damage reduction changes to DR 10/epic and magic, and the fly speed increases to 30 feet. The target can expand itself as a free action, filling an area equal to double its normal space and height (a Medium creature fills a 10-foot-by-10-foot space to a height of about 10 feet) and blocking vision as obscuring mist. Returning from expanded to normal size is also a free action.Augmented: If you expend two uses of mythic power, the target can shift into or out of gaseous form as a move action.",
         "School": "transmutation",
@@ -3851,7 +3851,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You preserve the remains of a dead creature so that they do not decay. Doing so effectively extends the time limit on raising that creature from the dead (see raise dead). Days spent under the influence of this spell don't count against the time limit.Additionally, this spell makes transporting a slain (and thus decaying) comrade less unpleasant.The spell also works on severed body parts and the like.Repose",
         "School": "necromancy",
@@ -4441,7 +4441,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "The subject becomes paralyzed and freezes in place. It is aware and breathes normally but cannot take any actions, even speech. Each round on its turn, the subject may attempt a new saving throw to end the effect. This is a full-round action that does not provoke attacks of opportunity. A winged creature who is paralyzed cannot flap its wings and falls. A swimmer can't swim and may drown.",
         "School": "enchantment (compulsion) [mind-affecting]",
@@ -4458,7 +4458,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions like hold person, except that it affects any living creature that fails its Will save.Law",
         "School": "enchantment (compulsion) [mind-affecting]",
@@ -4475,7 +4475,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions like hold person, except that it affects multiple creatures and holds any living creature that fails its Will save.",
         "School": "enchantment (compulsion) [mind-affecting]",
@@ -4492,7 +4492,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "This spell functions like hold person, except as noted above.",
         "School": "enchantment (compulsion) [mind-affecting]",
@@ -4588,7 +4588,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell evaporates moisture from the body of each subject living creature, causing flesh to wither and crack and crumble to dust. This deals 1d6 points of damage per caster level (maximum 20d6). This spell is especially devastating to water elementals and plant creatures, which instead take 1d8 points of damage per caster level (maximum 20d8).Water, Radiation",
         "School": "necromancy",
@@ -4638,7 +4638,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "Great magical hailstones pound down upon casting this spell, dealing 3d6 points of bludgeoning damage and 2d6 points of cold damage to every creature in the area. This damage only occurs once, when the spell is cast. For the remaining duration of the spell, heavy snow and sleet rains down in the area. Creatures inside this area take a -4 penalty on Perception skill checks and the entire area is treated as difficult terrain. At the end of the duration, the snow and hail disappear, leaving no aftereffects (other than the damage dealt).Water, WeatherThe bludgeoning damage increases to 4d8 points of damage and the cold damage increases to 3d6 points of damage. The ground in the area is covered in ice and hailstones, acting as though a grease spell were cast on it. Dealing 5 or more points of fire damage to a square melts the ice and hail, negating the grease effect.Augmented (6th): If you expend two uses of mythic power, one creature in the area is paralyzed (as if by hold person) and gains vulnerability to fire as long as it's paralyzed.",
         "School": "evocation [cold]",
@@ -4932,7 +4932,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "The creature or object touched becomes invisible. If the recipient is a creature carrying gear, that vanishes, too. If you cast the spell on someone else, neither you nor your allies can see the subject, unless you can normally see invisible things or you employ magic to do so.Items dropped or put down by an invisible creature become visible; items picked up disappear if tucked into the clothing or pouches worn by the creature. Light, however, never becomes invisible, although a source of light can become so (thus, the effect is that of a light with no visible source). Any part of an item that the subject carries but that extends more than 10 feet from it becomes visible.Of course, the subject is not magically silenced, and certain other conditions can render the recipient detectable (such as swimming in water or stepping in a puddle). If a check is required, a stationary invisible creature has a +40 bonus on its Stealth checks. This bonus is reduced to +20 if the creature is moving. The spell ends if the subject attacks any creature. For purposes of this spell, an attack includes any spell targeting a foe or whose area or effect includes a foe. Exactly who is a foe depends on the invisible character's perceptions. Actions directed at unattended objects do not break the spell. Causing harm indirectly is not an attack. Thus, an invisible being can open doors, talk, eat, climb stairs, summon monsters and have them attack, cut the ropes holding a rope bridge while enemies are on the bridge, remotely trigger traps, open a portcullis to release attack dogs, and so forth. If the subject attacks directly, however, it immediately becomes visible along with all its gear.Spells such as bless that specifically affect allies but not foes are not attacks for this purpose, even when they include foes in their area.Invisibility can be made permanent (on objects only) with a permanency spell.TrickeryThe invisible target can't be detected with detect magic or other spells that detect magic auras. The invisibility can't be penetrated, revealed, or dispelled by spells of 2nd level or lower (such as see invisibility or glitterdust), though true seeing and dust of appearance can reveal the invisible target's presence.Augmented (3rd): If you expend two uses of mythic power, the invisible target is undetectable by blindsense, blindsight, scent, and tremorsense.",
         "School": "illusion (glamer)",
@@ -5014,7 +5014,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell transforms your body into living iron, which grants you several powerful resistances and abilities. You gain damage reduction 15/adamantine. You are immune to blindness, critical hits, ability score damage, deafness, disease, drowning, electricity, poison, stunning, and all spells or attacks that affect your physiology or respiration, because you have no physiology or respiration while this spell is in effect. You take only half damage from acid and fire.However, you also become vulnerable to all special attacks that affect iron golems (see the Pathfinder RPG Bestiary).You gain a +6 enhancement bonus to your Strength score, but you take a -6 penalty to Dexterity as well (to a minimum Dexterity score of 1), and your speed is reduced to half normal. You have an arcane spell failure chance of 35% and a -6 armor check penalty, just as if you were clad in full plate armor. You cannot drink (and thus can't use potions) or play wind instruments.Your unarmed attack deals damage equal to a club sized for you (1d4 for Small characters or 1d6 for Medium characters), and you are considered armed when making unarmed attacks.Your weight increases by a factor of 10, causing you to sink in water like a stone. However, you could survive the lack of air at the bottom of the ocean-at least until the spell duration expires.Metal",
         "School": "transmutation",
@@ -5158,7 +5158,7 @@
         "resistance": false,
         "components": [
             "V",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell causes a touched object to glow like a torch, shedding normal light in a 20-foot radius from the point touched, and increasing the light level for an additional 20 feet by one step, up to normal light (darkness becomes dim light, and dim light becomes normal light). In an area of normal or bright light, this spell has no effect. The effect is immobile, but it can be cast on a movable object.You can only have one light spell active at any one time. If you cast this spell while another casting is still in effect, the previous casting is dispelled. If you make this spell permanent (through permanency or a similar effect), it does not count against this limit. Light can be used to counter or dispel any darkness spell of equal or lower spell level.",
         "School": "evocation [light]",
@@ -5228,7 +5228,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "You sense the direction of a well-known or clearly visualized object.You can search for general items, in which case you locate the nearest of its kind if more than one is within range. Attempting to find a certain item requires a specific and accurate mental image; if the image is not close enough to the actual object, the spell fails.You cannot specify a unique item unless you have observed that particular item firsthand (not through divination).The spell is blocked by even a thin sheet of lead. Creatures cannot be found by this spell. Polymorph any object and nondetection fool it.Thievery, Travel",
         "School": "divination",
@@ -5442,7 +5442,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "All creatures within the area gain the effects of a protection from evil spell, and evil summoned creatures cannot enter the area either. Creatures in the area, or who later enter the area, receive only one attempt to suppress effects that are controlling them.If successful, such effects are suppressed as long as they remain in the area. Creatures that leave the area and come back are not protected. You must overcome a creature's spell resistance in order to keep it at bay (as in the third function of protection from evil), but the deflection and resistance bonuses and the protection from mental control apply regardless of enemies' spell resistance.This spell has an alternative version that you may choose when casting it. A magic circle against evil can be focused inward rather than outward. When focused inward, the spell binds a nongood called creature (such as those called by the lesser planar binding, planar binding, and greater planar binding spells) for a maximum of 24 hours per caster level, provided that you cast the spell that calls the creature within 1 round of casting the magic circle. The creature cannot cross the circle's boundaries. If a creature too large to fit into the spell's area is the subject of the spell, the spell acts as a normal protection from evil spell for that creature only.A magic circle leaves much to be desired as a trap. If the circle of powdered silver laid down in the process of spellcasting is broken, the effect immediately ends. The trapped creature can do nothing that disturbs the circle, directly or indirectly, but other creatures can. If the called creature has spell resistance, it can test the trap once a day. If you fail to overcome its spell resistance, the creature breaks free, destroying the circle.A creature capable of any form of dimensional travel (astral projection, blink, dimension door, etherealness, gate, plane shift, shadow walk, teleport, and similar abilities) can simply leave the circle through such means. You can prevent the creature's extradimensional escape by casting a dimensional anchor spell on it, but you must cast the spell before the creature acts. If you are successful, the anchor effect lasts as long as the magic circle does. The creature cannot reach across the magic circle, but its ranged attacks (ranged weapons, spells, magical abilities, and the like) can. The creature can attack any target it can reach with its ranged attacks except for the circle itself.You can add a special diagram (a two-dimensional bounded figure with no gaps along its circumference, augmented with various magical sigils) to make the magic circle more secure. Drawing the diagram by hand takes 10 minutes and requires a DC 20 Spellcraft check. You do not know the result of this check. If the check fails, the diagram is ineffective. You can take 10 when drawing the diagram if you are under no particular time pressure to complete the task.This task also takes 10 full minutes. If time is no factor at all, and you devote 3 hours and 20 minutes to the task, you can take 20.A successful diagram allows you to cast a dimensional anchor spell on the magic circle during the round before casting any summoning spell. The anchor holds any called creatures in the magic circle for 24 hours per caster level. A creature cannot use its spell resistance against a magic circle prepared with a diagram, and none of its abilities or attacks can cross the diagram. If the creature tries a Charisma check to break free of the trap (see the lesser planar binding spell), the DC increases by 5. The creature is immediately released if anything disturbs the diagram-even a straw laid across it. The creature itself cannot disturb the diagram either directly or indirectly, as noted above.This spell is not cumulative with protection from evil and vice versa.Good",
         "School": "abjuration [good]",
@@ -5459,7 +5459,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions like magic circle against evil, except that it is similar to protection from chaos instead of protection from evil, and it can imprison a nonlawful called creature.Law",
         "School": "abjuration [lawful]",
@@ -5476,7 +5476,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions like magic circle against evil, except that it is similar to protection from good instead of protection from evil, and it can imprison a nonevil called creature.Evil",
         "School": "abjuration [evil]",
@@ -5493,7 +5493,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions like magic circle against evil, except that it is similar to protection from law instead of protection from evil, and it can imprison a nonchaotic called creature.Chaos",
         "School": "abjuration [chaotic]",
@@ -5647,7 +5647,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions like magic weapon, except that it gives a weapon an enhancement bonus on attack and damage rolls of +1 per four caster levels (maximum +5). This bonus does not allow a weapon to bypass damage reduction aside from magic.Alternatively, you can affect as many as 50 arrows, bolts, or bullets.The projectiles must be of the same kind, and they have to be together (in the same quiver or other container). Projectiles, but not thrown weapons, lose their transmutation after they are used.Treat shuriken as projectiles, rather than as thrown weapons, for the purpose of this spell.You can add one of the following weapon special abilities to the weapon: flaming, frost, keen, merciful, shock, or thundering.Augmented (5th): If you expend two uses of mythic power, you can reduce the granted enhancement bonus by 1 to add two of the above abilities or one of the following abilities: anarchic, axiomatic, flaming burst, holy, icy burst, shocking burst, or unholy.",
         "School": "transmutation",
@@ -6041,7 +6041,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You detoxify any sort of venom in the creature or object touched. If the target is a creature, you must make a caster level check (1d20 + caster level) against the DC of each poison affecting the target. Success means that the poison is neutralized. A cured creature suffers no additional effects from the poison, and any temporary effects are ended, but the spell does not reverse instantaneous effects, such as hit point damage, temporary ability damage, or effects that don't go away on their own.This spell can instead neutralize the poison in a poisonous creature or object for 10 minutes per level, at the caster's option.If cast on a creature, the creature receives a Will save to negate the effect.Restoration",
         "School": "conjuration (healing)",
@@ -6092,7 +6092,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell hides an object from location by divination (scrying) effects, such as the scrying spell or a crystal ball. Such an attempt automatically fails (if the divination is targeted on the object) or fails to perceive the object (if the divination is targeted on a nearby location, object, or person).",
         "School": "abjuration",
@@ -6173,7 +6173,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "The transmuted creature becomes wiser. The spell grants a +4 enhancement bonus to Wisdom, adding the usual benefit to Wisdom-related skills. Clerics, druids, and rangers (and other Wisdom-based spellcasters) who receive owl's wisdom do not gain any additional bonus spells for the increased Wisdom, but the save DCs for their spells increase.",
         "School": "transmutation",
@@ -6190,7 +6190,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions like owl's wisdom, except that it affects multiple creatures.",
         "School": "transmutation",
@@ -6612,7 +6612,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions like greater polymorph, except that it changes one object or creature into another. You can use this spell to transform all manner of objects and creatures into new forms-you aren't limited to transforming a living creature into another living form. The duration of the spell depends on how radical a change is made from the original state to its transmuted state. The duration is determined by using the following guidelines. Changed Subject is...Increase to duration Factor*Same kingdom (animal, vegetable, mineral)+5Same class (mammals, fungi, metals, etc.)+2Same size+2Related (twig is to tree, wolf fur is to wolf, etc.)+2Same or lower Intelligence+2*Add all that apply. Look up the total on the next table.  Duration FactorDurationExample020 minutesPebble to human21 hourMarionette to human43 hoursHuman to marionette512 hoursLizard to manticore62 daysSheep to wool coat71 weekShrew to manticore9+PermanentManticore to shrew If the target of the spell does not have physical ability scores (Strength, Dexterity, or Constitution), this spell grants a base score of 10 to each missing ability score. If the target of the spell does not have mental ability scores (Intelligence, Wisdom, or Charisma), this spell grants a score of 5 to such scores. Damage taken by the new form can result in the injury or death of the polymorphed creature. In general, damage occurs when the new form is changed through physical force. A nonmagical object cannot be made into a magic item with this spell. Magic items aren't affected by this spell.This spell cannot create material of great intrinsic value, such as copper, silver, gems, silk, gold, platinum, mithral, or adamantine. It also cannot reproduce the special properties of cold iron in order to overcome the damage reduction of certain creatures.This spell can also be used to duplicate the effects of baleful polymorph, greater polymorph, flesh to stone, stone to flesh, transmute mud to rock, transmute metal to wood, or transmute rock to mud.Construct",
         "School": "transmutation (polymorph)",
@@ -6842,7 +6842,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions like protection from evil, except that the deflection and resistance bonuses apply to attacks made by chaotic creatures. The target receives a new saving throw against control by chaotic creatures and chaotic summoned creatures cannot touch the target.Law, PurityThe bonuses to AC and on saves increase to +4. Any chaotic creature attempting to possess or exercise mental control over the target must attempt a Will save against this spell. If it fails, the creature takes 1d6 points of damage per 2 caster levels (maximum 5d6) from mental feedback. A chaotic creature that uses spell resistance to bypass the spell's protection against contact must successfully save or take this damage once each round it attacks the protected target.",
         "School": "abjuration [lawful]",
@@ -6859,7 +6859,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell wards a creature from attacks by evil creatures, from mental control, and from summoned creatures. It creates a magical barrier around the subject at a distance of 1 foot. The barrier moves with the subject and has three major effects.First, the subject gains a +2 deflection bonus to AC and a +2 resistance bonus on saves. Both these bonuses apply against attacks made or effects created by evil creatures.Second, the subject immediately receives another saving throw (if one was allowed to begin with) against any spells or effects that possess or exercise mental control over the creature (including enchantment [charm] effects and enchantment [compulsion] effects such as charm person, command, and dominate person). This saving throw is made with a +2 morale bonus, using the same DC as the original effect.If successful, such effects are suppressed for the duration of this spell. The effects resume when the duration of this spell expires.While under the effects of this spell, the target is immune to any new attempts to possess or exercise mental control over the target.This spell does not expel a controlling life force (such as a ghost or spellcaster using magic jar), but it does prevent them from controlling the target. This second effect only functions against spells and effects created by evil creatures or objects, subject to GM discretion.Third, the spell prevents bodily contact by evil summoned creatures. This causes the natural weapon attacks of such creatures to fail and the creatures to recoil if such attacks require touching the warded creature. Summoned creatures that are not evil are immune to this effect. The protection against contact by summoned creatures ends if the warded creature makes an attack against or tries to force the barrier against the blocked creature. Spell resistance can allow a creature to overcome this protection and touch the warded creature.Good, PurityThe bonuses to AC and on saves increase to +4. Any evil creature attempting to possess or exercise mental control over the target must attempt a Will save against this spell. If it fails, the creature takes 1d6 points of damage per 2 caster levels (maximum 5d6) from mental feedback. An evil creature that uses spell resistance to bypass the spell's protection against contact must successfully save or take this damage once each round it attacks the protected target.",
         "School": "abjuration [good]",
@@ -6876,7 +6876,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions like protection from evil, except that the deflection and resistance bonuses apply to attacks made by good creatures. The target receives a new saving throw against control by good creatures and good summoned creatures cannot touch the target.Evil, PurityThe bonuses to AC and on saves increase to +4. Any good creature attempting to possess or exercise mental control over the target must attempt a Will save against this spell. If it fails, the creature takes 1d6 points of damage per 2 caster levels (maximum 5d6) from mental feedback. A good creature that uses spell resistance to bypass the spell's protection against contact must successfully save or take this damage once each round it attacks the protected target.",
         "School": "abjuration [evil]",
@@ -6893,7 +6893,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions like protection from evil, except that the deflection and resistance bonuses apply to attacks made by lawful creatures.The target receives a new saving throw against control by lawful creatures and lawful summoned creatures cannot touch the target.Chaos, PurityThe bonuses to AC and on saves increase to +4. Any lawful creature attempting to possess or exercise mental control over the target must attempt a Will save against this spell. If it fails, the creature takes 1d6 points of damage per 2 caster levels (maximum 5d6) from mental feedback. A lawful creature that uses spell resistance to bypass the spell's protection against contact must successfully save or take this damage once each round it attacks the protected target.",
         "School": "abjuration [chaotic]",
@@ -7329,7 +7329,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "An invisible, mobile field surrounds you and prevents creatures from approaching you. You decide how big the field is at the time of casting (to the limit your level allows). Any creature within or entering the field must attempt a save. If it fails, it becomes unable to move toward you for the duration of the spell. Repelled creatures' actions are not otherwise restricted. They can fight other creatures and can cast spells and attack you with ranged weapons.If you move closer to an affected creature, nothing happens. The creature is not forced back. The creature is free to make melee attacks against you if you come within reach. If a repelled creature moves away from you and then tries to turn back toward you, it cannot move any closer if it is still within the spell's area.Nobility, Protection",
         "School": "abjuration",
@@ -7363,7 +7363,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You imbue the subject with magical energy that protects it from harm, granting it a +1 resistance bonus on saves.Resistance can be made permanent with a permanency spell.",
         "School": "abjuration",
@@ -7465,7 +7465,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell reverses gravity in an area, causing unattached objects and creatures in the area to fall upward and reach the top of the area in 1 round. If a solid object (such as a ceiling) is encountered in this fall, falling objects and creatures strike it in the same manner as they would during a normal downward fall. If an object or creature reaches the top of the area without striking anything, it remains there, oscillating slightly, until the spell ends. At the end of the spell duration, affected objects and creatures fall downward.Provided it has something to hold onto, a creature caught in the area can attempt a Reflex save to secure itself when the spell strikes.Creatures who can fly or levitate can keep themselves from falling.Creatures in the area or that enter the area must succeed at a Fortitude save or be nauseated.Augmented (8th): If you expend three uses of mythic power, once per round as a move action you may select one secured creature (one that succeeded at its Reflex save) or attached object (such as a tree or cottage) and force it to attempt a Fortitude save against the spell. The selected creature or object can weigh no more than 100 pounds per caster level. If it fails the save, it's pulled free and falls upward.",
         "School": "transmutation",
@@ -7617,7 +7617,7 @@
         "components": [
             "V",
             "S",
-            "M/DF",
+            "M_DF",
             "F"
         ],
         "description": "You can observe a creature at any distance. If the subject succeeds on a Will save, the spell fails. The difficulty of the save depends on how well your knowledge of the subject and what sort of physical connection (if any) you have to that creature.Furthermore, if the subject is on another plane, it gets a +5 bonus on its Will save. KnowledgeWill Save ModifierNone*+10Secondhand (you have heard of the subject)+5Firsthand (you have met the subject)+0Familiar (you know the subject well)-5*You must have some sort of connection (see below) to a creature of which you have no knowledge.  ConnectionWill Save ModifierLikeness or picture-2Possession or garment-4Body part, lock of hair, bit of nail, etc.-10 If the save fails, you can see and hear the subject and its surroundings (approximately 10 feet in all directions of the subject).If the subject moves, the sensor follows at a speed of up to 150 feet.As with all divination (scrying) spells, the sensor has your full visual acuity, including any magical effects. In addition, the following spells have a 5% chance per caster level of operating through the sensor: detect chaos, detect evil, detect good, detect law, detect magic, and message.If the save succeeds, you can't attempt to scry on that subject again for at least 24 hours.",
@@ -7766,7 +7766,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You contact a particular creature with which you are familiar and send a short message of 25 words or less to the subject. The subject recognizes you if it knows you. It can answer in like manner immediately. A creature with an Intelligence score as low as 1 can understand the sending, though the subject's ability to react is limited as normal by its Intelligence. Even if the sending is received, the subject is not obligated to act upon it in any manner.If the creature in question is not on the same plane of existence as you are, there is a 5% chance that the sending does not arrive. (Local conditions on other planes may worsen this chance considerably.)",
         "School": "evocation",
@@ -7945,7 +7945,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "Shatter creates a loud, ringing noise that breaks brittle, nonmagical objects; sunders a single solid, nonmagical object; or damages a crystalline creature.Used as an area attack, shatter destroys nonmagical objects of crystal, glass, ceramic, or porcelain. All such unattended objects within a 5-foot radius of the point of origin are smashed into dozens of pieces by the spell. Objects weighing more than 1 pound per your level are not affected, but all other objects of the appropriate composition are shattered.Alternatively, you can target shatter against a single solid nonmagical object, regardless of composition, weighing up to 10 pounds per caster level. Targeted against a crystalline creature (of any weight), shatter deals 1d6 points of sonic damage per caster level (maximum 10d6), with a Fortitude save for half damage.DestructionAdd your tier to your caster level when determining the maximum object weight you can affect. When targeting a crystalline creature, the spell's damage increases to 1d8 points of sonic damage per caster level (maximum 10d8). You may damage a single magical object as if it were a crystalline creature. If the spell destroys an object or damages a crystalline creature, broken shards litter the spell area or creature's space and act as caltrops.",
         "School": "evocation [sonic]",
@@ -8196,7 +8196,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "Driving sleet blocks all sight (even darkvision) within it and causes the ground in the area to be icy. A creature can walk within or through the area of sleet at half normal speed with a DC 10 Acrobatics check. Failure means it can't move in that round, while failure by 5 or more means it falls (see the Acrobatics skill for details).The sleet extinguishes torches and small fires.Weather",
         "School": "conjuration (creation) [cold]",
@@ -8315,7 +8315,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "You blast an area with a tremendous cacophony. Every creature in the area takes 1d8 points of sonic damage and must succeed on a Fortitude save to avoid being stunned for 1 round. Creatures that cannot hear are not stunned but are still damaged.",
         "School": "evocation [sonic]",
@@ -8463,7 +8463,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "Spells and spell-like effects targeted on you are turned back upon the original caster. The abjuration turns only spells that have you as a target. Effect and area spells are not affected. Spell turning also fails to stop touch range spells. From seven to ten (1d4+6) spell levels are affected by the turning. The exact number is rolled secretly.When you are targeted by a spell of higher level than the amount of spell turning you have left, that spell is partially turned. Subtract the amount of spell turning left from the spell level of the incoming spell, then divide the result by the spell level of the incoming spell to see what fraction of the effect gets through. For damaging spells, you and the caster each take a fraction of the damage. For nondamaging spells, each of you has a proportional chance to be the one who is affected. If you and a spellcasting attacker are both warded by spell turning effects in operation, a resonating field is created. Roll randomly to determine the result. d%Effect01-70Spell drains away without effect.71-80Spell affects both of you equally at full effect.81-97Both turning effects are rendered nonfunctional for 1d4 minutes.98-100Both of you go through a rift into another plane. Luck, Magic",
         "School": "abjuration",
@@ -8613,7 +8613,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You can form an existing piece of stone into any shape that suits your purpose. While it's possible to make crude coffers, doors, and so forth with stone shape, fine detail isn't possible. There is a 30% chance that any shape including moving parts simply doesn't work.Artifice, EarthThe duration changes to 1 round/level and instantaneous (see text). Each round after the round you cast the spell, you can spend a standard action to shape up to 5 additional cubic feet of stone you touch. Shaped stone has an instantaneous duration (meaning it does not revert to its previous form when the spell ends).",
         "School": "transmutation [earth]",
@@ -8745,7 +8745,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "This spell summons an extraplanar creature (typically an outsider, elemental, or magical beast native to another plane). It appears where you designate and acts immediately, on your turn. It attacks your opponents to the best of its ability. If you can communicate with the creature, you can direct it not to attack, to attack particular enemies, or to perform other actions. The spell conjures one of the creatures from the 1st Level list on Table 10-1. You choose which kind of creature to summon, and you can choose a different one each time you cast the spell.A summoned monster cannot summon or otherwise conjure another creature, nor can it use any teleportation or planar travel abilities. Creatures cannot be summoned into an environment that cannot support them. Creatures summoned using this spell cannot use spells or spell-like abilities that duplicate spells with expensive material components (such as wish).When you use a summoning spell to summon a creature with an alignment or elemental subtype, it is a spell of that type. Creatures on Table 10-1 marked with an * are summoned with the celestial template, if you are good, and the fiendish template, if you are evil. If you are neutral, you may choose which template to apply to the creature. Creatures marked with an * always have an alignment that matches yours, regardless of their usual alignment.Summoning these creatures makes the summoning spell's type match your alignment.",
         "School": "conjuration (summoning) [see text]",
@@ -8762,7 +8762,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "This spell functions like summon monster I, except that you can summon one creature from the 2nd-level list or 1d3 creatures of the same kind from the 1st-level list.",
         "School": "conjuration (summoning)",
@@ -8779,7 +8779,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "This spell functions like summon monster I, except that you can summon one creature from the 3rd-level list, 1d3 creatures of the same kind from the 2nd-level list, or 1d4+1 creatures of the same kind from the 1st-level list.",
         "School": "conjuration (summoning)",
@@ -8796,7 +8796,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "This spell functions like summon monster I, except that you can summon one creature from the 4th-level list, 1d3 creatures of the same kind from the 3rd-level list, or 1d4+1 creatures of the same kind from a lower-level list.",
         "School": "conjuration (summoning)",
@@ -8813,7 +8813,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "This spell functions like summon monster I, except that you can summon one creature from the 5th-level list, 1d3 creatures of the same kind from the 4th-level list, or 1d4+1 creatures of the same kind from a lower-level list.Darkness",
         "School": "conjuration (summoning)",
@@ -8830,7 +8830,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "This spell functions like summon monster I, except you can summon one creature from the 6th-level list, 1d3 creatures of the same kind from the 5th-level list, or 1d4+1 creatures of the same kind from a lower-level list.",
         "School": "conjuration (summoning)",
@@ -8847,7 +8847,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "This spell functions like summon monster I, except that you can summon one creature from the 8th-level list, 1d3 creatures of the same kind from the 7th-level list, or 1d4+1 creatures of the same kind from a lower-level list.",
         "School": "conjuration (summoning)",
@@ -8864,7 +8864,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "This spell functions like summon monster I, except that you can summon one creature from the 7th-level list, 1d3 creatures of the same kind from the 6th-level list, or 1d4+1 creatures of the same kind from a lower-level list.",
         "School": "conjuration (summoning)",
@@ -8881,7 +8881,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "This spell functions like summon monster I, except that you can summon one creature from the 9th-level list, 1d3 creatures of the same kind from the 8th-level list, or 1d4+1 creatures of the same kind from a lower-level list.Chaos, Evil, Good, Law",
         "School": "conjuration (summoning)",
@@ -9051,7 +9051,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You summon a swarm of bats, rats, or spiders (your choice), which attacks all other creatures within its area. (You may summon the swarm so that it shares the area of other creatures.) If no living creatures are within its area, the swarm attacks or pursues the nearest creature as best it can. The caster has no control over its target or direction of travel.The swarm has the advanced simple template. A swarm of rats or spiders leaves behind a trail of filth or ichor when it moves, which has the effects of a grease spell for 1 round after the swarm passes through an area. Any creature that moves through the affected area is also subject to the swarm's disease or poison, as if attacked by the swarm. A prone creature in the affected area takes a -4 penalty on its saving throw against this affliction. A bat swarm leaves behind a similar trail that lasts for 2 rounds but doesn't have a disease or poison effect.",
         "School": "conjuration (summoning)",
@@ -9086,7 +9086,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "Sunburst causes a globe of searing radiance to explode silently from a point you select. All creatures in the globe are blinded and take 6d6 points of damage. A creature to which sunlight is harmful or unnatural takes double damage. A successful Reflex save negates the blindness and reduces the damage by half.An undead creature caught within the globe takes 1d6 points of damage per caster level (maximum 25d6), or half damage if a Reflex save is successful. In addition, the burst results in the destruction of any undead creature specifically harmed by bright light if it fails its save.The ultraviolet light generated by the spell deals damage to fungi, mold, oozes, and slimes just as if they were undead creatures.Sunburst dispels any darkness spells of lower than 9th level within its area.Seasons, Sun",
         "School": "evocation [light]",
@@ -9432,7 +9432,7 @@
         "resistance": false,
         "components": [
             "V",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell grants the creature touched the ability to speak and understand the language of any intelligent creature, whether it is a racial tongue or a regional dialect. The subject can speak only one language at a time, although it may be able to understand several languages. Tongues does not enable the subject to speak with creatures who don't speak. The subject can make itself understood as far as its voice carries. This spell does not predispose any creature addressed toward the subject in any way.Tongues can be made permanent with a permanency spell.Agathion, Language",
         "School": "divination",
@@ -9515,7 +9515,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell permanently transforms normal mud or quicksand of any depth into soft stone (sandstone or a similar mineral).Any creature in the mud is allowed a Reflex save to escape before the area is hardened to stone.Transmute mud to rock counters and dispels transmute rock to mud.",
         "School": "transmutation [earth]",
@@ -9532,7 +9532,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell turns natural, uncut, or unworked rock of any sort into an equal volume of mud. Magical stone is not affected by the spell. The depth of the mud created cannot exceed 10 feet. A creature unable to levitate, fly, or otherwise free itself from the mud sinks until hip- or chest-deep, reducing its speed to 5 feet and causing a -2 penalty on attack rolls and AC. Brush or similar material thrown atop the mud can support creatures able to climb on top of it. Creatures large enough to walk on the bottom can wade through the area at a speed of 5 feet.If transmute rock to mud is cast upon the ceiling of a cavern or tunnel, the mud falls to the floor and spreads out in a pool at a depth of 5 feet. The falling mud and the ensuing cave-in deal 8d6 points of bludgeoning damage to anyone caught directly beneath the targeted area, or half damage to those who succeed on Reflex saves.Castles and large stone buildings are generally immune to the effect of the spell, since transmute rock to mud can't affect worked stone and doesn't reach deep enough to undermine such buildings' foundations. However, small buildings or structures often rest upon foundations shallow enough to be damaged or even partially toppled by this spell.The mud remains until a successful dispel magic or transmute mud to rock spell restores its substance-but not necessarily its form. Evaporation turns the mud to normal dirt over a period of days. The exact time depends on exposure to the sun, wind, and normal drainage.Transmute rock to mud counters and dispels transmute mud to rock.",
         "School": "transmutation [earth]",
@@ -9666,7 +9666,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions like circle of death, except that it destroys undead creatures as noted above.Glory, Repose",
         "School": "necromancy",
@@ -9863,7 +9863,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "An immobile, blazing curtain of shimmering violet fire springs into existence. One side of the wall, selected by you, sends forth waves of heat, dealing 2d4 points of fire damage to creatures within 10 feet and 1d4 points of fire damage to those past 10 feet but within 20 feet. The wall deals this damage when it appears, and to all creatures in the area on your turn each round. In addition, the wall deals 2d6 points of fire damage + 1 point of fire damage per caster level (maximum +20) to any creature passing through it. The wall deals double damage to undead creatures.If you evoke the wall so that it appears where creatures are, each creature takes damage as if passing through the wall. If any 5-foot length of wall takes 20 points or more of cold damage in 1 round, that length goes away. (Do not divide cold damage by 2, as normal for objects.) Wall of fire can be made permanent with a permanency spell. A permanent wall of fire that is extinguished by cold damage becomes inactive for 10 minutes, then reforms at normal strength.FireThe wall's damage increases to 2d6 points of fire damage to creatures within 10 feet, 1d6 points of fire damage to those past 10 feet but within 20 feet, and 2d8 points of fire damage + 1 point of fire damage per caster level (maximum +20) to any creature passing through it. Any creature that passes through the wall or is within 5 feet of the wall when it's created must succeed at a Reflex save or catch fire. Attempts to extinguish this fire use the spell's save DC.Augmented (5th): If you expend two uses of mythic power, you may move the wall 5 feet in any direction as a move action on your turn. Moving the wall into a fireproof barrier (such as a stone wall) destroys the part of the wall that overlaps the barrier.",
         "School": "evocation [fire]",
@@ -9966,7 +9966,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "The transmuted creatures can breathe water freely. Divide the duration evenly among all the creatures you touch. The spell does not make creatures unable to breathe air.Water",
         "School": "transmutation",
@@ -10116,7 +10116,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "An invisible vertical curtain of wind appears. It is 2 feet thick and of considerable strength. It is a roaring blast sufficient to blow away any bird smaller than an eagle, or tear papers and similar materials from unsuspecting hands. (A Reflex save allows a creature to maintain its grasp on an object.) Tiny and Small flying creatures cannot pass through the barrier. Loose materials and cloth garments fly upward when caught in a wind wall. Arrows and bolts are deflected upward and miss, while any other normal ranged weapon passing through the wall has a 30% miss chance. (A giant-thrown boulder, a siege engine projectile, and other massive ranged weapons are not affected.) Gases, most gaseous breath weapons, and creatures in gaseous form cannot pass through the wall (although it is no barrier to incorporeal creatures).While the wall must be vertical, you can shape it in any continuous path along the ground that you like. It is possible to create cylindrical or square wind walls to enclose specific points.Air",
         "School": "evocation [air]",
@@ -10231,7 +10231,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell creates a wall of rock that merges into adjoining rock surfaces. A wall of stone is 1 inch thick per four caster levels and composed of up to one 5-foot square per level. You can double the wall's area by halving its thickness. The wall cannot be conjured so that it occupies the same space as a creature or another object.Unlike a wall of iron, you can create a wall of stone in almost any shape you desire. The wall created need not be vertical, nor rest upon any firm foundation; however, it must merge with and be solidly supported by existing stone. It can be used to bridge a chasm, for instance, or as a ramp. For this use, if the span is more than 20 feet, the wall must be arched and buttressed. This requirement reduces the spell's area by half. The wall can be crudely shaped to allow crenellations, battlements, and so forth by likewise reducing the area.Like any other stone wall, this one can be destroyed by a disintegrate spell or by normal means such as breaking and chipping.Each 5-foot square of the wall has hardness 8 and 15 hit points per inch of thickness. A section of wall whose hit points drop to 0 is breached. If a creature tries to break through the wall with a single attack, the DC for the Strength check is 20 + 2 per inch of thickness.It is possible, but difficult, to trap mobile opponents within or under a wall of stone, provided the wall is shaped so it can hold the creatures. Creatures can avoid entrapment with successful Reflex saves.EarthThe wall is 1 inch thick per 2 caster levels. The wall's hardness increases to 12.Augmented (7th): If you expend two uses of mythic power, the wall is impassable to ethereal travel and spells such as passwall and phase door. The wall is immune to non-mythic disintegrate, shatter, sympathetic vibration, and other non-mythic magical effects that specifically affect stone (including earthquake, soften earth and stone, and transmute rock to mud).",
         "School": "conjuration (creation) [earth]",
@@ -10265,7 +10265,7 @@
         "components": [
             "V",
             "S",
-            "DF/F"
+            "DF_F"
         ],
         "description": "A blast of hellfire blazes from your hands. You must succeed on a ranged touch attack with the ray to deal damage to the target.The ray deals 1d6 points of damage per caster level (maximum 15d6). Half the damage is fire damage, but the other half results directly from unholy power and is therefore not subject to being reduced by resistance to fire-based attacks.Any creature killed by this spell must make a Will saving throw; failure means the creature's soul is damned to Hell as a burst of brimstone appears around its corpse. A non-evil spellcaster attempting to bring the character back from the dead must make a caster level check (DC equal to 10 plus the slain creature's level) to succeed; failure means the spellcaster cannot try again for 1 day. Evil spellcasters can raise the slain character normally, without a check.",
         "School": "evocation [evil]",
@@ -10566,7 +10566,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "You contact the spirits of your ancestors and use their great wisdom to bolster your own knowledge. Consulting with the spirits is a full-round action. If you consult with the spirits before making a Knowledge check, you gain a +4 insight bonus on the check. If you have already failed at a Knowledge check, you may consult with your ancestors and make another attempt. The insight bonus on these checks increases to +6 at caster level 7th and +8 at caster level 11th. You may consult with the spirits for this purpose as often as you like while the spell remains in effect. Only you can hear the spirits speak to you.",
         "School": "divination",
@@ -10582,7 +10582,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "A ghostly manifestation of one of your ancestors appears before you bearing a weapon of your choice in its hands. The weapon may be any simple, martial, or dwarven weapon. It has a +1 enhancement bonus and one weapon special ability (your choice) from the Pathfinder RPG Core Rulebook with a price equivalent to a +1 bonus (if the weapon is a double weapon, the ability and the enhancement bonus only apply to one end, or the weapon can have a +1 enhancement bonus on both ends but no other magical abilities).You may use the weapon as if you were proficient in it. The weapon may not be wielded by anyone else, and if removed from your grasp, it vanishes and the spell ends immediately.If you conjure a weapon with the flaming, frost, shock, or thundering property, this spell has the fire, cold, electricity, or sonic descriptor (respectively).",
         "School": "conjuration (summoning)",
@@ -10598,7 +10598,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "You call the spirits of two ancestors to manifest in the mortal world and attack your enemies. Each appears as a transparent image of a powerful, wise dwarf armed with a traditional dwarven weapon of your choice. These spirits move and attack at your direction, each having the abilities of a spiritual weapon, except they can attack different targets and deal physical damage (bludgeoning, piercing, or slashing, according to the weapon the spirit wields) instead of force damage. Like creatures conjured with a summon monster spell, your ancestors are not harmed if these manifestations are destroyed.",
         "School": "conjuration (summoning)",
@@ -11202,7 +11202,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "The target's carrying capacity triples (see Table 7-4: Carrying Capacity on page 171 of the Core Rulebook). This does not affect the creature's actual Strength in any way, merely the amount of material it can carry while benefiting from this spell. It also has no effect on encumbrance due to armor. If the creature wears armor it still takes the normal penalties for doing so regardless of how much weight the spell allows it to carry.",
         "School": "transmutation",
@@ -11352,7 +11352,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You create two globes of lightning that fly in whichever direction you indicate. For every 4 caster levels above 7th, you create an additional globe of lightning (3 globes at 11th, 4 globes at 15th, to the maximum of 5 globes at 19th). These globes fly at a rate of 20 feet per round and have perfect maneuverability. Wind does not affect a flying sphere's course.If a globe enters a space with a creature, it stops moving for the round and deals 3d6 points of electricity damage to that creature, though a successful Reflex save negates the damage. Creatures wearing metal armor take a -4 penalty on this saving throw.Each globe moves as long as you actively direct it (it's a move action for you to direct all the spheres created by a single casting of this spell); otherwise they stay at rest. These globes have no mass and cannot push aside unwilling creatures or move solid objects. A ball lightning globe winks out if it exceeds the spell's range.",
         "School": "evocation [air, electricity]",
@@ -11486,7 +11486,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You learn the answers to a specific set of questions about a creature so long as you have access to at least one drop of its blood. You can cast this spell on the blood of the living or the dead, but living or undead creatures are entitled to a saving throw to resist the spell. You can cast the spell on dried or fresh blood. Once you cast the spell the answers to the following four questions appear on any flat surface you designate (a wall, a piece of paper, and so on). Who are you? (The name by which the creature is most commonly known)  What are you? (Gender, race, profession/role)  How was your blood shed? (Brief outline of the events that caused its wound, to the best of the victim's knowledge)  When was your blood shed? These answers always appear in a language you can read even if the creature cannot speak that or any language.",
         "School": "divination",
@@ -11679,7 +11679,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "Your eyes burn like hot coals, allowing you to set objects or foes alight with a glance.As a standard action as long as this spell's effects persist, you may direct your burning gaze against a single creature or object within 30 feet of your location. Targeted creatures must succeed at a Fortitude save or take 1d6 points of fire damage. Unattended objects do not get a save. Creatures damaged by the spell must make a Reflex save or catch fire.Each round, burning creatures may attempt a Reflex save to quench the flames; failure results in another 1d6 points of fire damage. Flammable items worn by a creature must also save or take the same damage as the creature. If a creature or object is already on fire, it suffers no additional effects from burning gaze.Note that this spell does not grant an actual gaze attack- foes and allies are not in danger of catching on fire simply by meeting your gaze.You may focus your burning gaze on a creature or object as a move action instead of as a standard action. The target takes 1d8 points of fire damage for failing its save and for each round it's on fire.Augmented: If you expend two uses of mythic power, once during the spell's duration you can, as a full-round action, direct your burning gaze at up to one creature per caster level.",
         "School": "evocation [fire]",
@@ -11779,7 +11779,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You can create a barrier around a fire of at least campfire size that shelters everyone inside so long as the fire continues to burn. The barrier appears as a crackling sphere of light and fire that is clearly visible, providing as much illumination as a torch.The barrier bocks line of sight, granting creatures on either side of the barrier total concealment from creatures on the other side. Any object or creature passing through the barrier from outside takes 1d6 points of fire damage and is also outlined with light equivalent to that of a torch, for 1d6 minutes. Creatures outlined in this way are plainly visible regardless of the light conditions and do not benefit from any sort of concealment, magical or otherwise. The light is not bright enough to have any special effect on undead or creatures vulnerable to light.Creatures inside the barrier can leave without penalty, but if they try to return they suffer the same consequences as anyone else. If the fire source at the barrier's center is extinguished or moved, the spell ends.",
         "School": "evocation [fire, light]",
@@ -12501,7 +12501,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You gain a dim impression of the activities around any object bearing your face or form and can also project your consciousness into one such object at a time, allowing you to observe or even interact with nearby creatures. This spell allows you to leave your body and subconsciously monitor the immediate area around any depiction of your image whether one, hundreds, or even thousands. Each such image has the full range of your normal senses (sight, hearing, smell, etc.) and you can make a Perception check to notice anything occurring nearby. The DC of this check is always 10 greater than what it would be if you were actually present at that location, so even if you would normally notice something automatically (such as talking, normally a DC of 0), you would need to make a DC 10 Perception check to notice it.You may, at any time, choose to fill one specific image within range with your consciousness. While inside an image you lose the ability to monitor any other images within range but remain fully aware of your own body's surroundings. Your body is defenseless and helpless (always failing any saving throw) while your consciousness is filling an image, but you can return to it at any time as an immediate action.When you fill an image with your consciousness it gains a limited form of animation. Statues and similar three-dimensional representations can move their heads, make gestures, and talk, but cannot attack or leave their square without assistance.Portraits or similar two-dimensional representations bearing your likeness can also talk and your image can move anywhere within the picture or even temporarily alter it (such as by picking a flower in the painting). You cannot use any spells or other abilities while within an image.You may leave the image at any time, returning you to your body. Once your consciousness departs from an object bearing your likeness, it immediately reverts to the appearance it had before you entered it. If someone destroys or damages the image you return to your body unharmed. The spell lasts until you cease concentrating, or until it is terminated by some outside means, such as a dispel magic cast upon either the image or your body, or if your body is killed.",
         "School": "transmutation",
@@ -12518,7 +12518,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "A creature under the effect of this enchantment enters a state of euphoria. The target treats all creatures as dear friends and abhors violence, but may rise up to protect itself if violence is perpetrated against it. Until the end of the spell's duration, the creature's speed is halved, and it cannot make attacks or cast spells. If the creature is attacked, it gets a Will saving throw. If the saving throw succeeds, the creature can make act normally for 1 round. If the saving throw fails, the creature moves half its speed away from the attacker as its next action.Furthermore, if the creature is interacted with, or questioned while under the effects of this spell, it is considered to have an attitude of Helpful (see the Diplomacy skill, Core Rulebook 94), though any advice or answers it gives may be disjointed or stream of consciousness due to its euphoric state.Love",
         "School": "enchantment (compulsion) [mind-affecting, emotion]",
@@ -13010,7 +13010,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You cause a column of boiling water to spring forth from any horizontal surface, knocking over creatures directly over it and exposing nearby creatures to searing droplets as its spray falls back to the ground.Any creature entering the geyser, or occupying the square it appears in, must make a Reflex saving throw to avoid being hurled into the air and then tossed to the ground. If the creature fails its saving throw, it takes 3d6 points of fire damage from the boiling water and also takes falling damage based upon the height of the geyser (e.g., if the geyser is 50 feet tall, the creature takes 5d6 falling damage), landing prone in a random square adjacent to the geyser. A successful saving throw halves the damage and negates the falling damage, and the creature is moved to the closest square adjacent to the geyser (Large-sized or larger creatures are moved enough so that they are not on top of the geyser but still adjacent to it).This movement does not provoke attacks of opportunity and does not count toward the creature's normal movement.In addition, the geyser sprays boiling water in a hemispherical emanation around its square. The radius of this emanation is equal to one-half the geyser's height (e.g., a 50-foot geyser has a 25-foot-radius emanation). Any creature within this area, including yourself, takes 1d6 points of fire damage each round as droplets of boiling water cascade on them.You can choose to make a smaller geyser than your level permits if an obstruction prevents it from reaching its full height, or if you simply want to create a spread of boiling rain that's smaller than what would be created by a full-height geyser spell.",
         "School": "conjuration (creation) [fire, water]",
@@ -13027,7 +13027,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "The target coalesces into a semi-physical form for a short period of time. While subject to the spell, the incorporeal creature takes half damage (50%) from nonmagical attack forms, and full damage from magic weapons, spells, spell-like effects, and supernatural effects.",
         "School": "transmutation",
@@ -13044,7 +13044,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions as ghostbane dirge, except that it affects multiple targets.",
         "School": "transmutation",
@@ -13061,7 +13061,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You take no damage from falls (as if from feather fall). In addition, you can move up to 5 feet in any horizontal direction for every 1 foot you fall, at a speed of 60 feet per round. You cannot use this spell to actually gain height, merely coast in other directions as you fall. If subjected to a strong wind or any other effect that causes you to rise you can take advantage of it in order to increase the distance you can glide. The spell ends as soon as your feet touch the ground regardless of its remaining duration. If the spell expires while you are still in the air you fall the remaining distance as normal.",
         "School": "transmutation",
@@ -13106,7 +13106,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You conjure a sheltered grove of trees surrounding a shallow spring. The grove appears from nowhere even in the most barren, rocky soil regardless of season, but the spell must be cast outside on open ground.The area within the grove is temperate and comfortable, like that of a tiny hut, although the grove provides no illumination and provides no protection from the elements. The water in the grove's spring is clean and drinkable. Additionally, the trees provide a variety of ripe fruit, regardless of season, which acts as a goodberry spell for up to eight people. The grove is warded with an alarm spell that alerts you whenever any creature enters the area. Once the spell expires, the grove vanishes, including all fruit, water, and other materials from it, although any nourishment or healing gained from its effects remains.",
         "School": "conjuration (creation)",
@@ -13169,7 +13169,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You greatly enhance the ability of the subjects to communicate hidden messages to each other. Each target gains a +10 competence bonus on Bluff checks to send secret message to other recipients. Others using opposed Sense Motive checks to decipher these messages receive a -5 penalty. All subjects affected by the spell must share a language to be able to pass messages.",
         "School": "transmutation [language-dependent]",
@@ -13218,7 +13218,7 @@
         "resistance": false,
         "components": [
             "V",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell augments your diplomacies. While under the effects of spell, you roll two dice each time you make a Diplomacy check to change a creature's attitude, taking the highest roll.If this results in a roll low enough to reduce the creature's attitude by a step, that creature gets some clue that you are manipulating it with a spell. Alternatively you can cast this spell before making a Diplomacy check to gather information, gaining a +5 competence bonus on the check.",
         "School": "transmutation",
@@ -13394,7 +13394,7 @@
         "resistance": true,
         "components": [
             "V",
-            "M/DF"
+            "M_DF"
         ],
         "description": "The subject gains a +2 competence bonus on Perception checks and gains low-light vision. Subjects that have low-light vision double the distance they can see under the effects of this spell.",
         "School": "transmutation",
@@ -13459,7 +13459,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You surround the touched creatures with a constant and moveable 1-inch shell of tolerable living conditions. This shell enables the subjects to breathe freely, even underwater or in a vacuum, as well as making them immune to harmful gases and vapors, including inhaled diseases and poisons and spells like cloudkill and stinking cloud. In addition, the shell protects subjects from extremes of temperature (per endure elements) as well as extremes of pressure.Life bubble does not provide protection from negative or positive energy (such as found on the Negative and Positive Energy planes), the ability to see in conditions of poor visibility (such as in smoke or fog), nor the ability to move or act normally in conditions that impede movement (such as underwater).When you cast this spell it has a total duration of 2 hours per caster level. You can divide this duration up in any manner you wish, not necessarily equally, between up to 1 creature per caster level.",
         "School": "abjuration",
@@ -13642,7 +13642,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "With a gesture, this spell allows you to dismiss even the foulest or most distinctive scents. When cast, the targeted creatures or objects lose all natural and unnatural odors. A creature under the effect of negate aroma cannot be tracked, located, or pinpointed by the scent special quality. In addition, this spell prevents the target creature from using the stench special ability and similar odor-based abilities (such as those possessed by troglodytes).Negate aroma does not prevent the target from acquiring outside smells or odors. Dowsing the creature with a pungent substance effectively negates the benefits of the spell until the substance is neutralized or washed away.",
         "School": "transmutation",
@@ -14030,7 +14030,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You place a curse upon a dead creature that bars its spirit from returning. Anyone casting a spell that would communicate with the dead creature, return it to life, or turn it into an undead creature must succeed on a caster level check with a DC of 11 plus your caster level. Rest eternal cannot be dispelled, but it can be negated with remove curse or break enchantment.Ancestors",
         "School": "necromancy [curse]",
@@ -14408,7 +14408,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "A blast of furnace-hot wind blasts downward, inflicting 4d6 fire damage +1 point per caster level to all creatures in the area and knocking them prone. A successful Fortitude save halves the fire damage and negates being knocked prone. Flying creatures forced into the ground by the powerful downdraft take damage as if they fell unless they make a DC 15 Fly check, in which case they remain at their original altitude.Any creature that takes damage from a sirocco becomes fatigued (or exhausted, if already fatigued, such as from a previous round of exposure to a sirocco spell). Creatures with the water subtype take a -4 penalty on all saving throws against this spell and take double normal damage.Storms",
         "School": "evocation [air, fire]",
@@ -14442,7 +14442,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You create a low-cresting wave of water that carries the target along the surface of water or the ground. When moving across level ground, the target's speed increases by 10 feet.If going downhill, speed increases by 20 feet instead, but slipstream provides no movement bonus when going uphill.While swimming, the slipstream increases the target's swim speed by 20 feet-if the target does not have a swim speed, this spell grants a swim speed of 20 ft.Oceans",
         "School": "conjuration (creation) [water]",
@@ -14606,7 +14606,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "When you cast this spell, lightning spills forth from your body in all directions. The bolts do not harm natural vegetation or creatures in the area you wish to exclude from damage. Any other creatures within the area take 1d8 points of electricity damage per caster level (maximum 20d8) and are stunned for 1 round. A successful saving throw halves the damage and negates the stun effect.",
         "School": "evocation [electricity]",
@@ -14723,7 +14723,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You convert all of your soft tissue into swarms of insects or other creatures and send them off to do your bidding, leaving nothing but your bones and gear behind. These swarms have all their normal qualities and abilities but also bear a tiny portion of your consciousness that allows you to perceive what they do and to control their actions. While in this form, you cannot use any of your own abilities or take any actions other than controlling the swarms.Each time you cast this spell you get a total allotment of levels equal to your caster level and any swarm you choose to create costs one or more of those levels. You can spend your allotment of levels to create any combination of swarms so long as their total does not exceed your caster level. Number of LevelsSwarm Type(s)2 caster levelsSpider swarm (Pathfinder Bestiary page 258)4 caster levelsRat swarm (Bestiary 232)6 caster levelsCrab swarm, wasp swarm (Bestiary 50, 275)8 caster levelsCentipede swarm, leech swarm (Bestiary 43, 187)10 caster levelsArmy ant swarm (Bestiary 16) Once you create these swarms they remain in existence until destroyed or you order them to return to your body. When all swarms have returned to your body or are destroyed, your flesh wraps itself back around your bones and you regain the ability to act normally. If your bones are not where you left them you must first locate them in order to regain access to your body. You always know if your bones are destroyed and your consciousness remains in control of the swarms until they too are destroyed (and your die). If you can use the swarms to get help and arrange for someone to repair your bones (using anything that would normally restore you to life), at which point you can return the swarms to your body.",
         "School": "transmutation",
@@ -15127,7 +15127,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You create a powerful and immobile whirlpool in any body of liquid large enough to contain the spell's effect. Any Large or smaller creature that comes in contact with the spell effect must succeed on a Reflex save or take 3d6 points of bludgeoning damage. A Medium or smaller creature that fails its first save must succeed on a second one or be pulled into the whirlpool and held suspended in its powerful currents, taking 1d8 points of damage each round on your turn with no save allowed.You may direct the whirlpool to eject any carried creatures whenever you wish. A boat that is equal in length or shorter than the vortex's width that passes through a vortex takes 6d6 points of damage and is caught up by the current. If the boat's captain makes a DC 25 Profession (sailor) check (or if the boat is longer than the vortex's width), the boat takes only half damage and is not caught up by the vortex.",
         "School": "evocation [water]",
@@ -15161,7 +15161,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell creates a vertical wall of lava that is 1 inch thick for every 4 caster levels and composed of up to one 5-foot square per level. A wall of lava's maximum height cannot exceed half of its width (with a minimum height of 5 feet). The wall cannot be conjured so that it occupies the same space as a creature or object. A section of a wall of lava can be destroyed by damage (hardness 4, hp 90), but if a section is destroyed, the remaining lava in the wall immediately fills in any such hole created, reducing the wall's overall size by one 5-foot square but remaining a contiguous barrier. Each time a weapon strikes a wall of lava, it takes 2d6 points of fire damage (or the creature who strikes the wall takes 2d6 fire damage if the attack was via an unarmed strike or natural attack).A creature can move through a wall of lava as a full-round action by making a DC 25 Strength check-failure indicates that the creature is pushed back out of the wall to the point he just attempted to leave. A creature with a burrow speed can move through the wall using its burrow speed. An attempt to move through a wall of lava inflicts 20d6 fire damage. A wall of lava also radiates heat as if it were a wall of fire, although the heat from a wall of lava radiates from both sides.Once per round as a move action, you can direct the wall of lava to erupt. This causes a plume of lava to fire at any target within 60 feet of either side of the wall, but reduces the wall's overall size by 1d4 5-foot square sections. You must make a ranged touch attack to hit the target, which takes 10d6 points of fire damage on a hit. Holes created in a wall of lava from this effect instantly reseal, reducing the overall size of the wall.All damage inflicted by physical contact with a wall of lava continues for 1d3 rounds after exposure ceases, but this additional damage is only half that dealt during actual contact (that is, 1d6 or 5d6 or 10d6 points per round).",
         "School": "conjuration (creation) [earth, fire]",
@@ -15443,7 +15443,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions like hold monster, except that the target is constricted as if by the coils of a large snake, taking 1d6+6 points of bludgeoning damage each round that it fails its save. A successful save ends both the paralyzing and constriction effects.",
         "School": "enchantment (compulsion) [mind-affecting]",
@@ -15996,7 +15996,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "Driving ash blocks all sight (even darkvision) within the spell's area of effect, and falling cinders cause the ground in the area to become difficult terrain.",
         "School": "conjuration (creation) [fire]",
@@ -16062,7 +16062,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You emanate an almost palpable aura of horror. All non-allies within this spell's area, or that later enter the area, must make a Will save to avoid becoming shaken. A successful save suppresses the effect. Creatures that leave the area and come back must save again to avoid being affected by the effect.",
         "School": "necromancy [emotion, fear, mind-affecting]",
@@ -18175,7 +18175,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions as summon swarm, except you summon a swarm of poisonous frogs. This swarm has the statistics of a centipede swarm (Bestiary 43), except it has the animal type and its poison deals Constitution damage instead of Dexterity damage.",
         "School": "conjuration (summoning)",
@@ -18762,7 +18762,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "This spell functions as summon monster I, except you can summon 1d3 Tiny or smaller animals, such as bats, lizards, monkeys, rats, ravens, toads, or weasels. The summoned animals must all be the same type of creature. As with animals summoned with summon monster I, you may apply one alignment-appropriate template to these animals.",
         "School": "conjuration (summoning)",
@@ -19354,7 +19354,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "Chunks of hot volcanic rock and clumps of ash pound down when this spell is cast, dealing 3d6 points of bludgeoning damage and 2d6 points of fire damage to every creature in the area. This damage only occurs once, when the spell is cast.For the remaining duration of the spell, heavy ash rains down in the area. Creatures inside this area take a -4 penalty on Perception skill checks and the entire area is treated as difficult terrain. At the end of the duration, the rock and ash disappear, leaving no aftereffects (other than the damage dealt).",
         "School": "evocation [fire]",
@@ -19681,7 +19681,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "This spell summons a single accuser devil from Hell to do the spellcaster's bidding, similar to how summon monster spells function. Accuser devils, known to diabolists as zebubs, are hideous flying creatures with the torso of a plump human infant and the body and wings of an enormous fly. They make excellent spies, for they have the ability to grant visions of what they have witnessed to others-the Queen's Hands sometimes use summoned zebubs to observe suspects from afar. Accuser devils are detailed on page 84 of the Pathfinder RPG Bestiary 2.",
         "School": "conjuration (summoning) [evil, lawful]",
@@ -19698,7 +19698,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "This spell functions as summon monster V, save that it can only be used to summon host devils. These noxious flying devils, known also as gaavs and magaavs, are detailed on page 58 of Pathfinder Campaign Setting: Princes of Darkness, Book of the Damned, Vol. 1.",
         "School": "conjuration (summoning) [evil, lawful]",
@@ -19764,7 +19764,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "During the height of the Empire of Taldor's expansionism, Taldan wizards developed this spell with the idea that it might make pacifying their uncivilized conquests easier. While the spell has since fallen out of favor with Taldans, it is much embraced by others, bards and Pathfinders in particular.When casting this spell, you must concentrate on the culture to which you wish to adapt. If you speak the native language of the culture in question, then for the duration of this spell, you speak the language with a native accent.The spell does not teach you the language in question, but may be combined with tongues or a similar spell. Your body language and gestures mark you as a native of the culture, and you unconsciously make small decisions that help you blend in. These combined new traits give you a +2 on Diplomacy checks made to influence members of the culture to which you have adapted. You also gain a +2 circumstance bonus on Disguise checks made to pass yourself off as a member of the culture. Additionally, the DCs of enchantment (charm) spells you cast against natives of the culture to which you are attuned increase by +1.",
         "School": "divination",
@@ -19780,7 +19780,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "In frozen northern lands, where the earth may be hidden beneath heavy drifts of snow, Ulfen druids developed a variation of stone shape that other spellcasters have since learned.You can form a mass of snow into any shape that suits your purpose, as per the spell stone shape. While it's possible to make crude objects with snow shape, most fine details aren't possible.However, a successful Craft (weapons) check allows you to create a bladed weapon from the snow. The DC of this check is equal to the DC listed with the Craft (weapons) skill (Core Rulebook 93).You must be the one to make the Craft check and must do so at the time of casting this spell. A failed check means that the spell is cast normally but the weapon created is malformed and useless. This spell can only be used to craft weapons and not more precise tools or elaborate armors.Once you create the item with this spell, it solidifies into super-hard ice, gaining a hardness of 5 and 10 hit points per inch of thickness. This weapon takes double damage from fire.Anyone using an ice weapon takes a -2 penalty on attacks due to the slippery, unwieldy nature of the weapon, but the weapon deals 1 point of cold damage in addition to its normal damage. A weapon created by this spell lasts for 24 hours before melting into uselessness.",
         "School": "transmutation [water]",
@@ -19797,7 +19797,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "The Shoanti revere more than the deities of distant planes, but also the animals and natural forces of the rugged lands they call home. Shoanti spellcasters have learned ways to call upon the might of their quahs' totem creatures in times of need. A character must have been raised by the Shoanti and be considered part of a quah to be able to cast this spell. Characters with access to this spell can only summon creatures revered by the quah they are a part of, as noted on the following lists. Except as noted above, this spell functions as summon nature's ally III.Lyrune-Quah (Moon Clan): air elemental (small), 1d3 bats, wolf, 1d3 owls.Shadde-Quah (Axe Clan): 1d3 eagles, earth elemental (small), water elemental (small).Shriikirri-Quah (Hawk Clan): air elemental (small), 1d3+1 hawks (familiars), horse.Shundar-Quah (Spire Clan): air elemental (small), earth elemental (small), 1d3 eagles.Sklar-Quah (Sun Clan): 1d3 fire beetles, fire elemental (small), horse.Skoan-Quah (Skull Clan): 1d3+1 eagles (vultures), 1d3 fire beetles, 1d3 giant centipedes.Tamiir-Quah (Wind Clan): air elemental (small), 1d3 eagles, earth elemental (small).",
         "School": "conjuration (summoning)",
@@ -19837,7 +19837,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You create a pale silver barrier that repels undead. Mindless undead and intelligent undead with fewer Hit Dice than your caster level cannot enter the area or penetrate the barrier.Undead of Hit Dice equal to or greater than your caster level can pass through this barrier by making a successful Will save against the spell, but as they do so, they take 3d6 points of damage. Once an undead creature makes its save again this spell and takes this damage, it can come and go without further penalty. This spell may only be used defensively, not aggressively. Forcing an undeath ward against creatures that the spell keeps at bay collapses the barrier.",
         "School": "abjuration",
@@ -20563,7 +20563,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "Originally created by the priest-king of Nemret Noktoria, the ghoul Kortash Khain, for use by his minions to bolster their forces in battles against their enemies, Khain's army has become a favorite of many necromancers throughout Osirion and beyond. By scattering a handful of ghoul's teeth across the ground, you cause 1d4+1 ghouls led by a single ghast to rise up from the ground around you. The ghouls and their ghast leader must appear in squares adjacent to you, but after that they follow your spoken commands unerringly.If one of the ghouls is destroyed while the spell's duration is still in effect, it bursts into a spray of rotten flesh and necromantic energy that deals 1d6 points of negative energy damage to all adjacent targets-this energy heals undead targets as typical for negative energy damage. If the ghast is destroyed in this manner, it deals twice as much negative energy damage as a ghoul. A successful Fortitude save halves the negative energy damage dealt. When this spell's duration expires, any remaining undead created by this spell crumble apart into dust and blow away without dealing any additional negative energy damage.",
         "School": "necromancy [evil]",
@@ -20960,7 +20960,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "When cast on a container such as a quiver or a pouch that contains nonmagical ammunition or shuriken (including masterwork ammunition or shuriken), at the start of each round this spell replaces any ammunition taken from the container the round before. The ammunition taken from the container the round before vanishes. If, after casting this spell, you cast a spell that enhances projectiles, such as align weapon or greater magic weapon, on the same container, all projectiles this spell conjures are affected by that spell.",
         "School": "conjuration (summoning)",
@@ -21008,7 +21008,7 @@
         "resistance": true,
         "components": [
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "Air bubble creates a small pocket of breathable air that surrounds the touched creature's head or the touched object. The air bubble allows the creature touched to breathe underwater or in similar airless environments, or protects the object touched from water damage. A firearm within an air bubble can be loaded-assuming the black powder comes from a powder horn, a cartridge, or some other airtight protective device-and fired. When shooting such a firearm underwater, the shot still takes the standard -2 penalty on attack rolls for every 5 feet of water the bullet passes through, in addition to normal penalties due to range. If a firearm within the air bubble explodes, the explosion occurs normally.",
         "School": "conjuration (creation)",
@@ -21042,7 +21042,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You gain some of the beneficial qualities of an animal. Your base form is largely unchanged and your size is unaltered, but some of your body parts are altered. Armor or gear you are wearing adjusts to your new shape for the duration of the spell. When you cast animal aspect, choose one of the following animals to gain the associated benefits. You can only have one animal aspect or greater animal aspect spell active on you at a time. Frog: Your legs become elongated and muscular. You gain a +4 competence bonus on Acrobatics checks, and you always jump as if you had a running start. Gorilla: Your arms become long, flexible, and strong like those of a great ape. Your unarmed damage die type increases by one step, and you gain a +4 competence bonus on combat maneuver checks when making the grapple or reposition combat maneuver. Monkey: Your hands and arms become dexterous like those of a simian. You gain a +4 competence bonus on Climb checks, and you can throw objects as if you had the Throw Anything feat. Otter: Your hands and feet gain webbing, and your lungs gain capacity, allowing you to move through the water with ease. You gain a Swim speed equal to half your speed, and all the benefits of having a swim speed. Additionally, you can hold your breath for 4 rounds per point of Constitution before being forced to make Constitution checks to keep holding your breath. Raccoon: Your hands become extremely dexterous, and your feet become padded. You gain a +2 competence bonus on Disable Device, Sleight of Hand, and Stealth checks. Raptor: Your legs become built for running speed, like those of a deinonychus. You gain a enhancement bonus of +20 feet to your base speed. Tree Lizard: Your hands and feet gain climbing claws and climbing pads. You gain a climb speed equal to half your normal speed and all the benefits of having a natural climb speed.You gain low-light vision, a +2 size bonus to the physical ability score of your choice, and a +1 enhancement bonus to your natural armor. Alternatively, you may cast the non-mythic form of this spell on a touched willing creature.",
         "School": "transmutation (polymorph)",
@@ -21059,7 +21059,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions like animal aspect, except you can either gain two aspects at once or one aspect that adds effects to the aspects that animal aspect grants, as described below. Frog: You gain a Swim speed equal to half your normal speed, and all the benefits of having a swim speed. Gorilla: You gain a +2 competence bonus on Perception checks, and a +1 competence bonus on Fortitude saves. Monkey: You gain a +4 competence bonus on Acrobatics checks. Otter: Your swim speed increases to your full normal speed, and you need not make concentration checks to cast spells underwater. Raccoon: Your competence bonuses on Disable Device, Sleight of Hand, and Stealth checks increase to +4. Raptor: Your enhancement bonus to speed increases to +30 feet, and you gain the benefit of the Run feat. Tree Lizard: You gain a +4 competence bonus on Stealth checks.",
         "School": "transmutation (polymorph)",
@@ -21076,7 +21076,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions like ant haul (see page 202 of the Pathfinder RPG Advanced Player's Guide), except you may divide the duration in 2-hour intervals among the creatures touched.",
         "School": "transmutation",
@@ -21221,7 +21221,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "The subject's grip and footing become sure, granting a +4 competence bonus on Climb checks, on Acrobatics checks to balance, and to CMD against bull rush, drag, reposition, and trip attempts. While affected by this spell, the target is also immune to the disarm combat maneuver.",
         "School": "transmutation",
@@ -21238,7 +21238,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "A floating chain of force with hooks at each end appears within an unoccupied space of your choosing within range. This chain is a Medium object that has a 10-foot reach. Physical attacks cannot hit or harm the chain of perdition, but dispel magic, disintegrate, a sphere of annihilation, or a rod of cancellation affects it normally. The chain's AC against touch attacks is 10 + your Charisma modifier (sorcerer), Intelligence modifier (wizard), or Wisdom modifier (cleric).The chain can perform the dirty trick (blind or entangle), drag, reposition, and trip combat maneuvers, using your caster level in place of your Combat Maneuver Bonus, and your Charisma modifier (sorcerer), Intelligence modifier (wizard), or Wisdom modifier (cleric) in place of your Strength or Dexterity modifier. The chain does not provoke attacks of opportunity for making combat maneuvers. It suffers no penalty or miss chance due to darkness, invisibility, or other forms of concealment.As a move action, you can move the chain up to 30 feet. If the chain goes beyond the spell's range or out of your sight, it returns to you.If a creature that the chain attacks has spell resistance, you must make a caster level check (1d20 + caster level) against that spell resistance the first time the chain performs a successful maneuver against that creature. If the chain is successfully resisted, the spell is dispelled. If not, the weapon has its normal full effect on that creature for the duration of the spell.",
         "School": "evocation [force]",
@@ -21287,7 +21287,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell causes ammunition already loaded into the target firearm is ruined with moisture. Any attempt to fire that ammunition fails, with no chance for misfire, and the user must then take a full-round action to clear the weapon before reloading and firing it. If aware of this spell's effect prior to firing the altered ammunition (a DC 16 Spellcraft check to identify the spell being cast or similar effect), the firearm's user can spend a standard action to clear the altered ammunition from the firearm. Doing so destroys that ammunition.",
         "School": "transmutation",
@@ -22140,7 +22140,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You can sense your foes' weak points, granting you greater damage with critical hits. Whenever you score a critical hit, roll the attack's damage dice (but not extra or precision damage dice) twice and take the highest result.",
         "School": "divination",
@@ -22172,7 +22172,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell reduces the effect of range, granting a +10-foot bonus to the range increment of any weapon used by the subject.",
         "School": "transmutation",
@@ -22205,7 +22205,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions like magic siege weapon, except it gives an indirect fire siege weapon an enhancement bonus on targeting and damage rolls of +1 per four caster levels (maximum +5). If used on a direct-fire siege weapon, this spell functions as greater magic weapon.",
         "School": "transmutation",
@@ -22271,7 +22271,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "Each creature affected by this spell is given the potential for greater success and glory. If the affected creature is benefiting from a morale bonus of any type, it can double that morale bonus on one roll or check, before making the roll. Once an affected creature uses this spell's effect, the spell is discharged for that subject.",
         "School": "enchantment (compulsion) [mind-affecting]",
@@ -22322,7 +22322,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You imbue the target with deadly accuracy against a selected creature type (and subtype for humanoids or outsiders) or a specific creature you know and can name. When used against the selected creature, the ammunition never misfires and is unaffected by concealment (but not total concealment), and at a range of 30 feet or less, the attack targets the selected creature's touch AC. When the target hits the selected creature, you must overcome that creature's spell resistance, or this spell has no effect. A normal hit scored using the target against the selected creature is considered to be a critical threat and deals 1 extra point of damage per caster level (maximum 20), which is not multiplied on a critical hit. A natural critical hit deals the same extra damage, but that damage is multiplied due to the critical. Once the target is used to attack the selected creature, successfully or not, this spell is discharged.Increase the critical multiplier of the target weapon by 1 (maximum x4).Augmented (2nd): If you expend two uses of mythic power, the target ammunition or weapon returns to the creature that shot or threw it just before that creature's next turn (similar to a returning weapon). The spell isn't discharged until the target is used to attempt a second attack against the named creature. Ammunition that hits is destroyed and doesn't return.",
         "School": "divination",
@@ -22340,7 +22340,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions like named bullet, except it deals 2 extra points of damage per caster level (maximum 40).",
         "School": "divination",
@@ -22389,7 +22389,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You convert a thin layer of the ground to molten glass that cools quickly. Creatures in the area take 1d6 points of fire damage per two caster levels (maximum of 10d6) and become entangled. Any creature within the area that makes a successful Reflex save takes half damage and is not entangled. An entangled creature can attempt to free itself by spending a move action to attempt a Strength check or Escape Artist check (the DC equals the spell's saving throw DC). The ground is covered with slippery expanses and sharp shards of obsidian. The area of effect is difficult terrain, and the DC of Acrobatics checks within the area of effect increases by 5. A successful DC 15 Acrobatics check is required to run or charge across the area. A creature that falls prone in the area takes 1d6 points of damage from sharp obsidian.",
         "School": "transmutation [earth, fire]",
@@ -22518,7 +22518,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions like protection from chaos, except you divide the duration in 1-minute intervals among the creatures touched.",
         "School": "abjuration [lawful]",
@@ -22552,7 +22552,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions like protection from evil, except you divide the duration in 1-minute intervals among the creatures touched.",
         "School": "abjuration [good]",
@@ -22569,7 +22569,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions like protection from good, except you divide the duration in 1-minute intervals among the creatures touched.",
         "School": "abjuration [evil]",
@@ -22586,7 +22586,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions like protection from law, except you divide the duration in 1-minute intervals among the creatures touched.",
         "School": "abjuration [evil]",
@@ -22653,7 +22653,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You reinforce a weapon or armor suit to give it a temporarily upgrade or mitigate the fragile quality (see page 146). A suit of armor or weapon touched that has the fragile quality is not considered to have the fragile quality for the spell's duration. Normal armor suits or weapons subjected to this spell instead gain the masterwork quality for the spell's duration and their hardness is doubled. If this spell is cast on masterwork or magical armor or weapons, their hardness is doubled for the duration of the spell.",
         "School": "transmutation",
@@ -22670,7 +22670,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions like reinforce armaments, except you divide the duration in 10-minute intervals among the objects touched.",
         "School": "transmutation",
@@ -23051,7 +23051,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "Tactical acumen grants you and your allies a mastery of battlefield tactics. Whenever you would gain a bonus on attack rolls or to AC due to battlefield position, such as flanking, higher ground, or cover, you gain an additional +1 insight bonus. This bonus increases by +1 for every five caster levels above 5th you possess (maximum +4).",
         "School": "enchantment (compulsion) [mind-affecting]",
@@ -23068,7 +23068,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You convert a layer of the ground to hot tar. Creatures in the area when the tar appears take 1d6 points of fire damage per two caster levels (maximum of 10d6) and must succeed at a Reflex save or become entangled. An entangled creature receives a saving throw each round to free itself from the tar, and can also attempt to free itself by spending a move action to attempt a Strength check or Escape Artist check (DC = spell saving throw DC). It costs 2 squares of movement to enter a square in the area of effect, and the DC of Acrobatics checks within the area of effect increases by 5. The area is difficult terrain. A creature that moves into or starts its turn in the area takes 2d6 points of fire damage and must reattempt this Reflex save or become entangled. A creature that falls prone in the area takes a -4 penalty on its Reflex save against the tar and on Strength and Escape Artist checks to escape the tar. A creature that escapes the tar still takes fire damage from the tar until the spell ends or that creature spends a full-round action removing the tar. A creature with tar on it takes a -4 penalty on Acrobatics and Fly checks made to fly with wings or similar appendages.",
         "School": "transmutation [earth, fire]",
@@ -23165,7 +23165,7 @@
         "resistance": false,
         "components": [
             "V",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions like tongues, except you divide the duration in 10-minute intervals among the creatures touched.",
         "School": "divination",
@@ -23295,7 +23295,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "Ammunition in the target firearm generates less of an explosive charge when fired. With such ammunition, the firearm's range increment is halved and the firer takes a -2 penalty on damage rolls. If aware of this spell's effect prior to firing the altered ammunition (a DC 16 Spellcraft check to identify the spell being cast or similar effect), the firearm's user can spend a standard action to clear the altered ammunition from the firearm. Doing so destroys that ammunition.",
         "School": "transmutation",
@@ -23952,7 +23952,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "When this spell is cast upon a vessel, the ship is surrounded by a protective bubble of constantly replenishing, breathable air and sinks beneath the waves. For the duration of the spell, the ship can travel beneath the water as easily as it did above. While under the effects of this spell, the ship has magical propulsion that gives it a maximum speed of 120 feet and an acceleration of 30 feet (see the Skull & Shackles Player's Guide for details). The ship's pilot uses the normal sailing skill to control the ship while under this spell's effects, and can command it to dive and ascend as part of the vessel's normal movement. Despite the magical propulsion, the ship still requires its crew to perform its normal functions. The spell protects the ship and all aboard from the dangers of drowning and pressure, but not from damage from outside obstacles or creatures. The bubble cannot be used offensively and prevents an affected ship from rising into a space that won't accommodate it (like a sea cave too small to contain it or under another vessel). Creatures can enter or leave the bubble at will, but those outside the sphere cannot be forced inside against their will, the sphere proving substantial enough that such creatures may choose whether to enter or to slip away along its sides. At the end of the spell's duration the bubble pops, causing a ship still underwater at that time to gain the sinking condition. This spell has no effect if cast upon a ship in water that cannot cover the vessel entirely. Although largely beneficial, this spell can be cast on a ship whose pilot does not want to submerge her vessel. The ship itself uses its Will saving throw to resist this effect.",
         "School": "transmutation",
@@ -24148,7 +24148,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "Upon casting this spell, you are able to gain knowledge from the land itself. As you walk through the terrain, it whisper information in a language you understand, though the whispering is so rambling it is hard to distinguish useful information. This whispering grants you a +4 insight bonus on a single Knowledge skill type appropriate to the type of terrain you are in. If you are within a cold, desert, forest, jungle, mountain, plains, swamp, or water environment, you gain the bonus on Knowledge (nature) checks. If you are within an underground environment, you gain the bonus on Knowledge (dungeoneering) checks. If you are within an urban environment, you gain the bonus on Knowledge (local) checks. If you are on a plane other than the Material Plane, you gain the bonus on Knowledge (planes) checks. If you enter a new terrain, you lose the previous terrain's skill bonus and gain the new bonus.",
         "School": "divination",
@@ -24354,7 +24354,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You transform the target half-orc into a full-blooded orc. The target loses all of its half-orc racial traits and gains the orc racial traits.",
         "School": "transmutation (polymorph)",
@@ -25142,7 +25142,7 @@
         "resistance": false,
         "components": [
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions like gaseous form, except you assume the shape of a Colossal cloud with a space of 30 feet. You choose the general appearance of the cloud (white, stormy, fluffy, flat, and so on), after which your appearance cannot be changed. Even the closest inspection cannot reveal that the cloud in question is actually a magically concealed creature. To all normal tests you are, in fact, a cloud, although a detect magic spell reveals a moderate transmutation aura on the cloud. Your fly speed in cloud form is 30 feet.",
         "School": "transmutation [air]",
@@ -25394,7 +25394,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "The targets are able to breathe water, freely. However, they can no longer breathe air. Divide the duration evenly among all the creatures you touch. This spell has no effect on creatures that can already breathe water.",
         "School": "transmutation",
@@ -25872,7 +25872,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "This spell functions like detect thoughts, with the additional ability to find echoes of the thoughts of a creature mentally controlling the target. For example, if the target has been dominated by a vampire, you can use evidence left in the target's mind to learn about that vampire. Each minute you concentrate on the spell, you can learn your choice of one of the following pieces of information. Direction: The controller's general direction and distance. Emotion: The controller's emotional state (gloating, sated, frightened, angry, and so on). Image: A powerful iconic image relevant to the controller or its connection to the target, such as a symbol on a door or a name on a gravestone. Location: The controller's general location, such as in a large city or on a ship. Name: The name by which the target knows its controller (if any). All of this information is based on the last time the influencing creature linked itself to the target, either to issue a command or to receive sensory input from the target. For example, if at nightfall a vampire commanded a dominated victim to walk to a cemetery, this spell can reveal the vampire's general location at that time, though it may have moved since then.",
         "School": "divination [mind-affecting]",
@@ -25973,7 +25973,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "Ice encrusts the ground, radiating supernatural cold and making it difficult for creatures to maintain their balance. This icy ground is treated as normal ice, forcing creatures to spend 2 squares of movement to enter an icy square and increasing the DC of Acrobatics checks attempted in the area by 5. A creature that begins its turn in the affected area takes 1d6 points of cold damage, and takes a -2 penalty on saving throws against all spells with the cold descriptor for 1 round.",
         "School": "conjuration (creation) [cold]",
@@ -26323,7 +26323,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You greatly speed up the decomposition process of a nearby corpse and warp the fibers of time that permeate it, aging the corpse an additional amount of time equal to up to 1 day per 2 caster levels (maximum 10 days at 20th level). This spell prompts all the natural effects of the intended decomposition period, including crumbled clothing, rotted or liquefied flesh, maggot infestations, and the infiltration of any surrounding vegetation. In addition to hindering mundane autopsies and investigations, this spell may effectively prohibit the use of raise dead on the target, though more powerful magic such as resurrection or true resurrection may still work.",
         "School": "necromancy",
@@ -26340,7 +26340,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions like nature's ravages, except the target corpse ages a number of years equal to up to 1 year per caster level (maximum 20 years at 20th level).",
         "School": "necromancy",
@@ -26440,7 +26440,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "The caster can transfer the effects of afflictions such as curses, diseases, and poisons from the target creature to himself. This spell can also transfer the blinded, deafened, fatigued, nauseated, shaken, and sickened conditions. All aspects of the transferred afflictions (save DCs, remaining duration, removal conditions, and so on) remain the same, but affect the caster instead of the original target. After transferring the affliction or condition, the caster is free to cure it in any way he can.",
         "School": "conjuration (healing) [good]",
@@ -26521,7 +26521,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell fills the area with a brilliant flash of shimmering light. Creatures in the area are blinded for 1d4 rounds, or dazzled for 1d4 rounds if they succeed at a Reflex save. Evil creatures in the area of the burst take 1d4 points of damage per caster level (max 5d4), whether they succeed at the Reflex save or not.",
         "School": "evocation [good, light]",
@@ -26620,7 +26620,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "This spell makes a creature more charitable, compelling it to aid others rather than use violence. An affected creature practices nonviolent combat behaviors according to the following list of priorities, beginning with the first priority. The subject continues to perform a priority until he can no longer fulfill its demands (at which point he moves to the next priority) or until the spell ends, whichever comes first. 1st Priority: Heal injured creatures within 30 feet, beginning with the closest creatures and using whatever methods the subject has at hand (including potions, spells, and so on). 2nd Priority: The subject gives his weapon away to the nearest creature within 30 feet who will accept it. If no creature accepts the weapon, the subject drops the weapon on the ground. 3rd Priority: Cast beneficial spells and/or use beneficial magic items (including potions, wands, and so on) on creatures within 30 feet, starting with the closest creatures. 4th Priority: The subject gives away his non-worn possessions-the contents of a backpack or similar item count as one item each, as does the container itself-to creatures within 30 feet. If no creature accepts the items, the subject drops the items on the ground. 5th Priority: The subject gives away his remaining possessions (including his armor, boots, cloak, and so on) to creatures within 30 feet. If no creature accepts the items, the subject drops them on the ground. If the subject fulfills all five priorities, the spell effect ends. The subject cannot attack or take attacks of opportunity, but can defend himself as normal. If the subject is attacked, the spell's effect immediately ends.",
         "School": "enchantment (compulsion) [mind-affecting]",
@@ -26637,7 +26637,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "Azata champions developed this spell to deal with fiends with unknown resistances. A ray of spiraling colors springs from your hand and streaks to its target. You must make a successful ranged touch attack to hit your target with the ray, which deals 2d6 points of acid damage, 2d6 points of cold damage, 2d6 points of electricity damage, and 2d6 points of fire damage. The type of energy that does the most points of damage to the target then persists, dealing another 4d6 points of that type of damage per round for 1d4 rounds.",
         "School": "evocation [acid, cold, electricity, fire]",
@@ -26771,7 +26771,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You evoke a powerful light that affects all sighted creatures that do not posses light sensitivity. Those that succeed on their saves are dazzled for 1 round per level; those who fail are blinded for the same duration.",
         "School": "evocation [light]",
@@ -26835,7 +26835,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You reduce the target's racial natural armor bonus by 1 point per 3 caster levels.",
         "School": "transmutation",
@@ -26869,7 +26869,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "You can determine whether or not two or more creatures are related by blood. The amount of information gleaned depends on how long you study a particular area or set of subjects. 1st round: Whether or not the subjects are related by blood. 2nd round: Number of related subjects and their general relation to one another (for example, this would reveal that one subject is a descendant of the other, but it would not specify mother or grandmother). 3rd round: Precise relationship between subjects in the area. A target's Will save prevents you from determining its exact relationship with another creature, and only one subject needs to succeed at this save to prevent you from determining its relationship with another creature. (So, for instance, if two brothers are in the area and one succeeds at his Will save, you could tell that they are siblings, but could not distinguish whether they are full- or half-siblings.) Each round, you can turn to detect relations in a new area. The spell can penetrate barriers, but 6 inches of stone, 1 inch of common metal, a thin sheet of lead, or 1 foot of wood or dirt will block it. This spell functions by analyzing the blood and minds of creatures in the area, collectively examining these traits and comparing them to those of others in the area while looking for patterns. Thus, adoptive siblings and parents cannot be detected with this spell, since they share no blood.",
         "School": "divination",
@@ -27283,7 +27283,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "An immobile, blinding curtain of white light that blocks line of sight springs into existence. The wall sheds bright light to a range of 60 feet in all directions. A creature adjacent to the wall is blinded as long as it remains adjacent plus an additional 1d4 rounds thereafter-closing its eyes or succeeding at a Fortitude save negates the effect for 1 round. A creature that passes through the wall is automatically blinded, even if its eyes are closed. A creature from the Plane of Shadow gains 1d4 negative levels each round it spends within 5 feet of the wall (Fortitude negates). Passing through the wall imposes a -4 penalty on the save for that round. Twenty-four hours after gaining these negative levels, the subject must attempt a new Fortitude saving throw for each negative level. If a save succeeds, 1 negative level is removed. If it fails, the negative level becomes permanent. Wall of light can be made permanent with permanency (with a minimum caster level of 13th and cost of 11,000 gp).",
         "School": "evocation [light]",
@@ -27710,7 +27710,7 @@
         "components": [
             "V",
             "S",
-            "F/DF",
+            "F_DF",
             "A"
         ],
         "description": "This spell creates a rip in reality that plunges into the interspatial vortices that constantly churn with the raw destructive chaos of the Abyss. Each round at the beginning of your turn, the maw of chaos attempts a drag combat maneuver check against every creature within 40 feet, using your caster level plus your primary spellcasting ability modifier in place of a CMB. If a creature is dragged into a maw of chaos, the area erupts in a surge of chaotic energy and the creature takes 1d6 points of damage per caster level. Only one such eruption can occur per round. Creatures dragged adjacent to the maw of chaos become entangled by the frayed strands of reality being torn apart at the rim of the maw of chaos. Escape requires a successful Escape Artist check or grapple check against a DC equal to 10 plus the spell's save DC. Every creature without the chaotic subtype that ends its turn adjacent to a maw of chaos takes 2 points of damage to each ability score. Creatures with the lawful subtype take double this amount of damage; creatures with the chaotic subtype take no damage. Calling, summoning, and teleportation effects used within 30 feet of the maw of chaos or that cause a creature to appear within 30 feet of a maw of chaos are redirected, causing the creature to arrive adjacent to the maw of chaos rather than at its intended destination. Unattended objects (including dead bodies) adjacent to the maw of chaos are drawn into it and affected as by disintegrate at the beginning of the caster's next turn.",
@@ -27728,7 +27728,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "This spell functions like summon monster, except it allows you to summon a single coloxus (Pathfinder RPG Bestiary 3 72), an omox demon (Pathfinder RPG Bestiary 2 79), or 1d3 kalavakus demons (Bestiary 2 78).",
         "School": "conjuration (summoning) [chaotic, evil]",
@@ -27745,7 +27745,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "This spell functions like summon monster, except it allows you to summon a single brimorak (Lords of Chaos 56), one incubus (Bestiary 3 73), one thoxel demon (see page 86), 1d3 schir demons (Bestiary 3 74), or 1d4+1 vermlek demons (Lords of Chaos 54).",
         "School": "conjuration (summoning) [chaotic, evil]",
@@ -28057,7 +28057,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "This spell functions like summon monster I, except you can summon one janni.",
         "School": "conjuration (summoning)",
@@ -28074,7 +28074,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "This spell functions like lesser summon genie, except you can summon one djinni or 1d3 jann.",
         "School": "conjuration (summoning)",
@@ -28091,7 +28091,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "This spell functions like lesser summon genie, except you can summon one shaitan, 1d3 djinn, or 1d4+1 jann.",
         "School": "conjuration (summoning)",
@@ -28272,7 +28272,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "This spell functions like summon monster, except that it summons 1d3 esobok psychopomps or 1d4+1 nosoi psychopomps. Esobok psychopomps are detailed on page 84. Nosoi psychopomps are detailed on page 220 of Pathfinder RPG Bestiary 4.",
         "School": "conjuration (summoning)",
@@ -28289,7 +28289,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "This spell functions like summon monster, except that it summons a single vanth psychopomp. Vanth psychopomps are detailed on page 221 of Pathfinder RPG Bestiary 4.",
         "School": "conjuration (summoning)",
@@ -28403,7 +28403,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You make an undead creature more difficult for necromancers and clerics to control via effects such as Command Undead or control undead. If the target fails its Will save, the target's effective number of Hit Dice is doubled for the purposes of determining whether it remains under the control of another creature.Regardless of the target's actual Hit Dice, its effective HD cannot exceed twice your caster level. (For example, a 12th-level cleric could cast this spell to cause an undead creature with 15 HD to instead effectively have 24 HD for the purpose of controlling it.) If the targeted undead is under the control of another creature and this spell causes the target's effective Hit Dice to exceed the controller's maximum capability, the target creature is immediately freed from control. Any creature capable of controlling undead may attempt to control the target, provided the target's effective HD won't cause the would-be controller to exceed its HD limit. The target's former controller can attempt to regain control over the target by relinquishing command over other creatures until its HD limit is no longer exceeded (or the former controller can wait until the spell's duration expires to attempt this at the target's normal HD).",
         "School": "necromancy",
@@ -28420,7 +28420,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "You alter an undead creature's energy affinity so that it takes damage from negative energy and gains healing from positive energy, as if it were a living creature. If the target was able to channel negative energy or produce negative energy effects (such as inflict spells), these abilities produce positive energy instead, healing living targets and harming the undead. The target cannot impose negative levels on other creatures for the duration of the spell. The target's creature type does not change, and it is still considered an undead creature. Each round on its turn, the subject may attempt a new saving throw to end the effect. This is a fullround action that does not provoke attacks of opportunity.",
         "School": "necromancy",
@@ -28468,7 +28468,7 @@
         "resistance": true,
         "components": [
             "V",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You change the target's head into that of a bull. The creature's Intelligence becomes 2, and it gains a gore melee attack that it can use as a primary or secondary attack. The gore attack uses the creature's base attack bonus, and the creature gains a +2 bonus on attack and damage rolls with the gore attack.The gore attack deals a number of points of damage equal to 1d6 + Strength modifier if the target is Small, 1d8 + Strength modifier if the target is Medium, and 2d6 + Strength modifier if the target is Large or larger.The affected creature still retains its type, class, levels, and Hit Dice. The creature's base attack bonus, base save bonuses, and hit points remain unmodified. It retains all of its class features and may still cast spells, though it must do so using its newly modified Intelligence score. Any items equipped in the creature's head slot meld into its body. Affected items that grant passive bonuses continue to do so, though items that require activation become nonfunctional for the duration of the spell.If the target fails to resist Baphomet's blessing, it also becomes immune to polymorph spells (except for this one) for the duration of the spell's effect. Undead, incorporeal, or gaseous creatures are immune to Baphomet's blessing.",
         "School": "transmutation (polymorph)",
@@ -28485,7 +28485,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You send out a burst of luck with a 30-foot radius centered around you. While the beacon of luck is in effect, you gain a +2 sacred bonus on all saving throws. As an immediate action before a saving throw is made, allies within the area can choose to benefit from this luck, rolling twice for a saving throw and taking the better result. Once a creature benefits from the beacon of luck in this way, it cannot gain the benefit of this spell for 24 hours.",
         "School": "divination",
@@ -28798,7 +28798,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "When the caster hoists a flagon and delivers a toast to freedom, the target is transported up to 15 feet from its position to a space of your choice, though that space must be within your line of sight. If the target was prone at the time of casting, you can choose for the target to be standing upon reaching the destination. Furthermore, if the target was bound with nonmagical ropes, manacles, or other restraints, those restraints are not transported with the target, effectively freeing the target from those restraints. If the target is bound by magical restraints, you can bar those restraints from being transported with the target with a successful caster level check against a DC based on the restraints' caster level (DC = 11 + the restraining magic item's or spell's caster level).",
         "School": "conjuration (teleportation)",
@@ -29275,7 +29275,7 @@
         "components": [
             "V",
             "S",
-            "M/DF",
+            "M_DF",
             "H"
         ],
         "description": "Having attained the highest and most profane form of magical achievement in the Great Destroyer's service, you are able to call forth his most dreaded creations: the Spawn of Rovagug.Casting this spell requires a week-long ritual involving the sacrifice of one or more sentient humanoid creatures that between them possess a total of at least 15 Hit Dice. You may not eat, sleep, or cast any other spells for the duration of this ritual. After the third day of the ritual, you must succeed at a Constitution check on each remaining day of the ritual (DC 10 + 1 for each previous check) or take 1d6 points of nonlethal damage from hunger. At the end of the ritual, you gain the exhausted condition from lack of sleep.Upon completion of the ritual, the ground rumbles in a 100- foot radius centered on you. This effect lasts for 1 round. Any creature on the ground in this area that attempts to cast a spell during this round must succeed at a concentration check (DC 20 + spell level) or lose the spell. Any creature on the ground in the area that attempts to attack or move during this round must succeed at a DC 15 Reflex save at the beginning of its turn or fall prone.At the beginning of your next turn, a massive fissure full of dark fire and shrieking cries appears at a point you designate within the spell's range, and a Spawn of Rovagug emerges.This creature takes the form of a thunder behemoth (Pathfinder RPG Bestiary 3 39) with the advanced and entropic simple templates. Unlike with summon monster or similar spells, the caster has no control whatsoever over the called creature. The spawn immediately heads in a random direction or toward an obvious target such as a population center, destroying anything in its path, yourself and your allies included.Any creature may attempt to control the called Spawn of Rovagug via spells like dominate monster or binding.However, if such an attempt fails, it draws the spawn's attention, and the monster immediately tries to destroy the creature that attempted to control it.Because the Spawn of Rovagug are all magical beasts native to the Material Plane, spells such as banishment or dismissal have no effect on the called spawn.When casting this spell, you canspecify a particular Spawn of Rovagug-including the Tarrasque, the ArmageddonEngine (Pathfinder RPG Bestiary 262);Chemnosit, the Monarch Worm(Pathfinder Campaign Setting: Inner SeaBestiary 47); or Volnagur, the End-Singer(Inner Sea Bestiary 48)-to call in placeof the nameless behemoth spawned bythe non-mythic version of this spell. Inorder to do so, you must expend one use ofmythic power plus three additional uses ofmythic power per point of Challenge Rating thespecified spawn represents above CR 20. Thesemust be expended on the final day of the week-longritual to cast the spell.",
@@ -29537,7 +29537,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "Cleromancy involves casting bones and interpreting the results. Those able to arrive at the proper interpretation are granted knowledge of coming events. Roll 1d4 per caster level. Group the dice by like results, and choose one of the groups. For the duration of cleromancy, you can apply a luck bonus equal to the result of the selected dice to any d20 roll.You can apply this bonus to a number of rolls equal to the number of dice in the group. If cleromancy expires before you are able to allocate the total number of allotted bonuses, the remaining bonuses are lost.",
         "School": "divination",
@@ -29570,7 +29570,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "Using the Path of Numbers, you are able to influence the seemingly random elements in the environment around a creature, reducing that creature's efficacy. Roll 3d8 and choose one of the dice-this die's result is the penalty mathematical curse imparts. Next, choose either of the two remaining dice; the d20 roll corresponding to that result on the Eight Basic Energies table is the roll the spell's penalty applies to. The result of the final die represents the number of rounds that mathematical curse lasts. A creature can be under the influence of only one mathematical curse at a time. If mathematical curse is cast on a creature already affected by that spell, the new curse replaces the previous one.",
         "School": "necromancy [curse]",
@@ -29864,7 +29864,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "You can view events transpiring along a natural watercourse you touch. You can see anything on or within the river as if you were present at that location, or you can observe anything happening within 15 feet of the river's banks as if peering from the water's surface. Moving your point of view to a different location along the river is a standard action, though your perception can follow something moving along the river as a free action.The range of this spell is affected by whether you are attempting to gaze up or downriver-if viewing a location downriver, you can view any spot within 2 miles per caster level; if viewing upriver, you can view any spot within 1/2 mile per caster level. The magical sensor created by this spell can travel only as far along the river as your range and the river permits; obstructions such as dams and reservoirs halt the sensor, as does an estuary flowing into the sea or other body of saltwater.",
         "School": "divination (scrying)",
@@ -29897,7 +29897,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You bring into being a mobile, hemispherical energy field that prevents technological objects, signals, and creatures from entering.An antitech field suppresses any technological effect used within, brought into, or deployed into the area, but does not negate it. Time spent within an antitech field counts against the suppressed effect's duration.Robots and other technological constructs that come in contact with an antitech field must attempt a Fortitude saving throw each round they remain in the field. Failure indicates a creature can take no actions that round and is considered to be helpless. Success indicates a creature can take either one move action or one standard action that round. Partially technological creatures like androids or cyborgs are merely staggered if they fail this saving throw. Note that cybernetic equipment does not function in an antitech field, and all benefits granted by such gear are suppressed.Non-technological creatures can enter the area, as can low-tech missiles like sling stones and arrows. High-tech missiles such as bullets and missiles immediately halt upon contacting the field, and either drop to the ground harmlessly or detonate. An antitech field doesn't stop rays created by magical sources, but does stop rays fired from beam weapons such as lasers. The antitech field does not offer any protection against explosions caused by technological explosives detonating against it-thus, creatures within the field could still take damage from a rocket that explodes against it.If a creature is larger than the area enclosed by the barrier, any part of the creature that lies outside the barrier is unaffected by the field.This spell can be used only defensively, not aggressively.Forcing an abjuration barrier against creatures that the spell keeps at bay collapses the barrier.",
         "School": "abjuration",
@@ -29914,7 +29914,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "You attempt to destroy any one robot in range. When you cast this spell, your hand crackles with electricity. You must succeed at a ranged touch attack to affect the target.The target takes 12d6 points of damage + 1 point per caster level, or 3d6 points of damage + 1 point per caster level on a successful saving throw. A cyborg or android can be damaged by this spell, but takes half damage and gains a +4 bonus on the saving throw to resist the spell's effects.",
         "School": "transmutation",
@@ -30012,7 +30012,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "All creatures within the area gain the effects of a protection from technology spell. Creatures in the area, or that later enter the area, receive only one attempt to suppress technological effects that are controlling them. If a creature succeed at this save, such effects are suppressed as long as the creature remains in the area. Creatures that leave the area and then return are not protected. Robots receive a saving throw and spell resistance to avoid being kept at bay, but the deflection and resistance bonuses and the protection from mental control apply to non-technological creatures in the area even if a robot succeeds at its saving throw and is thus able to enter the area.This spell is not cumulative with protection from technology and vice versa.",
         "School": "abjuration",
@@ -30061,7 +30061,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell wards a creature from attacks by technological objects and creatures of the robot subtype, and protects against mental control from technological sources. It creates a magical barrier around the subject at a distance of 1 foot. The barrier moves with the subject and has two major effects.First, the target gains a +2 deflection bonus to AC and a +2 resistance bonus on saving throws. Both of these bonuses apply against attacks made or effects caused by technological objects and creatures with the robot subtype.Second, the target immediately receives another saving throw (if one was allowed to begin with) against any technological effects that exercise mental control over the creature, including the effects of pharmaceuticals such as torpinal. The target gains a +2 morale bonus on this saving throw, using the same DC as the original effect. If the target succeeds at this save, such effects are suppressed for the duration of this spell. The effects resume when the duration of this spell expires. While under the effects of this spell, the target is immune to any new attempts to exercise mental control over her using technological means.",
         "School": "abjuration",
@@ -30078,7 +30078,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "You shroud the targeted technological object or creature (such as a robot or a nanotech swarm) with magical energy.If the targeted creature fails to resist the spell, it is rendered inert and unusable (or unconscious in the case of creatures) for the spell's duration. A creature can attempt a new Fortitude saving throw to end the effect early at the end of its turn after the first full round it is affected by this spell.",
         "School": "abjuration",
@@ -30336,7 +30336,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "A crackling, spherical storm cloud flies in whichever direction you point and deals electricity damage to those it strikes. It has a fly speed of 20 feet with perfect maneuverability. If it enters a space that contains a creature, the storm stops moving for the round and deals 3d6 points of electricity damage to that creature, though a successful Reflex save negates that damage. It provides concealment (20% miss chance) to anything within it, and its flickering light illuminates the same area a candle would.The sphere moves as long as you actively direct it (as a move action for you); otherwise, it stays at rest and crackles with lightning. It can be moved by wind effects and counts as a Small creature for the purpose of determining how winds affect it. The sphere has no physical substance and cannot exert any force on corporeal creatures or objects. It disperses if it exceeds the spell's range.",
         "School": "evocation [electricity]",
@@ -30353,7 +30353,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions as aggressive thundercloud, except it deals 6d6 points of electricity damage to any creature it strikes. The first creature damaged by the cloud is also stunned for 1 round (Fortitude negates); this is a sonic effect.",
         "School": "evocation [electricity, sonic]",
@@ -30770,7 +30770,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You create a life link between yourself and the target.You sense whenever the target is wounded and are made immediately aware if the target is slain. If you are wounded or slain, the target is made aware. As a free action, you can call out to the target, causing it to return to you (if able and willing); this ends the spell.",
         "School": "necromancy",
@@ -31065,7 +31065,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions as flaming sphere, except that it deals 6d6 points of fire damage to any creature it strikes.Any creature that fails its save against the sphere catches on fire (see page 444 of the Core Rulebook). If a creature catches on fire, the DC to extinguish the flames is equal to the DC of this spell.",
         "School": "evocation [fire]",
@@ -31194,7 +31194,7 @@
         "resistance": false,
         "components": [
             "V",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You enter a heightened state of awareness that allows you to notice more about your surroundings and recall information effortlessly. You gain a +2 competence bonus on Perception checks and on all Knowledge checks that you are trained in.If this spell is active when you have to make an initiative check, you can instantly dismiss this spell and gain a +4 bonus on that check.",
         "School": "divination",
@@ -31311,7 +31311,7 @@
         "components": [
             "V",
             "S",
-            "F/DF"
+            "F_DF"
         ],
         "description": "This spell functions as alarm, except it is triggered only by invisible creatures entering or leaving the warded area.The spell has a different mental alarm depending on whether the invisible creature is entering or leaving the area. This spell does not aid you in sensing or pinpointing the location of an invisible creature within the spell's area.Invisibility alarm can be made permanent with a permanency spell by a caster of 9th level or higher at a cost of 2,500 gp.",
         "School": "abjuration",
@@ -31328,7 +31328,7 @@
         "components": [
             "V",
             "S",
-            "DF/M"
+            "DF_M"
         ],
         "description": "You bind the life forces of the targets into a mystical pact. If any target is reduced to fewer than 0 hit points, that target automatically triggers the power of the pact. The triggering target drains 1 hit point from all other targets who have at least 1 hit point and are within 30 feet of the triggering target; these hit points are applied to the triggering target as magical healing. This healing can prevent the triggering creature from dying, if the attack would cause the target's to have an amount of negative hit points equal to its Constitution score. This healing cannot raise the triggering creature above 1 hit point; any excess hit points drained from other targets are wasted.The pact can be triggered once per round. It's not triggered by death effects or effects that do not deal hit point damage.",
         "School": "necromancy",
@@ -31651,7 +31651,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You are filled with a persistent vigor. You gain fast healing 2 and are immune to bleed effects as well as the sickened and nauseated conditions. When you succeed at a saving throw against a disease or poison effect, that disease or poison effect ends (as if you had succeeded at enough saving throws to cure that effect).If you fail a saving throw against a disease or poison effect, you can instantly dismiss this spell to reroll that saving throw with a +4 bonus; you must take the result of this reroll, even if it is lower.",
         "School": "transmutation",
@@ -32378,7 +32378,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "You summon hundreds of Diminutive spiders, which cling together in the form of a whip made for a creature of your size. You can wield this object as if it were an actual whip, except you make a melee touch attack with it instead of a regular attack. Any creature you strike with the whip takes swarm damage as if it were attacked by a spider swarm (1d6 points of damage plus poison and distraction, Bestiary 258). The swarm whip is able to damage creatures with armor or natural armor, even if a normal whip could not. It cannot be used to make bull rush, grapple, or trip attacks, and (unlike a swarm) is subject to a miss chance for concealment and cover.The whip is immune to all weapon damage, is never staggered or reduced to a dying state by damage, and is immune to any spell or effect that targets a specific number of creatures (including single-target spells such as disintegrate). The whip takes half again as much damage from spells or effects that affect an area, but since it is considered part of your gear, it takes damage only if you fail a saving throw on a 1 or if it is specifically targeted by an opponent. The whip does not have a swarm's susceptibility to high winds.As a standard action, you can transform the whip into a spider swarm (all squares of the swarm must be within 15 feet of you); thereafter it functions as summon swarm. The spider swarm has 3 hit points and persists in that form for 2 rounds or until the end of this spell's duration, whichever comes first.",
         "School": "conjuration (summoning)",
@@ -32395,7 +32395,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions as whip of spiders, except it summons army ants, and any creature you strike with the whip takes swarm damage as if it were attacked by an army ant swarm (3d6 points of damage plus poison and distraction, Pathfinder RPG Bestiary 16). If you transform the whip into an army ant swarm, it has 16 hit points.",
         "School": "conjuration (summoning)",
@@ -32412,7 +32412,7 @@
         "components": [
             "V",
             "S",
-            "M/DF"
+            "M_DF"
         ],
         "description": "This spell functions as whip of spiders, except it summons centipedes, and any creature you strike with the whip takes swarm damage as if it were attacked by a centipede swarm (2d6 points of damage plus poison and distraction, Bestiary 43). If you transform the whip into a centipede swarm, it has 10 hit points.",
         "School": "conjuration (summoning)",
