@@ -1,10 +1,5 @@
 (function () {
 
-    //
-    let components = ["Verbal", "Somatic", "Material", "Focus", "Divine Focus"]
-    let classes = ["Sorcerer", "Wizard", "Cleric", "Druid", "Ranger", "Bard", "Paladin", "Alchemist", "Summoner", "Witch", "Inquisitor", "Oracle", "Antipaladin", "Magus", "Adept", "Bloodrager", "Shaman"]
-    let schools = ["Abjuration", "Conjuration", "Divination", "Enchantment", "Evocation", "Illusion", "Necromancy", "Transmutation"]
-
     //Data
     const data = {
         query:{
@@ -18,14 +13,31 @@
         },
         response:null,
         connected:false,
-        components, classes, schools
+        components:[], classes:[], schools:[], levels:[]
     }
 
     //Websocket
     const ws = new WebSocket(location.href.replace(/^http/, "ws").replace(/\/$/, "/ws"));
-    ws.onmessage = message => data.response = JSON.parse(message.data)
+    ws.onmessage = message => {
+        let parsed = JSON.parse(message.data)
+        //Check if init
+        let first = parsed.results[0]||{}
+        if ((first.type||[])[0] === "init") {
+            delete first.type
+            for (let filters in first)
+                data[filters] = first[filters]
+        } 
+        //Else accept response
+        else {
+            parsed.results = parsed.results.map(result => JSON.parse(result))
+            data.response = parsed
+        }
+    }
 
-    ws.onopen = () => data.connected = true
+    ws.onopen = () => {
+        data.connected = true
+        ws.send(JSON.stringify({init:true}))
+    }
     ws.onclose = () => data.connected = false
 
     //View
@@ -59,6 +71,4 @@
     })
 
 })()
-
-
 

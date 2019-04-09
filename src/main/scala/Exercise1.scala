@@ -1,4 +1,5 @@
 //Imports and packages
+package com.exercise1
 import org.apache.spark.sql.SparkSession
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
@@ -25,7 +26,7 @@ object Exercise1 extends App {
 
   //BatchLayer.compute(spark)
   BatchLayer.load(spark)
-  
+
   //Setup WebSockets server with akka
   implicit val system = ActorSystem("akka-system")
   implicit val materializer = ActorMaterializer()
@@ -34,4 +35,5 @@ object Exercise1 extends App {
   //Start server
   val binding = Http().bindAndHandle(route, "localhost", 8080)
   println("Server is online")
+
 }

@@ -48,10 +48,7 @@ object SocketService extends WebService {
         case Right(json) => {
           //Retrieve query
           val query = json.hcursor
-
-          
-          ServingLayer.process(query)
-          TextMessage(Response("").asJson.noSpaces)
+          TextMessage(Response("", ServingLayer.process(query)).asJson.noSpaces)
         }
       }
     }

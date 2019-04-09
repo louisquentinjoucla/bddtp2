@@ -18,6 +18,9 @@ package object BatchLayer {
   //Compute batch views
   //(May take some time)
   def compute(spark:SparkSession): Unit = {
+    //Debug
+    println("Computing batch views...")
+
     //Retrieve data from JSON file (spells)
     val spells = spark.sqlContext.read
       .option("multiLine", true)
@@ -44,6 +47,16 @@ package object BatchLayer {
         .coalesce(1)
         .saveAsTextFile(s"src/resources/batchviews/spells/name/${i.asInstanceOf[Char]}")
     }
+
+    //Create spells batch view which regroup all spells (spell_name, [spell_data])
+    spells.rdd
+        .map(row => (row.getAs[String]("name"), row.getValuesMap[Any](row.schema.fieldNames)))
+        .groupByKey()
+        .map{case (key, values) => (key, values.map(value => value.map{case (k, v) => (k, if (v.isInstanceOf[mutable.WrappedArray[String]]) v.asInstanceOf[mutable.WrappedArray[String]].toArray.mkString("[", ",", "]") else v) }))}
+        .map{case (key, values) => (key, values.map(value => JSONObject(value.filter(_._2 != null)).toString()))}
+        .map{case (key, values) => (key, values.mkString("[", ";;", "]"))}
+        .coalesce(1)
+        .saveAsTextFile(s"src/resources/batchviews/spells/name/all")
 
     //Create a batch view (spell_name, [...monsters])
     monsters.rdd
@@ -117,7 +130,7 @@ package object BatchLayer {
       spells_levels.collectAsMap().keys.foreach { case level => {
         spells_levels
           .filter { case (key, values) => key == level }
-          .flatMap { case (key, spells) => spells.map(spell => (spell, key)) }
+          .flatMap { case (key, spells) => spells.map(spell => (spell, s"[${key}]")) }
           .saveAsTextFile(s"src/resources/batchviews/spells/classes/${kind}/${level}")
       }}
 
@@ -132,20 +145,22 @@ package object BatchLayer {
       spells_levels.collectAsMap().keys.foreach{case level => {
         spells_levels
           .filter { case (key, values) => key == level }
-          .flatMap { case (key, spells) => spells.map(spell => (spell, key)) }
+          .flatMap { case (key, spells) => spells.map(spell => (spell, s"[${key}]")) }
           .saveAsTextFile(s"src/resources/batchviews/spells/levels/${level}")
       }}
     
-    }
+  }
 
   //Read batch views back from text file
-  def load(spark:SparkSession, file:File = new File("src/resources/batchviews")): Unit = {
+  def load(spark:SparkSession, file:File = new File("src/resources/batchviews"), first:Boolean = true): Unit = {
+      if (first)
+        println("Loading batch views...")
       if (file.isDirectory){
           file.listFiles.foreach(subfile => 
               if(subfile.isDirectory) {
-                  load(spark, subfile)
+                  load(spark, subfile, false)
               } else if (subfile.getName == "part-00000") {
-                    BatchLayer.views(file.toString) = spark.sparkContext.textFile(s"${file.toString}")
+                    BatchLayer.views(file.toString.replaceAll("\\\\", "/")) = spark.sparkContext.textFile(s"${file.toString}")
                     .map(row => {
                         val matches = "^\\((.+),\\[(.+)\\]\\)$".r.findFirstMatchIn(row).get.subgroups
                         (matches(0), matches(1).split(";;"))

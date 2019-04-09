@@ -1,73 +1,123 @@
 //Imports and packages
 package com.exercise1
 import com.exercise1.Global
-import org.apache.spark.sql.SparkSession
-import org.apache.spark.rdd.RDD
-import scala.collection.mutable
-import scala.util.parsing.json.JSONObject
-import java.io._
-import java.nio.file.Paths
-import com.exercise1.Global
 import com.exercise1.BatchLayer
-import akka.http.scaladsl.model.ws.{Message, TextMessage}
-import akka.http.scaladsl.server.Directives._
-import akka.stream.scaladsl.Flow
-import akka.http.scaladsl.server.Route
-import akka.http.scaladsl.model.StatusCodes
+import io.circe.HCursor
+import io.circe.Json
 import io.circe.generic.auto._
 import io.circe.syntax._
 import io.circe.parser._
-import io.circe.Json
-
+import org.apache.spark.sql.SparkSession
 
 //-------------------------------------------------------------------------------------------
 //Batch layer
 package object ServingLayer {
 
-  def process(query:HCursor): Unit = {
-    //Retrieve query
-    
+  //Spark session
+  val spark = SparkSession.builder
+    .master("local")
+    .appName("Exercise 1")
+    .getOrCreate()
 
+  def process(query:HCursor):Array[Json] = {
     //Read query parameters
-    //val name = query.get[String]("name").getOrElse("<MISSING NAME>")
+    val name = query.get[String]("name").getOrElse("")
     val components = query.get[Seq[String]]("components").getOrElse(List())
     val schools = query.get[Seq[String]]("schools").getOrElse(List())
+    var levels = query.get[Seq[String]]("levels").getOrElse(List())
+    val classes = query.get[Seq[String]]("classes").getOrElse(List())
+    val init = query.get[Boolean]("init").getOrElse(false)
+    val misc = query.get[String]("misc").getOrElse("")
 
-    //val init = query.get[Boolean]("init").getOrElse(false)
+    //Init filters
+    if (init) {
+      return init_filters()
+    } 
 
-    //if (init) {
-      
-    //}
-    init_filters()
+    //Search by name
+    var name_view = BatchLayer.views("src/resources/batchviews/spells/name/all")
+    if ((name.length > 0)&&(name.toLowerCase.charAt(0).toString.matches("[a-z]"))) {
+        name_view = BatchLayer.views(s"src/resources/batchviews/spells/name/${name.toLowerCase.charAt(0)}")
+    }
 
-    //Process query
-    //if(name == "<MISSING NAME>"){
+    //Search by classes and possibly by level 
+    var classes_view = spark.sparkContext.emptyRDD[(String, Iterable[String])]
+    if(classes.length > 0) {
+        classes.foreach(kind => {
+          //If classes and levels are defined, search in class/level
+          if (levels.length > 0) {
+            levels.foreach(level => {
+              if (BatchLayer.views.contains(s"src/resources/batchviews/spells/classes/${kind}/${level}")) {
+                var kind_level_view = BatchLayer.views(s"src/resources/batchviews/spells/classes/${kind}/${level}")
+                classes_view = classes_view.fullOuterJoin(kind_level_view).map{case (spell, (left, right)) => (spell, Iterable[String]("1"))}
+              }
+            })
+          } 
+          //If only classes are defined, search in class/all
+          else {
+            if (BatchLayer.views.contains(s"src/resources/batchviews/spells/classes/${kind}/all")) {
+              var kind_view = BatchLayer.views(s"src/resources/batchviews/spells/classes/${kind}/all")
+              classes_view = classes_view.fullOuterJoin(kind_view).map{case (spell, (left, right)) => (spell, Iterable[String]("1"))}
+            }
+          }
+        })
 
-   // //} else {
-      // Retreiving the batch views
-      val spell_view = BatchLayer.views("spells_${name.charAt(0).toLowerCase}")
-      val components_views = components.foreach(v=> BatchLayer.views("spells_${v}"))
-      val schools_views = schools.foreach(v=> BatchLayer.views("spells_${v}"))
-      // Inner join
+        //If levels were treated in this section, skip it in the next section
+        if (levels.length > 0)
+          levels = List()
+    }
 
-    //}
+    //Search by level only (if it was treated precendtly, skip this section)
+    var levels_view = spark.sparkContext.emptyRDD[(String, Iterable[String])]
+    if (levels.length > 0) {
+      levels.foreach(level => {
+        if (BatchLayer.views.contains(s"src/resources/batchviews/spells/levels/${level}")) {
+          var level_view = BatchLayer.views(s"src/resources/batchviews/spells/levels/${level}")
+          levels_view = levels_view.fullOuterJoin(level_view).map{case (spell, (left, right)) => (spell, Iterable[String]("1"))}
+        }
+      })
+    }
 
-    /**val search = view
-  .filter{case (key, value) => key.contains(name)}
-  .map{case (key, value) => parse(value.toList(0)).getOrElse(Json.Null)}
-      */
-    //search.take(21)).asJson.noSpaces
+    //Search by schools 
+    var schools_view = spark.sparkContext.emptyRDD[(String, Iterable[String])]
+    if (schools.length > 0) {
+      schools.foreach(school => {
+        if (BatchLayer.views.contains(s"src/resources/batchviews/spells/schools/${school}")) {
+          var school_view = BatchLayer.views(s"src/resources/batchviews/spells/schools/${school}")
+          schools_view = schools_view.fullOuterJoin(school_view).map{case (spell, (left, right)) => (spell, Iterable[String]("1"))}
+        }
+      })
+    }
+
+    //Search by components
+    var components_view = spark.sparkContext.emptyRDD[(String, Iterable[String])]
+    if (components.length > 0) {
+      components.foreach(component => {
+        if (BatchLayer.views.contains(s"src/resources/batchviews/spells/components/${component}")) {
+          var component_view = BatchLayer.views(s"src/resources/batchviews/spells/components/${component}")
+          components_view = components_view.fullOuterJoin(component_view).map{case (spell, (left, right)) => (spell, Iterable[String]("1"))}
+        }
+      })
+    }
+
+    //Merge requests
+    var view = name_view
+    if (classes_view.count() > 0) view = view.join(classes_view).map{case (spell, (left, right)) => (spell, left)}
+    if (levels_view.count() > 0) view = view.join(levels_view).map{case (spell, (left, right)) => (spell, left)}
+    if (schools_view.count() > 0) view = view.join(schools_view).map{case (spell, (left, right)) => (spell, left)}
+    if (components_view.count() > 0) view = view.join(components_view).map{case (spell, (left, right)) => (spell, left)}
+
+    return view.take(21).map{case (spell, spell_data) => spell_data.toList(0).asJson}
   }
 
-  def init_filters():Unit = {
+  def init_filters():Array[Json] = {
      val components_filter = Global.directory("src/resources/batchviews/spells/components")
      val schools_filter = Global.directory("src/resources/batchviews/spells/schools")
      val levels_filter = Global.directory("src/resources/batchviews/spells/levels")
      val classes_filter = Global.directory("src/resources/batchviews/spells/classes")
 
-     println(classes_filter)
+    return List(Map("type" -> Seq("init"), "components" -> components_filter, "schools" -> schools_filter, "levels" -> levels_filter, "classes" -> classes_filter).asJson).toArray
+
   }
 
 }
-
- 
