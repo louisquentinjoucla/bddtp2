@@ -16,7 +16,7 @@
                     <button @click="submit()">🔍</button>
                 </div>
 
-                <div class="advanced" :class="{extend:query.advanced}">
+                <div class="advanced" :class="{extend:query.advanced && init}">
                     <div class="name" @click="query.advanced = !query.advanced">Advanced search {{ query.advanced ? "⯆" : "⯈" }}</div>
 
                     <div class="filters">
@@ -26,17 +26,17 @@
 
                     <div class="filters">
                         <div class="name">Components:</div>
-                        <div class="filter" v-for="filter in components" @click="q('components', filter)" :class="{active:query.components.includes(filter)}">{{ filter }}</div>
+                        <div class="filter" v-for="filter in components" @click="q('components', filter)" :class="{active:query.components.includes(filter)}">{{ format("text", filter) }}</div>
                     </div>
 
                     <div class="filters">
                         <div class="name">Classes:</div>
-                        <div class="filter" v-for="filter in classes" @click="q('classes', filter)" :class="{active:query.classes.includes(filter)}">{{ filter }}</div>
+                        <div class="filter" v-for="filter in classes" @click="q('classes', filter)" :class="{active:query.classes.includes(filter)}">{{ format("text", filter) }}</div>
                     </div>
 
                     <div class="filters">
                         <div class="name">Schools:</div>
-                        <div class="filter" v-for="filter in schools" @click="q('schools', filter)" :class="{active:query.schools.includes(filter)}">{{ filter }}</div>
+                        <div class="filter" v-for="filter in schools" @click="q('schools', filter)" :class="{active:query.schools.includes(filter)}">{{ format("text", filter) }}</div>
                     </div>
 
                     <div class="filters">
@@ -49,8 +49,8 @@
             <transition name="slide">
                 <div class="results" v-if="response">
                     <h1 class="container">
-                        {{ results.length > 20 ? "20+" : results.length.toString() }} results<br>
-                        <small>{{ Math.min(results.length, 20) }} of {{ response.n }} results</small>
+                        {{ results.length > query.limit ? query.limit+"+" : results.length.toString() }} results<br>
+                        <small>{{ Math.min(results.length, query.limit) }} of {{ response.n }} results</small>
                     </h1>
                     <transition-group name="list" tag="div">
                         <div v-for="result in results" class="result container" :key="result.name">
@@ -65,6 +65,9 @@
                             </details>
                         </div>
                     </transition-group>
+                    <div class="container more" @click="query.limit += 10;submit()" v-if="query.limit < response.n">
+                        See more results
+                    </div>
                 </div>
             </transition>
 

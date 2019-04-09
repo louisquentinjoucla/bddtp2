@@ -9,7 +9,8 @@
             components:[],
             classes:[],
             schools:[],
-            misc:""
+            misc:"",
+            limit:10
         },
         response:null,
         connected:false,
@@ -55,8 +56,12 @@
             submit() { this.send(data.query) },
             format(type, data) {
                 switch (type) {
-                    case "spell.name": return data
-                        .charAt(0).toLocaleUpperCase() + data.substr(1)
+                    case "text": return (data
+                        .charAt(0).toLocaleUpperCase() + data.substr(1))
+                        .replace(/ s/g, "'s")
+                    case "spell.name": return (data
+                        .charAt(0).toLocaleUpperCase() + data.substr(1))
+                        .replace(/ s/g, "'s")
                     case "spell.components": return data
                         .replace(/\bV\b/g, "Verbal")
                         .replace(/\bS\b/g, "Somatic")

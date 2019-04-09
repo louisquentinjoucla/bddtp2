@@ -28,6 +28,7 @@ package object ServingLayer {
     val classes = query.get[Seq[String]]("classes").getOrElse(List())
     val init = query.get[Boolean]("init").getOrElse(false)
     val misc = query.get[String]("misc").getOrElse("")
+    val limit = query.get[Int]("limit").getOrElse(20)
 
     //Init filters
     if (init) {
@@ -112,7 +113,7 @@ package object ServingLayer {
 
     //Remove possibles duplicates
     view = view.groupByKey().map{case (spell, duplicates) => (spell, duplicates.toList(0))}
-    val results =  view.take(21).map{case (spell, spell_data) => spell_data.toList(0).asJson}
+    val results =  view.take(limit+1).map{case (spell, spell_data) => spell_data.toList(0).asJson}
 
     return Response("", results, view.count())
   }
