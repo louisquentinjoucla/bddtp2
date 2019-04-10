@@ -26,7 +26,7 @@
 
                         <div class="filters">
                             <div class="name">Components:</div>
-                            <div class="filter" v-for="filter in components" @click="q('components', filter)" :class="{active:query.components.includes(filter)}">{{ format("text", filter) }}</div>
+                            <div class="filter" v-for="filter in components" @click="q('components', filter)" :class="{active:query.components.includes(filter)}">{{ format("spell.components", filter) }}</div>
                         </div>
 
                         <div class="filters">

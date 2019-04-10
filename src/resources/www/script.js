@@ -19,6 +19,8 @@
         components:[], classes:[], schools:[], levels:[]
     }
 
+    let format = data => (data.charAt(0).toLocaleUpperCase() + data.substr(1)).replace(/ \bs\b/g, "'s")
+
     //Websocket
     let ws = null
     function reconnect() {
@@ -38,6 +40,7 @@
                 parsed.results = parsed.results.map(result => JSON.parse(result))
                 parsed.results.forEach(result => {
                     result.monsters = JSON.parse(result.monsters||"[]")
+                    result.monsters.forEach(m => m.spells = m.spells.substr(1, m.spells.length-2).split(",").map(s => format(s)).join(", "))
                     result.components = result.components.substr(1, result.components.length-2).split(",").join(", ")
                 })
                 data.response = parsed
@@ -71,22 +74,22 @@
             },
             submit() {
                 clearTimeout(data.delay)
-                this.send(data.query)
+                let query = {...data.query, name:data.query.name.replace(/[,']/g, " ")}
+                this.send(query)
             },
             format(type, data) {
                 switch (type) {
-                    case "text": return (data
-                        .charAt(0).toLocaleUpperCase() + data.substr(1))
-                        .replace(/ s/g, "'s")
-                    case "spell.name": return (data
-                        .charAt(0).toLocaleUpperCase() + data.substr(1))
-                        .replace(/ s/g, "'s")
+                    case "text": return format(data)
+                    case "spell.name": return format(data)
                     case "spell.components": return data
                         .replace(/\bV\b/g, "Verbal")
                         .replace(/\bS\b/g, "Somatic")
                         .replace(/\bM\b/g, "Material")
                         .replace(/\bF\b/g, "Focus")
                         .replace(/\bDF\b/g, "Divine Focus")
+                        .replace(/\bE\b/g, "Emotional")
+                        .replace(/\bT\b/g, "Thought")
+                        .replace(/_/g, "/")
                     default: return data
                 }
             },
