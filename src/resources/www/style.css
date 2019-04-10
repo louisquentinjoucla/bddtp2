@@ -13,10 +13,6 @@ body {
     overflow-x: hidden;
 }
 
-b {
-    font-weight: bold;
-}
-
 video.background {
     position: fixed;
     top: 0;
@@ -195,11 +191,6 @@ textarea.filter:focus {
 
 .result h4 {
     color: #006621;
-    font-style: italic;
-}
-
-.result h4.monsters {
-    color: #EA4335;
 }
 
 .result h2, .result h4, .result p {
@@ -223,16 +214,20 @@ textarea.filter:focus {
     opacity: 0.5;
 }
 
-.result .details ul {
-    margin: 0;
+.result details:first-of-type {
     margin-top: .5rem;
-    padding: 0;
-    list-style-type: none;
+    margin-bottom: .125rem;
 }
 
-.result .monster ul {
+.result details:first-of-type li:last-child {
+    margin-bottom: 1rem;
+}
+
+
+.result .details ul {
     margin: 0;
-    padding-left: 16px;
+    padding: 0;
+    list-style-type: none;
 }
 
 footer {
@@ -292,4 +287,27 @@ footer {
 .slide-enter, .slide-leave-to {
     opacity: 0;
     transform: translateY(60px);
+}
+
+.title {
+    display: flex;
+    align-items: center;
+}
+
+.title a {
+    margin-left: 0.3em;
+    font-size: 0.8em;
+    text-decoration:none;
+}
+
+.monster {
+    margin-bottom: 0.5rem;
+}
+
+.result .monster ul {
+    padding-left: 16px;
+}
+
+.result h4.monsters {
+    color: #EA4335;
 }

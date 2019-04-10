@@ -54,9 +54,8 @@
                         </h1>
                         <transition-group name="list" tag="div">
                             <div v-for="result in results" class="result container" :key="result.name">
-                                <h2>{{ format('spell.name', result.name) }}</h2>
+                                <div class="title"><h2>{{ format('spell.name', result.name) }}</h2><a v-bind:href="result.url">🔗</a></div>
                                 <h4>Components : {{ format('spell.components', result.components) }}</h4>
-                                <h4 class="monsters">Monsters : {{ result.monsters.length ? result.monsters.map(m => format('text', m.name)).join(", ") : "(no monsters associated)" }}</h4>
                                 <p>{{ result.description }}</p>
                                 <details class="details">
                                     <summary>Details</summary>
@@ -65,10 +64,10 @@
                                     </ul>
                                 </details>
                                 <details class="details" v-if="result.monsters.length">
-                                    <summary>Monsters</summary>
+                                    <summary>Monsters which have this spell ({{ result.monsters.length }})</summary>
                                     <ul>
                                         <li v-for="monster in result.monsters" class="monster">
-                                            <b>{{ format('text', monster.name) }}</b>
+                                            <b><a v-bind:href="monster.url">{{ format('text', monster.name) }}</a></b>
                                             <ul>
                                                 <li v-for="(value, prop) in monster" v-if="!/^(?:name|url)$/.test(prop)"><b>{{ format('text', prop) }}</b> : {{ value }}</li>
                                             </ul>

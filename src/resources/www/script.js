@@ -89,7 +89,8 @@
                         .replace(/\bDF\b/g, "Divine Focus")
                         .replace(/\bE\b/g, "Emotional")
                         .replace(/\bT\b/g, "Thought")
-                        .replace(/_/g, "/")
+                        .replace(/\bM_DF\b/g, "Material & Divine Focus")
+                        .replace(/\bF_DF\b/g, "Focus & Divine Focus")
                     default: return data
                 }
             },
