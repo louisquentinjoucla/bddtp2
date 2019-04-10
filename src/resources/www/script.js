@@ -72,6 +72,8 @@
                         .replace(/\bM\b/g, "Material")
                         .replace(/\bF\b/g, "Focus")
                         .replace(/\bDF\b/g, "Divine Focus")
+                        .replace(/\bM_DF\b/g, "Material & Divine Focus")
+                        .replace(/\bF_DF\b/g, "Focus & Divine Focus")
                     default: return data
                 }
             },

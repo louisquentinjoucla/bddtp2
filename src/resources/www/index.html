@@ -54,7 +54,7 @@
                     </h1>
                     <transition-group name="list" tag="div">
                         <div v-for="result in results" class="result container" :key="result.name">
-                            <h2>{{ format('spell.name', result.name) }}</h2>
+                            <div class="title"><h2>{{ format('spell.name', result.name) }}</h2><a v-bind:href="result.url">🔗</a></div>
                             <h4>{{ format('spell.components', result.components) }}</h4>
                             <p>{{ result.description }}</p>
                             <details class="details">

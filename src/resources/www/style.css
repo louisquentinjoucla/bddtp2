@@ -279,3 +279,14 @@ footer {
     opacity: 0;
     transform: translateY(60px);
 }
+
+.title {
+    display: flex;
+
+}
+
+.title a {
+    margin-left: 0.3em;
+    font-size: 0.8em;
+    text-decoration:none;
+}
