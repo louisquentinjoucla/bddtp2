@@ -15,7 +15,7 @@ object Exercise1 extends App {
   spark.sparkContext.setLogLevel("ERROR")
 
   //Application
-  //BatchLayer.compute(spark)
+  BatchLayer.compute(spark)
   BatchLayer.load(spark)
   WebServices.start()
 

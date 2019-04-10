@@ -1,6 +1,8 @@
 //Imports and packages
 package com.exercise1
 import java.io._
+import java.nio.file.Paths
+import java.nio.file.Files
 
 //-------------------------------------------------------------------------------------------
 //Global name space
@@ -16,5 +18,8 @@ package object Global {
     if (delete && file.exists && !file.delete)
       throw new Exception(s"Unable to delete ${file.getAbsolutePath}")
   }
+
+  //Test if file exists
+  def exists(path:String):Boolean = Files.exists(Paths.get(path))
 
 }

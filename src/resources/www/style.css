@@ -193,6 +193,10 @@ textarea.filter:focus {
     color: #006621;
 }
 
+.result h4:nth-child(2) {
+    color: #EA4335;
+}
+
 .result h2, .result h4, .result p {
     margin: 0;
 }

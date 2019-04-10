@@ -20,29 +20,40 @@
     }
 
     //Websocket
-    const ws = new WebSocket(location.href.replace(/^http/, "ws").replace(/\/$/, "/ws"));
-    ws.onmessage = message => {
-        let parsed = JSON.parse(message.data)
-        //Check if init
-        let first = parsed.results[0]||{}
-        if ((first.type||[])[0] === "init") {
-            delete first.type
-            for (let filters in first)
-                data[filters] = first[filters]
-            data.init = true
-        } 
-        //Else accept response
-        else {
-            parsed.results = parsed.results.map(result => JSON.parse(result))
-            data.response = parsed
+    let ws = null
+    function reconnect() {
+        ws =  new WebSocket(location.href.replace(/^http/, "ws").replace(/\/$/, "/ws"));
+        ws.onmessage = message => {
+            let parsed = JSON.parse(message.data)
+            //Check if init
+            let first = parsed.results[0]||{}
+            if ((first.type||[])[0] === "init") {
+                delete first.type
+                for (let filters in first)
+                    data[filters] = first[filters]
+                data.init = true
+            }
+            //Else accept response
+            else {
+                parsed.results = parsed.results.map(result => JSON.parse(result))
+                data.response = parsed
+            }
+        }
+
+        ws.onopen = () => {
+            data.connected = true
+            reconnect.attempts = 0
+            ws.send(JSON.stringify({init:true}))
+        }
+        ws.onclose = () => {
+            console.log("disconnected")
+            data.connected = false
+            if (reconnect.attempts++ < 5) reconnect()
         }
     }
+    reconnect.attempts = 0
+    reconnect()
 
-    ws.onopen = () => {
-        data.connected = true
-        ws.send(JSON.stringify({init:true}))
-    }
-    ws.onclose = () => data.connected = false
 
     //View
     const view = new Vue({
