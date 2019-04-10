@@ -6,7 +6,6 @@ import org.apache.spark.rdd.RDD
 import scala.collection.mutable
 import scala.util.parsing.json.JSONObject
 import java.io._
-import java.nio.file.Paths
 
 //-------------------------------------------------------------------------------------------
 //Batch layer
@@ -21,6 +20,12 @@ package object BatchLayer {
     //Debug
     println("Computing batch views...")
 
+    //
+    if (Global.exists(s"src/resources/batchviews")) {
+      println("  > (Operation was skipped, remove src/resources/batchviews to recompute)")
+      return
+    }
+
     //Retrieve data from JSON file (spells)
     val spells = spark.sqlContext.read
       .option("multiLine", true)
@@ -34,6 +39,23 @@ package object BatchLayer {
     //Clean batchviews folder
     Global.clean("src/resources/batchviews")
 
+    //Create a batch view (spell_name, [...monsters])
+    monsters.rdd
+      .map(row => (row.getAs[String]("name"), row.getAs[Seq[String]]("spells")))
+      .flatMap{case (monster, spells) => spells.map(spell => (spell, monster))}
+      .groupByKey()
+      .map{case (key, values) => (key, values.mkString("[", ";;", "]"))}
+      .saveAsTextFile(s"src/resources/batchviews/spells/monsters")
+
+    //Prepare monsters data for futures batch views (spell_name, [...monsters data])
+    val spells_monsters = monsters.rdd
+      .map(row => (row.getValuesMap[Any](row.schema.fieldNames), row.getAs[Seq[String]]("spells")))
+      .flatMap{case (monster, spells) => spells.map(spell => (spell, monster))}
+      .groupByKey()
+      .map{case (key, values) => (key, values.map(value => value.map{case (k, v) => (k, if (v.isInstanceOf[mutable.WrappedArray[String]]) v.asInstanceOf[mutable.WrappedArray[String]].toArray.mkString("[", ",", "]") else v) }))}
+      .map{case (key, values) => (key, values.map(value => JSONObject(value)))}
+      .map{case (key, values) => (key, values.mkString("[", ",", "]"))}
+
     //Create spells batch view (spell_name, [spell_data])
     //This view store in its values spells raw json data
     for(i <-97 until 123) {
@@ -41,9 +63,11 @@ package object BatchLayer {
         .map(row => (row.getAs[String]("name"), row.getValuesMap[Any](row.schema.fieldNames)))
         .filter{case (key,value) => key.charAt(0) == i.asInstanceOf[Char]}
         .groupByKey()
-        .map{case (key, values) => (key, values.map(value => value.map{case (k, v) => (k, if (v.isInstanceOf[mutable.WrappedArray[String]]) v.asInstanceOf[mutable.WrappedArray[String]].toArray.mkString("[", ",", "]") else v) }))}
-        .map{case (key, values) => (key, values.map(value => JSONObject(value.filter(_._2 != null)).toString()))}
-        .map{case (key, values) => (key, values.mkString("[", ";;", "]"))}
+        .leftOuterJoin(spells_monsters)
+        .flatMap{case (spell, (left, right)) => left.map(data => (spell, data ++ Map("monsters" -> right.getOrElse("[]"))))}
+        .map{case (key, value) => (key, value.map{case (k, v) => (k, if (v.isInstanceOf[mutable.WrappedArray[String]]) v.asInstanceOf[mutable.WrappedArray[String]].toArray.mkString("[", ",", "]") else v) })}
+        .map{case (key, value) => (key, JSONObject(value.filter(_._2 != null)).toString())}
+        .map{case (key, value) => (key, s"[${value}]")}
         .coalesce(1)
         .saveAsTextFile(s"src/resources/batchviews/spells/name/${i.asInstanceOf[Char]}")
     }
@@ -52,19 +76,13 @@ package object BatchLayer {
     spells.rdd
         .map(row => (row.getAs[String]("name"), row.getValuesMap[Any](row.schema.fieldNames)))
         .groupByKey()
-        .map{case (key, values) => (key, values.map(value => value.map{case (k, v) => (k, if (v.isInstanceOf[mutable.WrappedArray[String]]) v.asInstanceOf[mutable.WrappedArray[String]].toArray.mkString("[", ",", "]") else v) }))}
-        .map{case (key, values) => (key, values.map(value => JSONObject(value.filter(_._2 != null)).toString()))}
-        .map{case (key, values) => (key, values.mkString("[", ";;", "]"))}
+        .leftOuterJoin(spells_monsters)
+        .flatMap{case (spell, (left, right)) => left.map(data => (spell, data ++ Map("monsters" -> right.getOrElse("[]"))))}
+        .map{case (key, value) => (key, value.map{case (k, v) => (k, if (v.isInstanceOf[mutable.WrappedArray[String]]) v.asInstanceOf[mutable.WrappedArray[String]].toArray.mkString("[", ",", "]") else v) })}
+        .map{case (key, value) => (key, JSONObject(value.filter(_._2 != null)).toString())}
+        .map{case (key, value) => (key, s"[${value}]")}
         .coalesce(1)
         .saveAsTextFile(s"src/resources/batchviews/spells/name/all")
-
-    //Create a batch view (spell_name, [...monsters])
-    monsters.rdd
-      .map(row => (row.getAs[String]("name"), row.getAs[Seq[String]]("spells")))
-      .flatMap{case (monster, spells) => spells.map(spell => (spell, monster))}
-      .groupByKey()
-      .map{case (key, values) => (key, values.mkString("[", ";;", "]"))}
-      .saveAsTextFile(s"src/resources/batchviews/spells/monsters")
 
     //Prepare components batch views (component, [...spell_name])
     val spells_components = spells.rdd
@@ -148,7 +166,7 @@ package object BatchLayer {
           .flatMap { case (key, spells) => spells.map(spell => (spell, s"[${key}]")) }
           .saveAsTextFile(s"src/resources/batchviews/spells/levels/${level}")
       }}
-    
+
   }
 
   //Read batch views back from text file
