@@ -64,7 +64,7 @@
                                        <li v-for="(value, prop) in result" v-if="!/^(?:name|components|description)$/.test(prop)">{{ prop }} : {{ value }}</li>
                                     </ul>
                                 </details>
-                                <details class="details">
+                                <details class="details" v-if="result.monsters.length">
                                     <summary>Monsters</summary>
                                     <ul>
                                         <li v-for="monster in result.monsters" class="monster">
