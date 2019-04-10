@@ -68,7 +68,7 @@
                                     <summary>Monsters</summary>
                                     <ul>
                                         <li v-for="monster in result.monsters" class="monster">
-                                            <a v-bind:href="monster.url"><b>{{ format('text', monster.name) }}</b></a>
+                                            <b><a v-bind:href="monster.url">{{ format('text', monster.name) }}</a></b>
                                             <ul>
                                                 <li v-for="(value, prop) in monster" v-if="!/^(?:name|url)$/.test(prop)"><b>{{ format('text', prop) }}</b> : {{ value }}</li>
                                             </ul>
