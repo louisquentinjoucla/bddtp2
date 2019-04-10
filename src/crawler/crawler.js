@@ -18,7 +18,7 @@ monsters = new Set()
 let spells = [];
 
 console.log('\t\t\x1b[34m%s\x1b[0m','+---------------------------+');
-console.log('\t\t\x1b[35m%s\x1b[0m','| Welcome to PROLOCRAWL 5.0 |');
+console.log('\t\t\x1b[35m%s\x1b[0m','| Welcome to PROLOCRAWL 6.0 |');
 console.log('\t\t\x1b[34m%s\x1b[0m','+---------------------------+\n');
 
 
@@ -42,7 +42,7 @@ async function build_db(URLS){
         await get_monsters_url(URLS[i]).then(data => push_bestiaire(data));
     }
     console.log('Writing into monster.json...')
-    fs.writeFileSync("../JSON/resources/monsters.json", JSON.stringify([...monsters]))
+    fs.writeFileSync("../resources/JSON/monsters.json", JSON.stringify([...monsters]))
     console.log('Done')
 }
 
@@ -55,7 +55,8 @@ async function push_bestiaire(data) {
     for(let i=0; i<data.length; i++){
         let f = await scrap_monster(data[i]);
         console.log(f);
-        monsters.add(f);
+        if(f !== null)
+            monsters.add(f);
     }
 }
 
@@ -78,7 +79,7 @@ async function scrap_monster(url){
                     spells.add(spellname);
                 }
             });
-            resolve({name: name.trim(), spells:[...spells]})
+            resolve({name: name.trim(), spells:[...spells], url:url})
         }, function(){
             console.log('\n\x1b[31m%s\x1b[0m', "Error while crawling monster from " + url);
         });
@@ -135,12 +136,12 @@ async function crawl_spells(){
     }
 
     console.log('\n\x1b[32m%s\x1b[0m', 'Success !');
-    console.log('\n\x1b[5m%s\x1b[0m', `Writing ${spells.length} spells to JSON/resources/spells.json...`);
-    if(!fs.existsSync('../JSON')){
-        fs.mkdirSync('../JSON');
+    console.log('\n\x1b[5m%s\x1b[0m', `Writing ${spells.length} spells to resources/JSON/spells.json...`);
+    if(!fs.existsSync('../resources/JSON')){
+        fs.mkdirSync('../resources/JSON');
     }
 
-    await fs.writeFile('../JSON/resources/spells.json', JSON.stringify(spells), function(err) {
+    await fs.writeFile('../resources/JSON/spells.json', JSON.stringify(spells), function(err) {
         if (err) {
             console.log('\n\x1b[31m%s\x1b[0m', err);
         } else {
@@ -166,13 +167,13 @@ async function scrap_spell(url,i) {
 
             let spell = {}
             spell.name = format_spell_name($('.SpellDiv .heading').children()['0'].children[0].data)
-            spell.resistance = get_resistance($('.SpellDiv .SPDet').text())
             spell.components = get_components($('.SpellDiv .SPDet').children()['3'].next.data)
             spell.description = $('.SPDesc').text()
+            spell.url = url
 
             $('b').each(function(i, elem) {
                 let attr = $(elem).text().replace(/\'/,'')
-                if(attr !== "Components" && attr !== "Spell Resistance"){
+                if(attr !== "Components"){
                     if(elem.next)
                         spell[attr] = elem.next.data.replace(/;/g,'').trim()
                 }
@@ -180,7 +181,7 @@ async function scrap_spell(url,i) {
 
    
             let color = (i % 2 == 0) ? '\n\x1b[94m%s\x1b[0m' : '\n\x1b[1m%s\x1b[0m';
-            console.log(color, `Name: ${(spell.name+" ".repeat(30)).substr(0, 30)} | level: ${(spell['Level'].repeat(10)).substr(0, 14)} | resistance: ${(spell.resistance+" ".repeat(10)).substr(0, 7)}| Components: ${(spell.components+" ".repeat(20)).substr(0, 10)} |`);
+            console.log(color, `Name: ${(spell.name+" ".repeat(30)).substr(0, 30)} | level: ${(spell['Level']+" ".repeat(28)).substr(0, 28)} | Components: ${(spell.components+" ".repeat(20)).substr(0, 10)} |`);
             resolve(spells.push(spell));
         }, function(){
             console.log('\n\x1b[31m%s\x1b[0m', "Error for url " + url);
@@ -198,16 +199,6 @@ function format_spell_name(str){
 }
 
 /**
- * Renvois un booléen représentant la spell resistance
- * @param {String} str_res Contient l'information de la spell resistance
- * @returns {boolean} true si spell resistant sinon false
- */
-function get_resistance(str_res) {
-    const regex_spell = /Spell Resistance yes/gm;
-    return regex_spell.test(str_res) ? true : false;
-}
-
-/**
  * Transforme une string contenant les components en array.
  * @param {String} str_compo String components
  */
@@ -218,7 +209,7 @@ function get_components(str_compo) {
     raw_components.forEach(function(item){
         let matchs = item.match(regex_compo);
         if(matchs !== null){
-            components.push(matchs[0].replace(/\\/gm,"_"));
+            components.push(matchs[0].replace(/\//gm,"_").replace(/DF_F/gm,"F_DF").replace(/DF_M/gm, "M_DF"))
         }
     });
     return components;
