@@ -36,6 +36,10 @@
             //Else accept response
             else {
                 parsed.results = parsed.results.map(result => JSON.parse(result))
+                parsed.results.forEach(result => {
+                    result.monsters = JSON.parse(result.monsters||"[]")
+                    result.components = result.components.substr(1, result.components.length-2).split(",").join(", ")
+                })
                 data.response = parsed
             }
         }

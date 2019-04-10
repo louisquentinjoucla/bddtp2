@@ -13,6 +13,10 @@ body {
     overflow-x: hidden;
 }
 
+b {
+    font-weight: bold;
+}
+
 video.background {
     position: fixed;
     top: 0;
@@ -191,9 +195,10 @@ textarea.filter:focus {
 
 .result h4 {
     color: #006621;
+    font-style: italic;
 }
 
-.result h4:nth-child(2) {
+.result h4.monsters {
     color: #EA4335;
 }
 
@@ -223,6 +228,11 @@ textarea.filter:focus {
     margin-top: .5rem;
     padding: 0;
     list-style-type: none;
+}
+
+.result .monster ul {
+    margin: 0;
+    padding-left: 16px;
 }
 
 footer {

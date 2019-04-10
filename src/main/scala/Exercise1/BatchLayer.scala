@@ -6,8 +6,6 @@ import org.apache.spark.rdd.RDD
 import scala.collection.mutable
 import scala.util.parsing.json.JSONObject
 import java.io._
-import io.circe.generic.auto._
-import io.circe.syntax._
 
 //-------------------------------------------------------------------------------------------
 //Batch layer
@@ -55,7 +53,7 @@ package object BatchLayer {
       .flatMap{case (monster, spells) => spells.map(spell => (spell, monster))}
       .groupByKey()
       .map{case (key, values) => (key, values.map(value => value.map{case (k, v) => (k, if (v.isInstanceOf[mutable.WrappedArray[String]]) v.asInstanceOf[mutable.WrappedArray[String]].toArray.mkString("[", ",", "]") else v) }))}
-      .map{case (key, values) => (key, values.map(value => value.asJson))}
+      .map{case (key, values) => (key, values.map(value => JSONObject(value)))}
       .map{case (key, values) => (key, values.mkString("[", ",", "]"))}
 
     //Create spells batch view (spell_name, [spell_data])
