@@ -17,4 +17,8 @@ object Exercise2 extends App {
   //Application
   println("hello world (ex2)")
 
+  val graph = new Graph[Monster, Skill]()
+  graph.vertices.foreach(println)
+
 }
+
