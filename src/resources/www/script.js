@@ -32,7 +32,7 @@
             if ((first.type||[])[0] === "init") {
                 delete first.type
                 for (let filters in first)
-                    data[filters] = first[filters]
+                    data[filters] = first[filters].sort()
                 data.init = true
             }
             //Else accept response

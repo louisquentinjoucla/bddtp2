@@ -22,3 +22,5 @@ libraryDependencies ++= Seq(
   "io.circe" %% "circe-generic" % circeVersion,
   "io.circe" %% "circe-parser" % circeVersion,
 )
+
+enablePlugins(JavaAppPackaging)

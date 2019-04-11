@@ -13,6 +13,20 @@ body {
     overflow-x: hidden;
 }
 
+.credits {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 4px;
+    opacity: 0.2;
+    font-size: .8rem;
+}
+
+.credits a {
+    color: white;
+    text-decoration: none;
+}
+
 video.background {
     position: fixed;
     top: 0;

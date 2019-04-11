@@ -14,6 +14,7 @@ import io.circe.generic.auto._
 import io.circe.syntax._
 import io.circe.parser._
 import io.circe.Json
+import scala.util.Properties
 
 //-------------------------------------------------------------------------------------------
 //Web services
@@ -29,8 +30,9 @@ package object WebServices {
     val route = MainService.route ~ SocketService.route
 
     //Start server
-    val binding = Http().bindAndHandle(route, "localhost", 8080)
-    println("Server is online")
+    val port = Properties.envOrElse("PORT", "8080").toInt
+    val binding = Http().bindAndHandle(route, "0.0.0.0", port)
+    println(s"Server is online on port ${port}")
   }
 
 }
