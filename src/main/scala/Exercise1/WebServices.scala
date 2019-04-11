@@ -47,9 +47,9 @@ trait WebService { def route: Route }
 object MainService extends WebService {
   override def route: Route = get {
     (pathEndOrSingleSlash & redirectToTrailingSlashIfMissing(StatusCodes.TemporaryRedirect)) {
-      getFromFile("src/resources/www/index.html")
+      getFromFile("src/resources/www/Exercice1/index.html")
     } ~ {
-      getFromDirectory("src/resources/www")
+      getFromDirectory("src/resources/Exercice1/www")
     }
   }
 }
