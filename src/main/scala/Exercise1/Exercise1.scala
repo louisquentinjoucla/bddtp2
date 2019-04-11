@@ -1,7 +1,7 @@
-//Imports and packages
-package com.exercise1
+package Exercise1
+
+import com.exercise1.{BatchLayer, WebServices}
 import org.apache.spark.sql.SparkSession
-import com.exercise1.WebServices
 
 //-------------------------------------------------------------------------------------------
 //Main
