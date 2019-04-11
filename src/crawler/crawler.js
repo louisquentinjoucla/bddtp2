@@ -204,7 +204,7 @@ function format_spell_name(str){
  */
 function get_components(str_compo) {
     const regex_compo = /([A-Z]+\/[A-Z]+|[A-Z]+)/;
-    let raw_components = str_compo.split(',');
+    let raw_components = str_compo.split(',').replace(/\(.+\)/gm, '');
     let components = [];
     raw_components.forEach(function(item){
         let matchs = item.match(regex_compo);
