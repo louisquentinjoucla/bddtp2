@@ -1,12 +1,32 @@
+package com.exercise2.monsters
 import scala.collection.mutable
+import com.exercise2.skills.{Skill, Move}
 
-abstract class Monster(var parameters:mutable.Map[String, Any] = mutable.Map.empty[String, Any) {
+abstract class Monster(var parameters:mutable.Map[String, Any] = mutable.Map.empty[String, Any]) extends Serializable {
+
+    var skills:Seq[Skill] = Seq[Skill](Move)
+
+    val targets:Array[Long] = Array[Long]()
+    val skill:Int = 0
+
+    def id:Long = return parameters("id").asInstanceOf[Long]
+
+    def setPosition(x:Float, y:Float, z:Float): Unit = {
+      parameters("x") = x
+      parameters("y") = y
+      parameters("z") = z
+    }
+
+    override def toString():String = {
+      return parameters.map{case (k, v) => k + ":" + v}.mkString("|")
+    }
 
 }
 
 class Solar() 
     extends Monster(mutable.Map[String, Any]("name" -> "Solar", "hpm" -> 363, "regen" -> 15, "armor" -> 44, "speed" -> 50, "flying" -> false)) {
     
+    override val targets:Array[Long] = Array[Long](3, 4)
 }
 
 
