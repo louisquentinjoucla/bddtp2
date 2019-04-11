@@ -49,7 +49,7 @@ object MainService extends WebService {
     (pathEndOrSingleSlash & redirectToTrailingSlashIfMissing(StatusCodes.TemporaryRedirect)) {
       getFromFile("src/resources/www/Exercice1/index.html")
     } ~ {
-      getFromDirectory("src/resources/Exercice1/www")
+      getFromDirectory("src/resources/www/Exercice1")
     }
   }
 }
