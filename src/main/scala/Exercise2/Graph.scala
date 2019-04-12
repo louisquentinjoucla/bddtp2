@@ -49,13 +49,12 @@ class BattleGraph() extends Serializable {
     println("-----------------")
     val e = edges
       .filter(edge => edge.a.targets.contains(edge.b.parameters("id")))
-
-    val e1 = e.map(edge => edge.skills(edge.a.skill).apply(edge.a, edge.b, 0))
+      .map(edge => edge.skills(edge.a.skill).test(edge.a, edge.b, 0))
       .map(m => (m.id, m))
-    val e2 = e.map(edge => edge.skills(edge.a.skill).apply(edge.a, edge.b, 1))
-      .map(m => (m.id, m))
+      .foreach{case (id,m) => println(m.toString())}
+    
 
-    e1.join(e2).collect().foreach(println)
+    //e1.join(e2).collect().foreach(println)
 
 
 
