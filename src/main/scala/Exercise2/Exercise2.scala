@@ -37,7 +37,7 @@ object Exercise2 extends App {
   println("ok")
 
   val df = vertices.toDS()
-
+      .map(x => ("hi", 0))
   df.show()
 
 
