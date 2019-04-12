@@ -36,25 +36,15 @@ class BattleGraph() extends Serializable {
 
   def next():Unit = {
     turn += 1
-    /*
-      vertices
-        => target
-        => skill
 
-      solar
-        => target : orc 1
-        => skill : "move"
-
-    */
     println("-----------------")
 
-        edges
+        vertices
       //Filter active edges according to each monster's target(s)
-        .filter(edge => edge.a.targets.contains(edge.b.parameters("id")))
+        //.filter(edge => edge.a.targets.contains(edge.b.id))
       //Compute differences
-        .flatMap(edge => edge.skills(edge.a.skill).test(edge.a, edge.b))
+        .map(vertex => ("0_x", 1))
         .reduceByKey(_+_)
-        .localCheckpoint()
        
         //.map(m => s"${m._1} ${m._2}")
         //.map(diff => (diff("id"), diff.mkString(";")))
@@ -64,15 +54,15 @@ class BattleGraph() extends Serializable {
           (id, diffs.map(_._2).foldLeft(0)(_+_))
         }}       */
         .collect()
-        .take(5)
-        .foreach(x => println(x))
+        .take(1)
+        .foreach(m => println(m._1, m._2))
 
   // On regarde les edges on applique les actions a->b & on les appliques
   // On assigne ce RDD au vertices
   // On filtre le edges par les vertex "alive"
 
 
-/*
+/**
 TRUCS QUI MARCHENT :
 - .filter(edge => edge.a.targets.contains(edge.b.parameters("id")))
 

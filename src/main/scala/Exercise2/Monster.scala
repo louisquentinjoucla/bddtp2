@@ -49,7 +49,7 @@ class WarLord()
 
 
 
-/*
+/**
 
 HP
 Regen

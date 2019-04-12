@@ -4,6 +4,8 @@ import org.apache.spark.sql.SparkSession
 import com.exercise2.BattleGraph
 import com.exercise2.skills.{Skill, Move}
 import com.exercise2.monsters.{Monster, Solar, WorgRider, OrcBarbarian, WarLord}
+import scala.collection.mutable
+import org.apache.spark.rdd.RDD
 
 //-------------------------------------------------------------------------------------------
 //Main
@@ -16,13 +18,34 @@ object Exercise2 extends App {
     .getOrCreate()
   spark.sparkContext.setLogLevel("ERROR")
 
+
+  val sqlContext = spark.sqlContext
+  import sqlContext.implicits._
+
   //Application
   println("hello world (ex2)")
 
-  val graph = Battles.battle1()
-  graph.print()
-  graph.next()
-  graph.print()
+
+  // Encoders are also created for case classes.
+  case class Monster(name: String, id: Long)
+  
+  
+  var vertices:Seq[Monster] = Seq[Monster]()
+  for (i <- 0 until 200) {
+      vertices = vertices :+ Monster("Andy", i)
+  }
+  println("ok")
+
+  val df = vertices.toDS()
+
+  df.show()
+
+
+
+  //val graph = Battles.battle1()
+  //graph.print()
+  //graph.next()
+  //graph.print()
 
 }
 
@@ -30,7 +53,7 @@ object Battles {
   def battle1():BattleGraph = {
     val graph = new BattleGraph()
     //Create vertices
-    for (i <- 0 until 1) {
+    for (i <- 0 until 200) {
       val m = new Solar()
       m.parameters("team") = 1
       m.setPosition(0, 0, 0)
