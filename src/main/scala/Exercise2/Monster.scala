@@ -6,12 +6,12 @@ abstract class Monster(var parameters:mutable.Map[String, Any] = mutable.Map.emp
 
     var skills:Seq[Skill] = Seq[Skill](Move)
 
-    val targets:Array[Long] = Array[Long]()
+    val targets:Array[Int] = Array[Int]()
     val skill:Int = 0
 
-    def id:Long = return parameters("id").asInstanceOf[Long]
+    def id:Int = return parameters("id").asInstanceOf[Int]
 
-    def setPosition(x:Float, y:Float, z:Float): Unit = {
+    def setPosition(x:Int, y:Int, z:Int): Unit = {
       parameters("x") = x
       parameters("y") = y
       parameters("z") = z
@@ -26,7 +26,7 @@ abstract class Monster(var parameters:mutable.Map[String, Any] = mutable.Map.emp
 class Solar() 
     extends Monster(mutable.Map[String, Any]("name" -> "Solar", "hpm" -> 363, "regen" -> 15, "armor" -> 44, "speed" -> 50, "flying" -> false)) {
     
-    override val targets:Array[Long] = Array[Long](3, 4)
+    override val targets:Array[Int] = Array[Int](3, 4)
 }
 
 

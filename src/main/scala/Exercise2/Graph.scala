@@ -22,7 +22,7 @@ class BattleGraph() extends Serializable {
   var edges:RDD[Link] = spark.sparkContext.emptyRDD[Link]
 
   var turn:Long = 0
-  var cid:Long = 0
+  var cid:Int = 0
 
   def add(v:Monster):Unit = {
     v.parameters("id") = cid
@@ -47,15 +47,39 @@ class BattleGraph() extends Serializable {
 
     */
     println("-----------------")
-    val e = edges
-      .filter(edge => edge.a.targets.contains(edge.b.parameters("id")))
-      .map(edge => edge.skills(edge.a.skill).test(edge.a, edge.b, 0))
-      .map(m => (m.id, m))
-      .foreach{case (id,m) => println(m.toString())}
-    
 
-    //e1.join(e2).collect().foreach(println)
+        edges
+      //Filter active edges according to each monster's target(s)
+        .filter(edge => edge.a.targets.contains(edge.b.parameters("id")))
+      //Compute differences
+        .flatMap(edge => edge.skills(edge.a.skill).test(edge.a, edge.b))
+        .reduceByKey(_+_)
+        .localCheckpoint()
+       
+        //.map(m => s"${m._1} ${m._2}")
+        //.map(diff => (diff("id"), diff.mkString(";")))
+      //Merge differences
+        //.groupByKey()
+        /*.map{case (id, diffs) => {
+          (id, diffs.map(_._2).foldLeft(0)(_+_))
+        }}       */
+        .collect()
+        .take(5)
+        .foreach(x => println(x))
 
+  // On regarde les edges on applique les actions a->b & on les appliques
+  // On assigne ce RDD au vertices
+  // On filtre le edges par les vertex "alive"
+
+
+/*
+TRUCS QUI MARCHENT :
+- .filter(edge => edge.a.targets.contains(edge.b.parameters("id")))
+
+.flatMap(edge => edge.skills(edge.a.skill).test(edge.a, edge.b))
+        .map(m => m.mkString(";"))
+
+*/
 
 
   }
