@@ -13,7 +13,6 @@ object Exercise2 extends App {
   val spark = SparkSession.builder
     .master("local")
     .appName("Exercise 2")
-    .config("spark.testing.memory", "2147480000")
     .getOrCreate()
   spark.sparkContext.setLogLevel("ERROR")
 
