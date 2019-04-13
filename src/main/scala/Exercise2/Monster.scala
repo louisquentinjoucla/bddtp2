@@ -2,6 +2,45 @@ package com.exercise2.monsters
 import scala.collection.mutable
 import com.exercise2.skills.{Skill, Move}
 
+
+case class Monster(var data:String) {
+    def get(key:String):String = {
+      val values = (s"${key}=(.*?);").r.findFirstMatchIn(data)
+      values match {
+        case Some(name) =>
+          return values.get.subgroups(0)
+        case None =>
+          return "<undefined>"
+      }
+      return "<undefined>"
+    }
+
+    def getAsInt(key:String):Int = {
+      val value = get(key)
+      if (value.equals("<undefined>"))
+        return 0
+      else 
+        return get(key).toInt
+    }
+
+
+    def set(key:String, svalue:Any):Unit = {
+      val value = svalue.toString()
+      if (get(key).equals("<undefined>"))
+        data = s"${data}${key}=${value};"
+      else 
+        data = data.replaceAll(s"${key}=.*?;", s"${key}=${value};")
+    }
+    
+}
+
+package object Bestiary {
+  val Solar:String = "name=Solar;hpm=363;regen=15;armor=44;speed=50;flying=false;"
+}
+
+
+/*
+
 abstract class Monster(var parameters:mutable.Map[String, Any] = mutable.Map.empty[String, Any]) extends Serializable {
 
     var skills:Seq[Skill] = Seq[Skill](Move)
@@ -47,7 +86,7 @@ class WarLord()
 }
 
 
-
+*/
 
 /**
 

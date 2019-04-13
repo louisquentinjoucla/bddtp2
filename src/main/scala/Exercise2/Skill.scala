@@ -14,8 +14,8 @@ class Skill() extends Serializable {
 object Move extends Skill() {
 
   override def test(source:Monster, target:Monster):List[(String, Int)] = {
-    println(s"${source.parameters("name")} moves towards ${target.parameters("name")}")
-    return List((s"${source.id}_x", 1))
+    //println(s"${source.parameters("name")} moves towards ${target.parameters("name")}")
+    return List()
   }
 
 }

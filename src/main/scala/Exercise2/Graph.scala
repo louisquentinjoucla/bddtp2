@@ -5,6 +5,8 @@ import org.apache.spark.rdd.RDD
 import scala.reflect.ClassTag
 import com.exercise2.skills.{Skill}
 import com.exercise2.monsters.{Monster}
+import scala.collection.mutable
+import org.apache.spark.rdd.RDD
 
 
 import scala.collection.mutable
@@ -17,68 +19,32 @@ class BattleGraph() extends Serializable {
     .master("local")
     .appName("Exercise 2")
     .getOrCreate()
+  
+  val sqlContext = spark.sqlContext
+  import sqlContext.implicits._
 
-  var vertices:RDD[Monster] = spark.sparkContext.emptyRDD[Monster]
-  var edges:RDD[Link] = spark.sparkContext.emptyRDD[Link]
 
-  var turn:Long = 0
-  var cid:Int = 0
+  var vertices = Seq[(Long, Monster)]().toDS()
+
+  var turn:Long = 0L
+  var cid:Long = 0L
 
   def add(v:Monster):Unit = {
-    v.parameters("id") = cid
+    v.set("id", cid)
     cid += 1
-    vertices = vertices.union(spark.sparkContext.parallelize(Seq(v)))
-  }
 
-  def connect(a:Monster, skills:Seq[Skill], b:Monster):Unit = {
-    edges = edges.union(spark.sparkContext.parallelize(Seq(new Link(a, skills, b))))
+    val vertex = Seq[(Long, Monster)]((cid, v)).toDS()
+    vertices = vertices.union(vertex)
   }
 
   def next():Unit = {
     turn += 1
-
-    println("-----------------")
-
-        vertices
-      //Filter active edges according to each monster's target(s)
-        //.filter(edge => edge.a.targets.contains(edge.b.id))
-      //Compute differences
-        .map(vertex => ("0_x", 1))
-        .reduceByKey(_+_)
-       
-        //.map(m => s"${m._1} ${m._2}")
-        //.map(diff => (diff("id"), diff.mkString(";")))
-      //Merge differences
-        //.groupByKey()
-        /*.map{case (id, diffs) => {
-          (id, diffs.map(_._2).foldLeft(0)(_+_))
-        }}       */
-        .collect()
-        .take(1)
-        .foreach(m => println(m._1, m._2))
-
-  // On regarde les edges on applique les actions a->b & on les appliques
-  // On assigne ce RDD au vertices
-  // On filtre le edges par les vertex "alive"
-
-
-/**
-TRUCS QUI MARCHENT :
-- .filter(edge => edge.a.targets.contains(edge.b.parameters("id")))
-
-.flatMap(edge => edge.skills(edge.a.skill).test(edge.a, edge.b))
-        .map(m => m.mkString(";"))
-
-*/
-
-
   }
-
     
   def print():Unit = {
     println("==========================================")
     println(s"Turn ${turn}")
-    vertices.map(m => m.toString()).foreach(println)
+    vertices.show(false)
   }
 
 }
