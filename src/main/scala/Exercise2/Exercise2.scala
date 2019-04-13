@@ -26,13 +26,7 @@ object Exercise2 extends App {
 
   //
   val graph = Battles.battle1()
-  println("start")
-  val mg = graph.vertices.map{case (id, monster) => {
-    monster.set("x", monster.getAsInt("x") + 1)
-    (id, monster.get("name"), monster.get("x"))
-  }}
-  println("stop")
-  mg.foreach(m => println(m._1, m._2, m._3))
+  graph.print()
 
 }
 
@@ -48,6 +42,8 @@ object Battles {
       m.set("z", 0)
       graph.add(m)
     }
+
+    graph.connect()
 
     return graph
   }

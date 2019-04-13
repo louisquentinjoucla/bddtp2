@@ -11,8 +11,6 @@ import org.apache.spark.rdd.RDD
 
 import scala.collection.mutable
 
-class Link(var a:Monster, var skills:Seq[Skill], var b:Monster) extends Serializable {}
-
 class BattleGraph() extends Serializable {
 
   val spark = SparkSession.builder
@@ -24,7 +22,7 @@ class BattleGraph() extends Serializable {
   import sqlContext.implicits._
 
 
-  var vertices = Seq[(Long, Monster)]().toDS()
+  var vertices = Seq[(Long, Monster, List[(Long, Int)])]().toDS()
 
   var turn:Long = 0L
   var cid:Long = 0L
@@ -32,10 +30,21 @@ class BattleGraph() extends Serializable {
   def add(v:Monster):Unit = {
     v.set("id", cid)
     cid += 1
-
-    val vertex = Seq[(Long, Monster)]((cid, v)).toDS()
+    val vertex = Seq[(Long, Monster, List[(Long, Int)])]((cid, v, List[(Long, Int)]())).toDS()
     vertices = vertices.union(vertex)
   }
+
+  
+  def connect():Unit = {
+
+    val x = vertices.map(v => (v._1, v._2.getAsInt("team"))).collect()
+
+    vertices = vertices.map(va =>
+      (va._1, va._2, x.map(vb => (vb._1, if (vb._2 == va._2.getAsInt("team")) 0 else 1)).toList)
+    )
+
+  }
+
 
   def next():Unit = {
     turn += 1
@@ -48,5 +57,4 @@ class BattleGraph() extends Serializable {
   }
 
 }
-
 
