@@ -32,17 +32,17 @@ object Battles {
     val graph = new BattleGraph()
 
     for (i <- 0 until 1) {
-      val m = new Monster(Bestiary.Solar)
+      val m = Bestiary.Solar()
       m.set("team", 1)
       m.set("x", 0)
       m.set("y", 0)
       m.set("z", 0)
-      m.setActions(Seq((1, "move"), (2, "move"), (3, "move")))
+      m.actions = Seq((1, "move"), (2, "move"), (3, "move"))
       graph.add(m)
     }
 
-    for (i <- 0 until 400) {
-      val m = new Monster(Bestiary.OrcBarbarian)
+    for (i <- 0 until 10) {
+      val m = Bestiary.OrcBarbarian()
       m.set("team", 2)
       m.set("x", 0)
       m.set("y", 0)

@@ -18,7 +18,7 @@ package object Skill {
 
   //Move skill
   def move(a:Monster, b:Monster):Seq[(String, Int)] = {
-    return Seq(("x", a.getAsInt("x")+1))
+    return Seq(("x", a.get("x")+1))
   }
 
 }

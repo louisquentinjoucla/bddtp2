@@ -29,7 +29,6 @@ class BattleGraph() extends Serializable {
 
   //Add a new monster to battle
   def add(v:Monster):Unit = {
-    v.set("id", cid)
     val vertex = Seq[(Int, Monster)]((cid, v)).toDS()
     vertices = vertices.union(vertex)
     cid += 1
@@ -37,7 +36,7 @@ class BattleGraph() extends Serializable {
 
   //Connect monsters together
   def connect():Unit = {
-    val v = vertices.map(va => (va._1, va._2.getAsInt("team"))).collect()
+    val v = vertices.map(va => (va._1, va._2.get("team"))).collect()
     edges = vertices.flatMap{case (ida, va) => {
       val ta = va.get("team")
       v.map{case (idb, tb) => (ida, if (ta == tb) 0 else 1, idb) }
@@ -52,8 +51,7 @@ class BattleGraph() extends Serializable {
     vertices = vertices
       //Compute differences depending on each individual monster's actions
       .flatMap{case (id, monster) => {
-        val actions = monster.getActions()
-        val computed = Seq((id, "t", 1)) ++ actions.flatMap{case (target, skill) => Skill.execute(monster, skill, monsters.value(target)._2).map(d => (id, d._1, d._2)) }
+        val computed = Seq((id, "t", 1)) ++ monster.actions.flatMap{case (target, skill) => Skill.execute(monster, skill, monsters.value(target)._2).map(d => (id, d._1, d._2)) }
         computed
       }}
       //Merge differences
@@ -65,13 +63,12 @@ class BattleGraph() extends Serializable {
       //Apply differences
       .map{case (id, diffs) => {
         val m = monsters.value(id)._2
-        m.setActions(Seq())
-        m.set("update", 0)
+        m.actions = Seq()
         diffs
           .map(diff => { val p = diff.split("_") ; (p(0), p(1).toInt)})
           .foreach{case (k, v) => {
-            if ((debug)&&(!k.equals("t"))) println(s"${m.get("name")} (${id}) : ${k} ${if (v < 0) v else "+"+v} (${m.getAsInt(k)} -> ${m.getAsInt(k) + v})")
-            m.set(k, m.getAsInt(k) + v)
+            if ((debug)&&(!k.equals("t"))) println(s"${m.name} (${id}) : ${k} ${if (v < 0) v else "+"+v} (${m.get(k)} -> ${m.get(k) + v})")
+            m.set(k, m.get(k) + v)
           }}
         (id, m)
       }}
