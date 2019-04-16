@@ -6,6 +6,7 @@ import org.apache.spark.sql.SparkSession
 
 //-------------------------------------------------------------------------------------------
 //Main
+
 object Exercise2 extends App {
 
   //Apache Spark
@@ -18,14 +19,12 @@ object Exercise2 extends App {
   //Application
   println("hello world (ex2)")
 
-  val sqlContext = spark.sqlContext
-
   //
   val graph = Battles.battle1()
-  //graph.print()
-  graph.next()
+  for (i <- 0 until 10) {
+    graph.next()
+  }
   graph.print()
-
 }
 
 object Battles {
@@ -38,11 +37,11 @@ object Battles {
       m.set("x", 0)
       m.set("y", 0)
       m.set("z", 0)
-      m.setActions(Seq((1, "move"), (2, "move")))
+      m.setActions(Seq((1, "move"), (2, "move"), (3, "move")))
       graph.add(m)
     }
 
-    for (i <- 0 until 10) {
+    for (i <- 0 until 400) {
       val m = new Monster(Bestiary.OrcBarbarian)
       m.set("team", 2)
       m.set("x", 0)

@@ -1,5 +1,8 @@
 package com.exercise2.monsters
 
+//-------------------------------------------------------------------------------------------
+//Monsters and bestiary
+
 case class Monster(var data:String) {
     //Retrieve value associated to a key in data string
     def get(key:String):String = {
@@ -22,24 +25,18 @@ case class Monster(var data:String) {
         return get(key).toInt
     }
 
-    def getAsArray(key:String):Array[String] = {
-      val value = get(key)
-      if (value.equals("<undefined>"))
-        return Array[String]()
-      else
-        return get(key).split(",")
-    }
-
+    //Set monsters actions as (target_id, skill)
     def setActions(actions:Seq[(Int, String)]):Unit = {
       set("actions", actions.map{case (target, skill) => s"${target}->${skill}"}.mkString(","))
     }
 
+    //Get monsters actions as (target_id, skill)
     def getActions():Seq[(Int, String)] = {
       val value = get("actions")
       if (value.equals("<undefined>"))
         return Seq[(Int, String)]()
 
-      return value.split(",").map(action => {
+      return value.split(",").filter(action => action.length > 0).map(action => {
         val p = action.split("->")
         (p(0).toInt, p(1))
       })
@@ -62,35 +59,3 @@ package object Bestiary {
   val OrcBarbarian:String = "name=Double Axe Fury;hpm=142;regen=0;armor=17;speed=40;flying=false;skills=move;"
   val WorgRider:String = "name=Orc Worg Rider;hpm=13;regen=0;armor=18;speed=20;flying=false;skills=move;"
 }
-
-/*
-Array[Attack]
-Attaquer/Déplacement x2
-Solar
-  arc : 110ft
-  épée : 5ft/10ft
-  déplacement en volant
-  régénération : 15hp/tour
-  armure : 44
-  hp 
-
-  détacher son épée pdt 4 tours, elle attaque tout seul
-  heal tous les alliés de 200hp (1 seul fois)
-  summon monster 7 (1 seul fois)
-  summon monster, autant de fois
-  wish : copie le sort polar ray (efficace contre les dragons)
-
-Orc
-  Hp
-  armure
-  attaques
-
-Dragon
-  4x attaques ailes/queue/morsure/griffe
-
-CC 20/20
-
-Solar -> edges avec tout le monde
-
-Pour toucher une créature, il faut égaliser ou battre son armure (AC).
-*/

@@ -1,68 +1,84 @@
 package com.exercise2
 import com.exercise2.monsters.Monster
 import com.exercise2.skills.Skill
-import org.apache.spark.broadcast.Broadcast
 import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.functions.{collect_list, concat_ws, _}
+
+//-------------------------------------------------------------------------------------------
+//Graph representing battle
 
 class BattleGraph() extends Serializable {
 
+  val debug = true
+
+  //Spark session
   val spark = SparkSession.builder
     .master("local")
     .appName("Exercise 2")
     .getOrCreate()
-  
   val sqlContext = spark.sqlContext
   import sqlContext.implicits._
 
+  //Graph
+  var vertices = Seq[(Int, Monster)]().toDS()
+  var edges = Seq[(Int, Int, Int)]().toDS()
 
-  var vertices = Seq[(Int, Monster, List[(Int, Int)])]().toDS()
-
+  //Battle data
   var turn:Int = 0
   var cid:Int = 0
 
+  //Add a new monster to battle
   def add(v:Monster):Unit = {
     v.set("id", cid)
-    val vertex = Seq[(Int, Monster, List[(Int, Int)])]((cid, v, List[(Int, Int)]())).toDS()
+    val vertex = Seq[(Int, Monster)]((cid, v)).toDS()
     vertices = vertices.union(vertex)
     cid += 1
   }
 
-  
+  //Connect monsters together
   def connect():Unit = {
-
-
-
-
-    /*val x = vertices.map(v => (v._1, v._2.getAsInt("team"))).collect()
-
-    vertices = vertices.map(va =>
-      (va._1, va._2, x.map(vb => (vb._1, if (vb._2 == va._2.getAsInt("team")) 0 else 1)).toList)
-    )*/
-
+    val v = vertices.map(va => (va._1, va._2.getAsInt("team"))).collect()
+    edges = vertices.flatMap{case (ida, va) => {
+      val ta = va.get("team")
+      v.map{case (idb, tb) => (ida, if (ta == tb) 0 else 1, idb) }
+    }}
   }
 
-
+  //Compute next turn
   def next():Unit = {
     turn += 1
-
-
-    val monsters = spark.sparkContext.broadcast(vertices.map{case (id, monster, edges) => (id, monster)}.collect())
-
-
-    vertices.flatMap{case (id, monster, edges) => {
-      val actions = monster.getActions()
-      actions.map{case (target, skill) => {
-        (id, Skill.execute(monster, skill, monsters.value(target)._2))
+    if (debug) println(s"== Turn ${"%4d".format(turn)} ========================================")
+    val monsters = spark.sparkContext.broadcast(vertices.map{case (id, monster) => (id, monster)}.collect())
+    vertices = vertices
+      //Compute differences depending on each individual monster's actions
+      .flatMap{case (id, monster) => {
+        val actions = monster.getActions()
+        val computed = Seq((id, "t", 1)) ++ actions.flatMap{case (target, skill) => Skill.execute(monster, skill, monsters.value(target)._2).map(d => (id, d._1, d._2)) }
+        computed
       }}
-    }}.foreach(x => println(x))
-
-
-
+      //Merge differences
+      .groupBy("_1", "_2")
+      .agg(sum("_3").alias("_3"))
+      .groupBy("_1")
+      .agg(collect_list(concat_ws("_", array("_2", "_3"))).alias("_d"))
+      .as[(Int, Seq[String])]
+      //Apply differences
+      .map{case (id, diffs) => {
+        val m = monsters.value(id)._2
+        m.setActions(Seq())
+        m.set("update", 0)
+        diffs
+          .map(diff => { val p = diff.split("_") ; (p(0), p(1).toInt)})
+          .foreach{case (k, v) => {
+            if ((debug)&&(!k.equals("t"))) println(s"${m.get("name")} (${id}) : ${k} ${if (v < 0) v else "+"+v} (${m.getAsInt(k)} -> ${m.getAsInt(k) + v})")
+            m.set(k, m.getAsInt(k) + v)
+          }}
+        (id, m)
+      }}
   }
-    
+
+  //Print current state
   def print():Unit = {
-    println("==========================================")
-    println(s"Turn ${turn}")
     vertices.show(false)
   }
 
