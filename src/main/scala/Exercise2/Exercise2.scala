@@ -21,7 +21,7 @@ object Exercise2 extends App {
 
   //
   val graph = Battles.battle1()
-  for (i <- 0 until 10) {
+  for (i <- 0 until 2) {
     graph.next()
   }
   graph.print()

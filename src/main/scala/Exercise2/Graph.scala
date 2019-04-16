@@ -9,7 +9,7 @@ import org.apache.spark.sql.functions.{collect_list, concat_ws, _}
 
 class BattleGraph() extends Serializable {
 
-  val debug = true
+  val debug = false
 
   //Spark session
   val spark = SparkSession.builder
@@ -46,7 +46,7 @@ class BattleGraph() extends Serializable {
   //Compute next turn
   def next():Unit = {
     turn += 1
-    if (debug) println(s"== Turn ${"%4d".format(turn)} ========================================")
+    println(s"== Turn ${"%4d".format(turn)} ========================================")
     val monsters = spark.sparkContext.broadcast(vertices.map{case (id, monster) => (id, monster)}.collect())
     vertices = vertices
       //Compute differences depending on each individual monster's actions
@@ -58,20 +58,22 @@ class BattleGraph() extends Serializable {
       .groupBy("_1", "_2")
       .agg(sum("_3").alias("_3"))
       .groupBy("_1")
-      .agg(collect_list(concat_ws("_", array("_2", "_3"))).alias("_d"))
-      .as[(Int, Seq[String])]
+      .agg(collect_list(array("_2", "_3")).alias("_d"))
+      .as[(Int, Seq[Seq[String]])]
       //Apply differences
       .map{case (id, diffs) => {
         val m = monsters.value(id)._2
         m.actions = Seq()
         diffs
-          .map(diff => { val p = diff.split("_") ; (p(0), p(1).toInt)})
+          .map(diff => { (diff(0), diff(1).toInt)})
           .foreach{case (k, v) => {
             if ((debug)&&(!k.equals("t"))) println(s"${m.name} (${id}) : ${k} ${if (v < 0) v else "+"+v} (${m.get(k)} -> ${m.get(k) + v})")
             m.set(k, m.get(k) + v)
           }}
         (id, m)
       }}
+
+    vertices.collect()
   }
 
   //Print current state
