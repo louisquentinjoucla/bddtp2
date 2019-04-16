@@ -1,15 +1,8 @@
 package com.exercise2
+import com.exercise2.monsters.Monster
+import com.exercise2.skills.Skill
+import org.apache.spark.broadcast.Broadcast
 import org.apache.spark.sql.SparkSession
-import org.apache.spark.rdd.RDD
-
-import scala.reflect.ClassTag
-import com.exercise2.skills.{Skill}
-import com.exercise2.monsters.{Monster}
-import scala.collection.mutable
-import org.apache.spark.rdd.RDD
-
-
-import scala.collection.mutable
 
 class BattleGraph() extends Serializable {
 
@@ -22,32 +15,49 @@ class BattleGraph() extends Serializable {
   import sqlContext.implicits._
 
 
-  var vertices = Seq[(Long, Monster, List[(Long, Int)])]().toDS()
+  var vertices = Seq[(Int, Monster, List[(Int, Int)])]().toDS()
 
-  var turn:Long = 0L
-  var cid:Long = 0L
+  var turn:Int = 0
+  var cid:Int = 0
 
   def add(v:Monster):Unit = {
     v.set("id", cid)
-    cid += 1
-    val vertex = Seq[(Long, Monster, List[(Long, Int)])]((cid, v, List[(Long, Int)]())).toDS()
+    val vertex = Seq[(Int, Monster, List[(Int, Int)])]((cid, v, List[(Int, Int)]())).toDS()
     vertices = vertices.union(vertex)
+    cid += 1
   }
 
   
   def connect():Unit = {
 
-    val x = vertices.map(v => (v._1, v._2.getAsInt("team"))).collect()
+
+
+
+    /*val x = vertices.map(v => (v._1, v._2.getAsInt("team"))).collect()
 
     vertices = vertices.map(va =>
       (va._1, va._2, x.map(vb => (vb._1, if (vb._2 == va._2.getAsInt("team")) 0 else 1)).toList)
-    )
+    )*/
 
   }
 
 
   def next():Unit = {
     turn += 1
+
+
+    val monsters = spark.sparkContext.broadcast(vertices.map{case (id, monster, edges) => (id, monster)}.collect())
+
+
+    vertices.flatMap{case (id, monster, edges) => {
+      val actions = monster.getActions()
+      actions.map{case (target, skill) => {
+        (id, Skill.execute(monster, skill, monsters.value(target)._2))
+      }}
+    }}.foreach(x => println(x))
+
+
+
   }
     
   def print():Unit = {

@@ -1,9 +1,7 @@
 package com.exercise2.monsters
-import scala.collection.mutable
-import com.exercise2.skills.{Skill, Move}
-
 
 case class Monster(var data:String) {
+    //Retrieve value associated to a key in data string
     def get(key:String):String = {
       val values = (s"${key}=(.*?);").r.findFirstMatchIn(data)
       values match {
@@ -15,6 +13,7 @@ case class Monster(var data:String) {
       return "<undefined>"
     }
 
+    //Retrieve value associated to a key in data string (and return it as int)
     def getAsInt(key:String):Int = {
       val value = get(key)
       if (value.equals("<undefined>"))
@@ -23,7 +22,30 @@ case class Monster(var data:String) {
         return get(key).toInt
     }
 
+    def getAsArray(key:String):Array[String] = {
+      val value = get(key)
+      if (value.equals("<undefined>"))
+        return Array[String]()
+      else
+        return get(key).split(",")
+    }
 
+    def setActions(actions:Seq[(Int, String)]):Unit = {
+      set("actions", actions.map{case (target, skill) => s"${target}->${skill}"}.mkString(","))
+    }
+
+    def getActions():Seq[(Int, String)] = {
+      val value = get("actions")
+      if (value.equals("<undefined>"))
+        return Seq[(Int, String)]()
+
+      return value.split(",").map(action => {
+        val p = action.split("->")
+        (p(0).toInt, p(1))
+      })
+    }
+
+    //Set value associated to a key in data string
     def set(key:String, svalue:Any):Unit = {
       val value = svalue.toString()
       if (get(key).equals("<undefined>"))
@@ -34,77 +56,16 @@ case class Monster(var data:String) {
     
 }
 
+//Bestiary
 package object Bestiary {
-  val Solar:String = "name=Solar;hpm=363;regen=15;armor=44;speed=50;flying=false;"
+  val Solar:String = "name=Solar;hpm=363;regen=15;armor=44;speed=50;flying=false;skills=move;"
+  val OrcBarbarian:String = "name=Double Axe Fury;hpm=142;regen=0;armor=17;speed=40;flying=false;skills=move;"
+  val WorgRider:String = "name=Orc Worg Rider;hpm=13;regen=0;armor=18;speed=20;flying=false;skills=move;"
 }
-
 
 /*
-
-abstract class Monster(var parameters:mutable.Map[String, Any] = mutable.Map.empty[String, Any]) extends Serializable {
-
-    var skills:Seq[Skill] = Seq[Skill](Move)
-
-    val targets:Array[Int] = Array[Int]()
-    val skill:Int = 0
-
-    def id:Int = return parameters("id").asInstanceOf[Int]
-
-    def setPosition(x:Int, y:Int, z:Int): Unit = {
-      parameters("x") = x
-      parameters("y") = y
-      parameters("z") = z
-    }
-
-    override def toString():String = {
-      return parameters.map{case (k, v) => k + ":" + v}.mkString("|")
-    }
-
-}
-
-class Solar() 
-    extends Monster(mutable.Map[String, Any]("name" -> "Solar", "hpm" -> 363, "regen" -> 15, "armor" -> 44, "speed" -> 50, "flying" -> false)) {
-    
-    override val targets:Array[Int] = Array[Int](3, 4)
-}
-
-
-class OrcBarbarian() 
-    extends Monster(mutable.Map[String, Any]("name" -> "Double Axe Fury", "hpm" -> 142, "regen" -> 0, "armor" -> 17, "speed" -> 40, "flying" -> false)) {
-    
-}
-
-
-class WorgRider() 
-    extends Monster(mutable.Map[String, Any]("name" -> "Orc Worg Rider", "hpm" -> 13, "regen" -> 0, "armor" -> 18, "speed" -> 20, "flying" -> false)) {
-    
-}
-
-class WarLord() 
-    extends Monster(mutable.Map[String, Any]("name" -> "Brutal Warlord","hpm" -> 141, "regen" -> 0, "armor" -> 27, "speed" -> 30, "flying" -> false)) {
-    
-}
-
-
-*/
-
-/**
-
-HP
-Regen
-Armure
-Vitesse
-
 Array[Attack]
-
-
-
-Noeud a  Noeud b
-
-
-
 Attaquer/Déplacement x2
-
 Solar
   arc : 110ft
   épée : 5ft/10ft
@@ -127,12 +88,9 @@ Orc
 Dragon
   4x attaques ailes/queue/morsure/griffe
 
-
-
 CC 20/20
 
 Solar -> edges avec tout le monde
 
 Pour toucher une créature, il faut égaliser ou battre son armure (AC).
-
 */

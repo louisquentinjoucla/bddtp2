@@ -1,21 +1,20 @@
 package com.exercise2.skills
-import com.exercise2.monsters.{Monster}
+import com.exercise2.monsters.Monster
 
-class Skill() extends Serializable {
+package object Skill {
 
-  //apply(source:Monster, target:Monster)
-  def test(source:Monster, target:Monster):List[(String, Int)] = {
-    println(s"Missing skill")
-    return List()
+  //Execute skill effect
+  def execute(a:Monster, skill:String, b:Monster):Seq[(String, Int)] = {
+
+    if (skill.equals("move"))
+      return Skill.move(a, b)
+
+    return Seq()
   }
-}
 
-
-object Move extends Skill() {
-
-  override def test(source:Monster, target:Monster):List[(String, Int)] = {
-    //println(s"${source.parameters("name")} moves towards ${target.parameters("name")}")
-    return List()
+  //Move skill
+  def move(a:Monster, b:Monster):Seq[(String, Int)] = {
+    return Seq(("x", a.getAsInt("x")+1))
   }
 
 }
