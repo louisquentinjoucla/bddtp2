@@ -17,8 +17,6 @@ import com.exercise2.WebServices
 
 class BattleGraph() extends Serializable {
 
-  val debug = true
-
   //Spark session
   val spark = SparkSession.builder
     .master("local")
@@ -74,10 +72,7 @@ class BattleGraph() extends Serializable {
         m.actions = Seq()
         diffs
           .map(diff => { (diff(0), diff(1).toInt)})
-          .foreach{case (k, v) => {
-            if ((debug)&&(!k.equals("t"))) println(s"${m.name} (${id}) : ${k} ${if (v < 0) v else "+"+v} (${m.get(k)} -> ${m.get(k) + v})")
-            m.set(k, m.get(k) + v)
-          }}
+          .foreach{case (k, v) => m.set(k, m.get(k) + v)}
         (id, m)
       }}
   }

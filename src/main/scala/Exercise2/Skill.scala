@@ -9,6 +9,8 @@ package object Skill {
 
   val rand = scala.util.Random
 
+  val debug = true
+
   //Execute skill effect
   def execute(ida:Int, a:Monster, skill:String, idb:Int, b:Monster):Seq[(Int, String, Int)] = {
     return Skill.list(skill)(ida, a, idb, b)
@@ -41,7 +43,9 @@ package object Skill {
     val y = min(yb-ya,limit) * Math.sin(theta)
     val z = if (a.get("flying") == 1) min(zb-za,limit) else 0
 
-    return Seq((ida, "x", xa+x.toInt), (ida, "y", ya+y.toInt), (ida, "z", z.toInt))
+    if (debug) println(s"${a.name} (${ida}) moves towards ${b.name} (${idb}) | ${xa};${ya};${za} -> ${xa+x.toInt};${ya+y.toInt};${za+z.toInt}")
+
+    return Seq((ida, "x", xa+x.toInt), (ida, "y", ya+y.toInt), (ida, "z", za+z.toInt))
   }
 
 
@@ -51,6 +55,7 @@ package object Skill {
       return Seq()
       
     //Rolls
+    var debug_msg = if (debug) s"${a.name} (${ida}) attacks ${b.name} (${idb}) " else ""
     var diffs = Seq[(Int, String, Int)]()
     attacks.map(prec => {
       //Precision roll
@@ -61,8 +66,12 @@ package object Skill {
         for (i <- 0 until rolls)
           damage += 1 + rand.nextInt(dice)
         diffs = diffs ++ Seq((idb, "hp", -damage))
+        if (debug) debug_msg += s"| ${damage} damage ${if (d20 == 20) "(20!)" else ""}"
+      } else {
+        if (debug) debug_msg += s"| miss (${prec + d20} < ${b.get("armor")})"
       }
     })
+    if (debug) println(debug_msg)
     return diffs
   }
 
