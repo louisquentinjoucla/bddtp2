@@ -17,7 +17,7 @@ case class Monster(name:String, var data:Map[String, Int] = Map.empty[String, In
     def set(key:String, value:Int):Unit = {
       data = data + (key -> value)
     }
-    
+
 }
 
 //Bestiary

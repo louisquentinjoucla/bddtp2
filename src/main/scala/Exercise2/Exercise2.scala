@@ -1,8 +1,9 @@
 package Exercise2
 
 import com.exercise2.BattleGraph
-import com.exercise2.monsters.{Bestiary, Monster}
+import com.exercise2.monsters.Bestiary
 import org.apache.spark.sql.SparkSession
+import com.exercise2.WebServices
 
 //-------------------------------------------------------------------------------------------
 //Main
@@ -18,13 +19,17 @@ object Exercise2 extends App {
 
   //Application
   println("hello world (ex2)")
+  WebServices.start()
 
   //
   val graph = Battles.battle1()
   for (i <- 0 until 2) {
     graph.next()
+    graph.send()
   }
   graph.print()
+
+
 }
 
 object Battles {

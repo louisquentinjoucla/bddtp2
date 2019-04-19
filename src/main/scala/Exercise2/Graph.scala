@@ -3,6 +3,14 @@ import com.exercise2.monsters.Monster
 import com.exercise2.skills.Skill
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions.{collect_list, concat_ws, _}
+import scala.reflect.ClassTag
+import scala.collection.JavaConverters._
+import io.circe.Json
+import io.circe.generic.auto._
+import io.circe.parser._
+import io.circe.syntax._
+import io.circe._, io.circe.generic.semiauto._
+import com.exercise2.WebServices
 
 //-------------------------------------------------------------------------------------------
 //Graph representing battle
@@ -79,6 +87,14 @@ class BattleGraph() extends Serializable {
   //Print current state
   def print():Unit = {
     vertices.show(false)
+  }
+
+  //Send to websockets
+  def send():Unit = {
+    import spark.implicits._
+    val json = vertices.map(r => r._2).collectAsList().asScala.toList.asJson.noSpaces
+    WebServices.send(json)
+    println(s"sent data from turn ${turn}")
   }
 
 }
