@@ -17,7 +17,7 @@ import com.exercise2.WebServices
 
 class BattleGraph() extends Serializable {
 
-  val debug = false
+  val debug = true
 
   //Spark session
   val spark = SparkSession.builder
@@ -59,7 +59,7 @@ class BattleGraph() extends Serializable {
     vertices = vertices
       //Compute differences depending on each individual monster's actions
       .flatMap{case (id, monster) => {
-        val computed = Seq((id, "t", 1)) ++ monster.actions.flatMap{case (target, skill) => Skill.execute(monster, skill, monsters.value(target)._2).map(d => (id, d._1, d._2)) }
+        val computed = Seq((id, "t", 1)) ++ monster.actions.flatMap{case (target, skill) => Skill.execute(id, monster, skill, target, monsters.value(target)._2)}
         computed
       }}
       //Merge differences
@@ -80,8 +80,6 @@ class BattleGraph() extends Serializable {
           }}
         (id, m)
       }}
-
-    vertices.collect()
   }
 
   //Print current state

@@ -19,13 +19,13 @@ object Exercise2 extends App {
 
   //Application
   println("hello world (ex2)")
-  WebServices.start()
+  //WebServices.start()
 
   //
   val graph = Battles.battle1()
-  for (i <- 0 until 2) {
+  for (i <- 0 until 1) {
     graph.next()
-    graph.send()
+    //graph.send()
   }
   graph.print()
 
@@ -42,7 +42,7 @@ object Battles {
       m.set("x", 0)
       m.set("y", 0)
       m.set("z", 0)
-      m.actions = Seq((1, "move"), (2, "move"), (3, "move"))
+      m.actions = Seq((1, "move"))
       graph.add(m)
     }
 
@@ -52,6 +52,7 @@ object Battles {
       m.set("x", 0)
       m.set("y", 0)
       m.set("z", 0)
+      m.actions = Seq((0, "orc_double_axe"))
       graph.add(m)
     }
 
