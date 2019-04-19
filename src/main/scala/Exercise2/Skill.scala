@@ -20,6 +20,7 @@ package object Skill {
   val list = Map[String, (Int, Monster, Int, Monster) => Seq[(Int, String, Int)]](
     "move" -> Skill.move, 
     "dancing_greatsword" -> Skill.dancing_greatsword,
+    "composite_longbow" -> Skill.composite_longbow,
     "orc_double_axe" -> Skill.orc_double_axe,
     "mwk_composite_longbow" -> Skill.mwk_composite_longbow,
     "mwk_battleaxe" -> Skill.mwk_battleaxe,

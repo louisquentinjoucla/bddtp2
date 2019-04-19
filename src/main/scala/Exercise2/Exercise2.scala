@@ -23,11 +23,11 @@ object Exercise2 extends App {
 
   //
   val graph = Battles.battle1()
-  for (i <- 0 until 1) {
+  for (i <- 0 until 2) {
     graph.next()
-    //graph.send()
+    //graph.print()
   }
-  graph.print()
+  
 
 
 }
@@ -42,7 +42,6 @@ object Battles {
       m.set("x", 0)
       m.set("y", 0)
       m.set("z", 0)
-      m.actions = Seq((1, "move"))
       graph.add(m)
     }
 
@@ -52,7 +51,6 @@ object Battles {
       m.set("x", 0)
       m.set("y", 0)
       m.set("z", 0)
-      m.actions = Seq((0, "orc_double_axe"))
       graph.add(m)
     }
 
