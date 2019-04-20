@@ -50,13 +50,13 @@ class BattleGraph() extends Serializable {
 
   //Connect monsters together
   def connect():Unit = {
-    val monsters = spark.sparkContext.broadcast(vertices.collect())
+    val monsters = spark.sparkContext.broadcast(vertices.collect().toMap)
     val ids = vertices.map{case (id, monster) => (id)}.collect()
     var links = Seq[(Int, Int, Int, Int, Int)]()
     ids.foreach(ida => {
       ids.foreach(idb => {
-        val a = monsters.value(ida)._2
-        val b = monsters.value(idb)._2
+        val a = monsters.value(ida)
+        val b = monsters.value(idb)
         val team = if (a.get("team") == b.get("team")) 0 else 1
         val distance = sqrt(pow(b.get("x") - a.get("x"), 2) + pow(b.get("y") - a.get("y"), 2) + pow(b.get("z") - a.get("z"), 2))    
         //Ennemies doesn't need to be connected each other
@@ -87,8 +87,8 @@ class BattleGraph() extends Serializable {
   def next():Unit = {
     turn += 1
     println(s"== Turn ${"%4d".format(turn)} ========================================")
-    val monsters = spark.sparkContext.broadcast(vertices.collect())
-    val neighbors = spark.sparkContext.broadcast(edges.collect())
+    val monsters = spark.sparkContext.broadcast(vertices.collect().toMap)
+    val neighbors = spark.sparkContext.broadcast(edges.collect().toMap)
 
     connect()
     edges.show(false)
@@ -97,12 +97,12 @@ class BattleGraph() extends Serializable {
       //Compute actions decided by each monster
       .map{case (id, monster) => {
         val m = monster
-        m.actions = AI.compute(m, neighbors.value(id)._2)
+        m.actions = AI.compute(m, neighbors.value(id))
         (id, m)
       }}
       //Compute differences depending on each individual monster's actions
       .flatMap{case (id, monster) => {
-        val computed = Seq((id, "hp", monster.get("regen"))) ++ monster.actions.flatMap{case (target, skill) => Skill.execute(id, monster, skill, target, monsters.value(target)._2)}
+        val computed = Seq((id, "hp", monster.get("regen"))) ++ monster.actions.flatMap{case (target, skill) => Skill.execute(id, monster, skill, target, monsters.value(target))}
         computed
       }}
       //Merge differences
@@ -113,7 +113,8 @@ class BattleGraph() extends Serializable {
       .as[(Int, Seq[Seq[String]])]
       //Apply differences
       .map{case (id, diffs) => {
-        val m = monsters.value(id)._2
+        println(id, monsters.value(id))
+        val m = monsters.value(id)
         m.actions = Seq()
         diffs
           .map(diff => { (diff(0), diff(1).toInt)})
