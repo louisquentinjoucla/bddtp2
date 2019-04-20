@@ -123,7 +123,7 @@ class BattleGraph() extends Serializable {
       }}
       //Filter monsters by hp
       .filter(m => {
-        if (debug) println(s"${m._2.name} (${m._1}) is ko")
+        if ((debug)&&(m._2.get("hp") <= 0)) println(s"${m._2.name} (${m._1}) is ko")
         m._2.get("hp") > 0
       })
       .localCheckpoint()
