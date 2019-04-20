@@ -40,13 +40,12 @@ package object Skill {
     var limit = if (a.get("flying") == 1) a.get("fly") else a.get("speed")
     
     val theta = Math.atan2(yb-ya, xb-xa)
-    val x = min(xb-xa,limit) * Math.cos(theta)
-    val y = min(yb-ya,limit) * Math.sin(theta)
+    val x = min(abs(xb-xa),limit) * Math.cos(theta)
+    val y = min(abs(yb-ya),limit) * Math.sin(theta)
     val z = if (a.get("flying") == 1) min(zb-za,limit) else 0
-
     if (debug) println(s"${a.name} (${ida}) moves towards ${b.name} (${idb}) | ${xa};${ya};${za} -> ${xa+x.toInt};${ya+y.toInt};${za+z.toInt}")
 
-    return Seq((ida, "x", xa+x.toInt), (ida, "y", ya+y.toInt), (ida, "z", za+z.toInt))
+    return Seq((ida, "x", x.toInt), (ida, "y", y.toInt), (ida, "z", z.toInt))
   }
 
 

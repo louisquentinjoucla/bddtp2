@@ -4,8 +4,7 @@ import com.exercise2.monsters.Monster
 
 package object AI {
 
-  
-
+  //Compute next 
   def compute(monster:Monster, edges:Seq[(Int, Int, Int, Int, Int)]):Seq[(Int, String)] = {
 
     val allies = edges.filter{case (ida, idb, team, kind, hpb) => team == 0 }
@@ -36,19 +35,4 @@ package object AI {
 
   }
 
-
-
-/*
-return Seq((Int, String))
-monsters.actions 
-*/
-
 }
-
-
-
-
-//Intelligence artificielle pour les actions des créatures. 
-//Une créature doit-elle attaquer, soigner un allié, utiliser un sort, cracher du feu, faire un mouvement?
-//Gérer les distances entre les créatures, à chaque itération
-//Optimisation des structures de données, checkpointing.

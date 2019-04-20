@@ -1,8 +1,8 @@
 package com.exercise2
 import com.exercise2.monsters.Monster
 import com.exercise2.skills.Skill
-import org.apache.spark.sql.{Dataset, SparkSession}
-import org.apache.spark.sql.functions.{array, collect_list, concat_ws, sum}
+import org.apache.spark.sql.{Dataset, RelationalGroupedDataset, SparkSession}
+import org.apache.spark.sql.functions.{array, collect_list, collect_set, concat_ws, sum}
 
 import scala.reflect.ClassTag
 import scala.collection.JavaConverters._
@@ -14,6 +14,7 @@ import io.circe._
 import io.circe.generic.semiauto._
 import com.exercise2.WebServices
 import org.apache.spark.broadcast.Broadcast
+
 import scala.math._
 import com.exercise2.ai.AI
 
@@ -39,6 +40,7 @@ class BattleGraph() extends Serializable {
   //Battle data
   var turn:Int = 0
   var cid:Int = 0
+  var ended:Boolean = false
 
   //Add a new monster to battle
   def add(v:Monster):Unit = {
@@ -48,9 +50,14 @@ class BattleGraph() extends Serializable {
     cid += 1
   }
 
-  //Connect monsters together
-  def connect():Unit = {
+  //Compute next turn
+  def next():Unit = {
+    turn += 1
+    if (ended) return
+    println(s"== Turn ${"%4d".format(turn)} ========================================")
     val monsters = spark.sparkContext.broadcast(vertices.collect().toMap)
+
+    //Compute edges
     val ids = vertices.map{case (id, monster) => (id)}.collect()
     var links = Seq[(Int, Int, Int, Int, Int)]()
     ids.foreach(ida => {
@@ -63,36 +70,25 @@ class BattleGraph() extends Serializable {
         if (!((team == 0)&&(b.get("team") > 1))) {
           val hp = (100*b.get("hp")/b.get("hpm")).toInt
           //If opponent, can move towards
-          if (team == 1)
+          if ((team == 1)&&(ida != idb))
             links = links ++ Seq((ida, idb, team, 0, hp))
           //Melee
-          if (distance < 10)
+          if ((distance < 10)&&(ida != idb))
             links = links ++ Seq((ida, idb, team, 1, hp))
           //Ranged
-          if (distance < 100)
+          if ((distance < 100)&&(ida != idb))
             links = links ++ Seq((ida, idb, team, 2, hp))
         }
       })
     })
-
     edges = links.toDS()
       .groupBy("_1")
       .agg(collect_list(array("_1", "_2", "_3", "_4", "_5")))
       .as[(Int, Seq[Seq[Int]])]
       .map{case (id, edge) => (id, edge.map(e => (e(0), e(1), e(2), e(3), e(4))))}   
-  }
 
-
-  //Compute next turn
-  def next():Unit = {
-    turn += 1
-    println(s"== Turn ${"%4d".format(turn)} ========================================")
-    val monsters = spark.sparkContext.broadcast(vertices.collect().toMap)
+    //Compute vertices
     val neighbors = spark.sparkContext.broadcast(edges.collect().toMap)
-
-    connect()
-    edges.show(false)
-
     vertices = vertices
       //Compute actions decided by each monster
       .map{case (id, monster) => {
@@ -113,12 +109,12 @@ class BattleGraph() extends Serializable {
       .as[(Int, Seq[Seq[String]])]
       //Apply differences
       .map{case (id, diffs) => {
-        println(id, monsters.value(id))
         val m = monsters.value(id)
         m.actions = Seq()
         diffs
           .map(diff => { (diff(0), diff(1).toInt)})
           .foreach{case (k, v) => m.set(k, m.get(k) + v)}
+        m.set("hp", min(m.get("hp"), m.get("hpm")))
         (id, m)
       }}
       //Filter monsters by hp
@@ -129,9 +125,14 @@ class BattleGraph() extends Serializable {
       .localCheckpoint()
       .cache()
 
-    vertices.show(false)
-  }
+      val teams = Set(vertices.map(m => m._2.get("team")).collect():_*)
+      if (teams.size <= 1) {
+        println(s"Team ${teams.head} has won the battle")
+        ended = true
+      }
 
+  }
+  
   //Print current state
   def print():Unit = {
     vertices.show(false)

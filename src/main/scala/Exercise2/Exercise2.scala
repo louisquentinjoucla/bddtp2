@@ -23,9 +23,9 @@ object Exercise2 extends App {
 
   //
   val graph = Battles.battle1()
-  for (i <- 0 until 2) {
+  for (i <- 0 until 20) {
     graph.next()
-    //graph.print()
+    graph.print()
   }
   
 
@@ -45,17 +45,36 @@ object Battles {
       graph.add(m)
     }
 
-    for (i <- 0 until 10) {
+  /*  for (i <- 0 until 4) {
       val m = Bestiary.OrcBarbarian()
       m.set("team", 2)
-      m.set("x", 0)
+      m.set("x", 130)
+      m.set("y", -20 + i *15)
+      m.set("z", 0)
+      graph.add(m)
+    }
+
+    for (i <- 0 until 9) {
+      val m = Bestiary.WorgRider()
+      m.set("team", 2)
+      m.set("x", 110)
+      m.set("y", -50 + i *10)
+      m.set("z", 0)
+      graph.add(m)
+    }*/
+
+    for (i <- 0 until 2) {
+      val m = Bestiary.WarLord()
+      m.set("team", 2)
+      m.set("x", 150)
       m.set("y", 0)
       m.set("z", 0)
       graph.add(m)
     }
 
-    graph.connect()
-
     return graph
   }
 }
+
+//Solar (0) moves towards War Lord (1) | 0;0;0 -> 50;0;0
+//War Lord (1) moves towards Solar (0) | 150;0;0 -> 300;0;0
