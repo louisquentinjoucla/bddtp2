@@ -27,7 +27,8 @@ object Exercise2 extends App {
   println("starting battle...")
   while (!graph.ended) {
     graph.next()
-    graph.print()
+    graph.save("battle1")
+    //graph.print()
   }
 
 }

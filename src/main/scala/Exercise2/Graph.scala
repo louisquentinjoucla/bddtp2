@@ -18,12 +18,16 @@ import org.apache.spark.broadcast.Broadcast
 import scala.math._
 import com.exercise2.ai.AI
 
+import java.nio.file.{Paths, Files, StandardOpenOption}
+import java.nio.charset.StandardCharsets
+
+
 //-------------------------------------------------------------------------------------------
 //Graph representing battle
 
 class BattleGraph() extends Serializable {
 
-  val debug = true
+  val debug = false
 
   //Spark session
   val spark = SparkSession.builder
@@ -144,6 +148,19 @@ class BattleGraph() extends Serializable {
     val json = vertices.map(r => r._2).collectAsList().asScala.toList.asJson.noSpaces
     WebServices.send(json)
     println(s"sent data from turn ${turn}")
+  }
+
+  //Save file
+  def save(file:String):Unit = {
+    import spark.implicits._
+    val json = vertices.map(r => r._2).collectAsList().asScala.toList.asJson.noSpaces
+    val path = Paths.get(s"src/resources/www/Exercice2/battles/${file}")
+    try {
+      Files.write(path, s"${json}\n".getBytes(StandardCharsets.UTF_8), if (Files.exists(path)) StandardOpenOption.APPEND else StandardOpenOption.CREATE)
+      println(s"saved data from turn ${turn}")
+    } catch {
+      case _: Throwable => println(s"failed to save data from turn ${turn}")
+    }  
   }
 
 }
