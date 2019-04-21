@@ -75,6 +75,7 @@
             submit() {
                 clearTimeout(data.delay)
                 let query = {...data.query, name:data.query.name.replace(/[,']/g, " ")}
+                if (query.misc) query.misc = keywords_parser(query.misc).join(" ")
                 this.send(query)
             },
             format(type, data) {
@@ -106,6 +107,22 @@
             document.querySelector("input[name='query']").focus()
         }
     })
+
+    function keywords_parser(input) {
+        //Création du regex (si inexistant)
+        if (!KeywordsParser.regex) {
+            let stopwords = ['did', "doesn't", 'she', 'mightn', 'with', 'for', 'off', "should've", 'o', "couldn't", 'because', 'in', 'and', 'some', 'i', 'not', 'then', 'should', 'ours', 'having', "didn't", "haven't", 'more', "hadn't", 'that', 'mustn', "needn't", "mightn't", 'we', 'those', 'is', "isn't", 'do', 'd', "don't", 'a', 'by', 'out', 'y', 'whom', 'into', 'too', 'during', 'now', 'herself', 'its', 'ourselves', 'the', 'no', 'll', "won't", 'had', 'if', "aren't", "that'll", "hasn't", 'only', 'all', "she's", 'you', 'on', 'couldn', 'from', 'shan', 'while', 'yours', 'them', 'most', 'wasn', 'are', 'hadn', 'have', 'but', 'there', 'myself', 'up', 'where', 'hers', 'these', 'about', 'just', 'it', 'your', 'over', 'how', 'will', "shan't", 'does', 'weren', 'as', "weren't", 'so', 'has', 'needn', "you're", 'didn', 'being', 'isn', 'm', 'he', 'nor', 'few', 'won', 'at', 'itself', 'each', 'until', 'when', "you've", 'be', 've', 'than', 'what', 'themselves', 'under', 'once', 'ain', 'which', 'don', 'below', "you'll", 'wouldn', 'hasn', "wasn't", 'doing', 'above', 'or', "wouldn't", 'down', 'other', 'yourself', 'theirs', 'they', 'this', 'our', 'ma', 'of', 'through', 'me', 'to', 'again', 'haven', 'an', 'between', 'before', 'their', 'her', 's', 't', "you'd", 'very', 'both', 're', 'yourselves', 'here', 'same', 'can', 'aren', 'further', 'any', 'shouldn', 'himself', 'am', 'him', 'doesn', "it's", 'were', 'against', "mustn't", 'was', 'his', 'why', 'who', 'such', 'my', 'own', "shouldn't", 'after', 'been']
+            KeywordsParser.regex = new RegExp(`\\b(${stopwords.join("|")})\\b`, "gi")
+        }
+    
+        //Suppression des caractères spéciaux et des stopwords
+        input = input.toLocaleLowerCase().replace(/[^a-z'\s]/g, ' ')
+        input = input.replace(KeywordsParser.regex, '')
+    
+        //Récupération des mots-clés
+        let keywords = [...new Set(input.split(" ").map(word => stemmer(word)).filter(word => word.length > 2))]
+        return keywords
+    }
 
 })()
 

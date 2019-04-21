@@ -104,6 +104,13 @@ package object ServingLayer {
       })
     }
 
+
+    //Search by description 
+    if (misc.length > 0) {
+      val keywords = misc.split(" ")
+    }
+
+
     //Merge requests
     var view = name_view
     if (classes_view.count() > 0) view = view.join(classes_view).map{case (spell, (left, right)) => (spell, left)}
