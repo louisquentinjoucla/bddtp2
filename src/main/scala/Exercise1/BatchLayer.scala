@@ -47,6 +47,7 @@ package object BatchLayer {
       .map{case (key, values) => (key, values.mkString("[", ";;", "]"))}
       .saveAsTextFile(s"src/resources/batchviews/spells/monsters")
 
+
     //Prepare monsters data for futures batch views (spell_name, [...monsters data])
     val spells_monsters = monsters.rdd
       .map(row => (row.getValuesMap[Any](row.schema.fieldNames), row.getAs[Seq[String]]("spells")))
@@ -71,6 +72,14 @@ package object BatchLayer {
         .coalesce(1)
         .saveAsTextFile(s"src/resources/batchviews/spells/name/${i.asInstanceOf[Char]}")
     }
+
+    //Create keywords batch views (keywords, [...spell_name])
+    val spells_keywords = spells.rdd
+      .map(row => (row.getAs[String]("name"), row.getAs[Seq[String]]("keywords")))
+      .flatMap{case (spell, keywords) => keywords.map(keyword => (keyword, spell))}
+      .groupByKey()
+      .map{case (keyword, spells) => (keyword, spells.mkString("[", ";;", "]"))}
+      .saveAsTextFile(s"src/resources/batchviews/spells/keywords/all")
 
     //Create spells batch view which regroup all spells (spell_name, [spell_data])
     spells.rdd
@@ -166,6 +175,7 @@ package object BatchLayer {
           .flatMap { case (key, spells) => spells.map(spell => (spell, s"[${key}]")) }
           .saveAsTextFile(s"src/resources/batchviews/spells/levels/${level}")
       }}
+    
 
   }
 
