@@ -19,22 +19,64 @@ object Exercise2 extends App {
 
   //Application
   println("hello world (ex2)")
-  //WebServices.start()
+  WebServices.start()
 
   //
   println("creating graph...")
-  val graph = Battles.battle1()
+  /*val graph = Battles.battle1()
   println("starting battle...")
   while (!graph.ended) {
     graph.next()
     graph.save("battle1")
     //graph.print()
-  }
+  }*/
 
 }
 
 object Battles {
   def battle1():BattleGraph = {
+    val graph = new BattleGraph()
+
+    for (i <- 0 until 1) {
+      val m = Bestiary.Solar()
+      m.set("team", 1)
+      m.set("x", 0)
+      m.set("y", 0)
+      m.set("z", 0)
+      graph.add(m)
+    }
+
+    for (i <- 0 until 4) {
+      val m = Bestiary.OrcBarbarian()
+      m.set("team", 2)
+      m.set("x", 130)
+      m.set("y", -20 + i *15)
+      m.set("z", 0)
+      graph.add(m)
+    }
+
+    for (i <- 0 until 9) {
+      val m = Bestiary.WorgRider()
+      m.set("team", 2)
+      m.set("x", 110)
+      m.set("y", -50 + i *10)
+      m.set("z", 0)
+      graph.add(m)
+    }
+
+    for (i <- 0 until 1) {
+      val m = Bestiary.WarLord()
+      m.set("team", 2)
+      m.set("x", 150)
+      m.set("y", 0)
+      m.set("z", 0)
+      graph.add(m)
+    }
+
+    return graph
+  }
+
+  def battle2():BattleGraph = {
     val graph = new BattleGraph()
 
     for (i <- 0 until 1) {
