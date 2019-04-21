@@ -21,15 +21,15 @@ object Exercise2 extends App {
   println("hello world (ex2)")
   WebServices.start()
 
-  //
+  //Première bataille
   println("creating graph...")
-  /*val graph = Battles.battle1()
+  val graph = Battles.battle1()
   println("starting battle...")
   while (!graph.ended) {
     graph.next()
     graph.save("battle1")
-    //graph.print()
-  }*/
+    graph.print()
+  }
 
 }
 
