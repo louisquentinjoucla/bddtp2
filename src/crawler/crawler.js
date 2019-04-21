@@ -131,18 +131,18 @@ function hsv_to_text(str){
 async function crawl_spells(){
     console.log('\n\x1b[5m%s\x1b[0m', 'Starting to scrap the spells...');
 
-    for(let id=1; id<=1975; id++) {
+    for(let id=1; id<=1973; id++) {
         let url = `http://www.dxcontent.com/SDB_SpellBlock.asp?SDBID=${id}`;
         await scrap_spell(url,id);
     }
 
     console.log('\n\x1b[32m%s\x1b[0m', 'Success !');
     console.log('\n\x1b[5m%s\x1b[0m', `Writing ${spells.length} spells to resources/JSON/spells.json...`);
-    if(!fs.existsSync('../resources/JSON')){
-        fs.mkdirSync('../resources/JSON');
+    if(!fs.existsSync('src/resources/JSON')){
+        fs.mkdirSync('src/resources/JSON');
     }
 
-    await fs.writeFile('../resources/JSON/spells.json', JSON.stringify(spells), function(err) {
+    await fs.writeFile('src/resources/JSON/spells.json', JSON.stringify(spells), function(err) {
         if (err) {
             console.log('\n\x1b[31m%s\x1b[0m', err);
         } else {
@@ -206,7 +206,7 @@ function format_spell_name(str){
  */
 function get_components(str_compo) {
     const regex_compo = /([A-Z]+\/[A-Z]+|[A-Z]+)/;
-    let raw_components = str_compo.split(',').replace(/\(.+\)/gm, '');
+    let raw_components = str_compo.replace(/\(.+\)/gm, '').split(',')
     let components = [];
     raw_components.forEach(function(item){
         let matchs = item.match(regex_compo);
@@ -220,16 +220,17 @@ function get_components(str_compo) {
 
 function keywords_parser(input) {
     //Création du regex (si inexistant)
-    if (!KeywordsParser.regex) {
+    if (!keywords_parser.regex) {
         let stopwords = ['did', "doesn't", 'she', 'mightn', 'with', 'for', 'off', "should've", 'o', "couldn't", 'because', 'in', 'and', 'some', 'i', 'not', 'then', 'should', 'ours', 'having', "didn't", "haven't", 'more', "hadn't", 'that', 'mustn', "needn't", "mightn't", 'we', 'those', 'is', "isn't", 'do', 'd', "don't", 'a', 'by', 'out', 'y', 'whom', 'into', 'too', 'during', 'now', 'herself', 'its', 'ourselves', 'the', 'no', 'll', "won't", 'had', 'if', "aren't", "that'll", "hasn't", 'only', 'all', "she's", 'you', 'on', 'couldn', 'from', 'shan', 'while', 'yours', 'them', 'most', 'wasn', 'are', 'hadn', 'have', 'but', 'there', 'myself', 'up', 'where', 'hers', 'these', 'about', 'just', 'it', 'your', 'over', 'how', 'will', "shan't", 'does', 'weren', 'as', "weren't", 'so', 'has', 'needn', "you're", 'didn', 'being', 'isn', 'm', 'he', 'nor', 'few', 'won', 'at', 'itself', 'each', 'until', 'when', "you've", 'be', 've', 'than', 'what', 'themselves', 'under', 'once', 'ain', 'which', 'don', 'below', "you'll", 'wouldn', 'hasn', "wasn't", 'doing', 'above', 'or', "wouldn't", 'down', 'other', 'yourself', 'theirs', 'they', 'this', 'our', 'ma', 'of', 'through', 'me', 'to', 'again', 'haven', 'an', 'between', 'before', 'their', 'her', 's', 't', "you'd", 'very', 'both', 're', 'yourselves', 'here', 'same', 'can', 'aren', 'further', 'any', 'shouldn', 'himself', 'am', 'him', 'doesn', "it's", 'were', 'against', "mustn't", 'was', 'his', 'why', 'who', 'such', 'my', 'own', "shouldn't", 'after', 'been']
-        KeywordsParser.regex = new RegExp(`\\b(${stopwords.join("|")})\\b`, "gi")
+        keywords_parser.regex = new RegExp(`\\b(${stopwords.join("|")})\\b`, "gi")
     }
 
     //Suppression des caractères spéciaux et des stopwords
     input = input.toLocaleLowerCase().replace(/[^a-z'\s]/g, ' ')
-    input = input.replace(KeywordsParser.regex, '')
+    input = input.replace(keywords_parser.regex, '')
+    input = input.replace(/[^a-z\s]/g, '')
 
     //Récupération des mots-clés
-    let keywords = [...new Set(input.split(" ").map(word => stemmer(word)).filter(word => word.length > 2))]
+    let keywords = [...new Set(input.split(" ").map(word => stemmer.stemmer(word)).filter(word => word.length > 2))]
     return keywords
 }
