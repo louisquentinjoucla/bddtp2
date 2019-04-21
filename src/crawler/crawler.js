@@ -176,8 +176,15 @@ async function scrap_spell(url,i) {
             $('b').each(function(i, elem) {
                 let attr = $(elem).text().replace(/\'/,'')
                 if(attr !== "Components"){
-                    if(elem.next)
+                    if(elem.next){
                         spell[attr] = elem.next.data.replace(/;/g,'').trim()
+                    }
+                    if((attr === "Level")&&/[A-Z]/g.test(elem.next.data)){
+                        spell[attr] = elem.next.data.replace(/[A-Z]/g, '')
+                    }
+                    if((attr === "School")&&/see/g.test(elem.next.data)){
+                        spell[attr] = 'universal'
+                    }
                 }
               });
 
