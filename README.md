@@ -40,30 +40,30 @@ Les ingénieurs de Prolocrawl™ 7.0 ont su copier des moteurs de recherches ban
 Les stopswords sont les mots inutiles de langue anglaise sans lesquels il ne serait pas possible de former une phrase grammaticalement correcte.
 Reprenons par exemple la description du spell ci-dessus auquel nous allons enlever les *stopwords*:
 
-> ~~When you~~ cast ~~this~~ spell, ~~you can~~ assume ~~the~~ form ~~of any~~ Small ~~or~~ Medium creature ~~of the~~ humanoid type. ~~If the~~ form ~~you~~ assume ~~has any of the~~ following abilities, ~~you~~ gain ~~the~~ listed ability: darkvision ~~60~~ feet, low-light vision, scent, ~~and~~ swim ~~30~~ feet.Small creature: ~~If the~~ form ~~you~~ take ~~is that of a~~ Small humanoid, ~~you~~ gain ~~a +2~~ size bonus ~~to your~~ Dexterity. Medium creature: ~~If the~~ form ~~you~~ take ~~is that of a~~ Medium humanoid, ~~you~~ gain ~~a +2~~ size bonus ~~to your~~ Strength.
+> *~~When you~~ cast ~~this~~ spell, ~~you can~~ assume ~~the~~ form ~~of any~~ Small ~~or~~ Medium creature ~~of the~~ humanoid type. ~~If the~~ form ~~you~~ assume ~~has any of the~~ following abilities, ~~you~~ gain ~~the~~ listed ability: darkvision ~~60~~ feet, low-light vision, scent, ~~and~~ swim ~~30~~ feet.Small creature: ~~If the~~ form ~~you~~ take ~~is that of a~~ Small humanoid, ~~you~~ gain ~~a +2~~ size bonus ~~to your~~ Dexterity. Medium creature: ~~If the~~ form ~~you~~ take ~~is that of a~~ Medium humanoid, ~~you~~ gain ~~a +2~~ size bonus ~~to your~~ Strength.*
 
 On va ensuite normaliser le tout une nouvelle fois, en supprimant tous les caractères de ponctuation, les majuscules, etc.
 Ce qui nous donne :
 
-> cast spell assume form small medium creature humanoid type form assume following abilities gain listed ability darkvision feet low light vision scent swim feet small creature form take small humanoid gain size bonus dexterity medium creature form take medium humanoid gain size bonus strength
+> *cast spell assume form small medium creature humanoid type form assume following abilities gain listed ability darkvision feet low light vision scent swim feet small creature form take small humanoid gain size bonus dexterity medium creature form take medium humanoid gain size bonus strength*
 
 ### Etape 2: Utiliser une bibliothèque trouvée sur le net pour obtenir les stemmers
 
 Au delà de la recherche google épuisante, cela consiste à prendre uniquement la racine des mots, pour grouper les mots clés. Par exemple si on a:
 
-> loves love loving
+> *loves love loving*
 
 On obtient:
 
-> lov lov lov
+> *lov lov lov*
 
 Si on l'applique à notre exemple de description, on obtient:
 
-> cast spell assum form small medium creatur humanoid type form assum follow abil gain list abil darkvis feet low light vision scent swim feet small creatur form take small humanoid gain size bonu dexter medium creatur form take medium humanoid gain size bonu strength
+> *cast spell assum form small medium creatur humanoid type form assum follow abil gain list abil darkvis feet low light vision scent swim feet small creatur form take small humanoid gain size bonu dexter medium creatur form take medium humanoid gain size bonu strength*
 
 Après avoir retiré les doublons, on obtient finalement le champ `"keywords"` tant convoité :
 
-> cast spell assum form small medium creatur humanoid type follow abil gain list darkvis feet low light vision scent swim take size bonu dexter strength
+> *cast spell assum form small medium creatur humanoid type follow abil gain list darkvis feet low light vision scent swim take size bonu dexter strength*
 
 ### Etape 3: ???
 
@@ -96,7 +96,7 @@ Wow ! Nous venons enfin de finir la première question de l'introduction du devo
 
 # Exercice 1
 
-Qu'on le veuille ou non, on va devoir utiliser Apache spark, et donc le scala (la légende raconte même que certains auraient réussi à installer pyspark sur leur machine, mais apparemment nous ne sommes pas les élus...). Dans cet exercice nous allons construire un moteur de recherche pour des sorts de pathfinder.
+Qu'on le veuille ou non, on va devoir utiliser Apache spark, et donc le scala (la légende raconte même que certains auraient réussi à installer pyspark sur leur machine, mais apparemment nous ne sommes pas les élus...). Le but de cet exercice est de créer un moteur de recherche pour les sorts du JdR Pathfinder™.
 
 ![exec prolocrawl](src/resources/img/ex1-scala.png)
 
@@ -119,10 +119,7 @@ Le but de cette section est de transformer nos données crawlées en batchviews 
 ### [Creation des batchs views](https://github.com/louisquentinjoucla/bddtp2/blob/master/src/main/scala/Exercise1/BatchLayer.scala#L29-L177)
 
 Nous avons à notre dispositions deux fichiers JSON (les données crawlées). Spark va transformer pour nous les deux fichiers JSON en RDD, sur lequels nous allons effectuer des opérations élémentaires tels que map, flatMap, filter, groupbykey, etc.
-
-Prenons un premier exemple, nous voulons créer un index inversé des monstres.
-
-Nous avons des données de la forme:
+Prenons un premier exemple, nous voulons créer un index inversé des monstres. Nous avons des données de la forme:
 
 | Monstre       | Spells                                          |
 | ----------    | --------------                                  |
@@ -139,8 +136,7 @@ On aura une fois l'index inversé créee:
 | slow          | drake-rift, etc.                                | 
 
 Puis on sauvegardera ensuite la batchview en fichier texte, afin d'éviter de la recalculer à la prochaine exécution du serveur.
-
-Voici le code correspondant pour générer cette batchview:.
+Voici le code correspondant pour générer cette batchview:
 
 ```scala
 monsters.rdd
@@ -162,7 +158,6 @@ Prenons un second exemple, cette fois-ci nous voulons créer des batch views com
 
 La première étape consiste à préparer les données des batchs views des school.
 Une ligne du type `{name:"alter self", School:"transmutation (polymorph)"}` sera transformé en un tuple `(transmutation, alter self)`.
-
 Une fois cette transformation effectuée sur chaque sort, on les regroupes par école.
 
 ```scala
@@ -193,7 +188,7 @@ L'ensemble des batchs views générées sont consultables dans le dossier [batch
 ## La serving layer
 
 Cette couche va traiter les requêtes (transportées via des WebSockets) en utilisant les batch views. Cela va permettre de renvoyer efficacement une réponse à l'utilisateur.
-Au lancement du serveur, celui-ci va charger les batchviews en mémoire et attendre les futures requêtes.
+Au lancement du serveur, celui-ci va charger les batchviews en mémoire et attendre les futures requêtes. 
 
 Les requêtes sont reçues au format json et ressemblent à ceci:
 ```js
@@ -214,10 +209,45 @@ Les requêtes sont reçues au format json et ressemblent à ceci:
 Tout d'abord on prendra le champ `name`, vu que pour celui-ci on a decoupé les batchs views selon les lettres de l'alphabet, on va selectionner la batch view qui correspond à la première lettre de la valeur associé à ce champ. Si le champ `name` n'est pas renseigné, nous avons une batch view regroupant toutes les spells. A noter que c'est uniquement dans ces batch views que l'on stock les informations des spells.
 
 Pour chaque champ, on va récupérer les données de la batch view qui lui est associée (à condition que le filtre ne soit pas vide). 
-
 Finalement, on fera une jointure entre les différentes batch view sélectionnées puis on retournera le résultat à l'interface utilisateur via la websocket.
 
 ## Interface utilisateur
+
+### Recherche
+
+L'interface utilisateur permet à l'utilisateur de selectionner facilement ses critères de recherche. En effet celui-ci peut faire des recherches par école, niveaux, classes, mots-clés, etc.
+La plupart des moteurs de recherches similaires étant surchargés inutilement, nous avons préféré garder un design épuré.
+
+![interface](src/resources/img/interface.png)
+
+1. Champ de recherche principal par nom de sort. 
+2. Toggle pour afficher les options de recherches avancées (filtres)
+3. Filtre par niveaux, composantes, classes, écoles et mots-clés.
+4. Indicateur de connexion au serveur websockets
+5. Background trop stylée avec des particules de feu flottantes
+
+Les filtres agissent entre eux selon un opérateur logique ET, et les éléments au sein d'un filtre comme un OU.
+Par exemple : `(Level 1 OU 2) ET (Composante V OU M)`
+
+A chaque sélection d'un filtre ou d'une touche pressée, une requête est automatiquement envoyé au serveur, par souci d'ergonomie.
+
+### Résultats
+
+Les résultats des requêtes comportent toutes les caractéristiques nécessaires (notamment la liste des monstres qui ont ce sort) pour que l'utilisateur se fasse une idée des sorts, pour de plus amples informations, il peut être rediriger vers la page du sort en question.
+
+![results](src/resources/img/results.png)
+
+1. Nombre de résultats affichés, nombre de résultats total trouvés et temps d'exécution de la requête
+2. Nom du spell (+ 🔗 lien vers la fiche du spell)
+3. Description du spell (si le filtre par description est actif, les mots-clés correspondant seront surlignés en jaune)
+4. Details du spell (caché par défaut)
+5. Monstres possédant ce spell (s'il y a lieu, caché par défaut)
+6. Nom et détails du monstre (+ lien vers la fiche du monstre)
+7. Afficher plus de résultats
+
+### Disponible dès à présent sur tous appareils électronique possédant un navigateur digne de ce nom !
+
+[Une version incroyable](https://api-scala.herokuapp.com/) est disponible pour effectuer vos futures recherches et préparer vos prochaines parties.
 
 
 # Exercice 2
