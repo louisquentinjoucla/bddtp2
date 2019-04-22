@@ -1,6 +1,6 @@
 # TP n°2 Base de donnée reparties
 
-Ce TP a été réalisé par Simon Lecoq et Louis-Quentin Joucla dans le cadre du cours 8INF803 de l'université du Quebec à Chicoutimi (UQAC).
+Ce TP a été réalisé par Simon Lecoq et Louis-Quentin Joucla dans le cadre du cours 8INF803 de l'université du Québec à Chicoutimi (UQAC).
 
 ## Crawler
 
@@ -12,7 +12,7 @@ Il n'y aura donc aucune utilité à gérer les [doubles](http://www.dxcontent.co
 
 ### Les spells
 
-Pour construire les données de spells, nous avons mis à jour le [Prolocrawl™ v3.0](https://github.com/louisquentinjoucla/bddtp1), qui est passé à la version 7.0 ! Celui-ci inclus des nouvelles fonctionnalités, tels que la récupération automatisée d'urls informatique, des spécifités et caractéristiques de chacun des spells, etc.
+Pour construire les données de spells, nous avons mis à jour le [Prolocrawl™ v3.0](https://github.com/louisquentinjoucla/bddtp1), qui est passé à la version 7.0 ! Celui-ci inclus de nouvelles fonctionnalités, tels que la récupération automatisée d'urls informatiques, des caractéristiques et spécifités de chacun des spells, etc.
 
 Voici par exemple le détail d'un spell généré par le Prolocrawl™ 7.0 :
 ```json
@@ -30,16 +30,13 @@ Voici par exemple le détail d'un spell généré par le Prolocrawl™ 7.0 :
   "Duration": "1 min./level"
 }
 ```
-
-Les lecteurs aguéries remarqueront la présence d'un champ `"keywords"` (plus communément "clés-mots" en français).
+Les lecteurs aguéris remarqueront la présence d'un champ `"keywords"` (plus communément "clés-mots" en français).
 Les ingénieurs de Prolocrawl™ 7.0 ont su copier des moteurs de recherches bancales dans le but de vous fournir, une experience utilisateur **très**.
-
-
 
 #### Etape 1: Supprimer les stopwords
 
 Les stopswords sont les mots inutiles de langue anglaise sans lesquels il ne serait pas possible de former une phrase grammaticalement correcte.
-Reprenons la description du dessus auquel nous allons enlever les *stopwords*:
+Reprenons par exemple la description du spell ci-dessus auquel nous allons enlever les *stopwords*:
 
 > ~~When you~~ cast ~~this~~ spell, ~~you can~~ assume ~~the~~ form ~~of any~~ Small ~~or~~ Medium creature ~~of the~~ humanoid type. ~~If the~~ form ~~you~~ assume ~~has any of the~~ following abilities, ~~you~~ gain ~~the~~ listed ability: darkvision ~~60~~ feet, low-light vision, scent, ~~and~~ swim ~~30~~ feet.Small creature: ~~If the~~ form ~~you~~ take ~~is that of a~~ Small humanoid, ~~you~~ gain ~~a +2~~ size bonus ~~to your~~ Dexterity. Medium creature: ~~If the~~ form ~~you~~ take ~~is that of a~~ Medium humanoid, ~~you~~ gain ~~a +2~~ size bonus ~~to your~~ Strength.
 
@@ -76,9 +73,9 @@ Laissez la magie de Prolocrawl™ 7.0 opérer.
 
 ### Les monstres
 
-Pour construire notre fabuleux bestiaire, nous parcourons les tréfonds de legacy.aonprd.com ([on remercie la communauté de l'avoir ramené à la vie](https://paizo.com/community/blog/v5748dyo6sg93?Big-PathfinderStarfinder-Reference-Document-News)) avec notre crawler pour obtenir des objets JSON contenant entre autre le nom, les sorts et l'url de chaque monstre.
+Pour construire notre fabuleux bestiaire, nous avons parcouru les tréfonds de legacy.aonprd.com ([on remercie la communauté de l'avoir ramené à la vie](https://paizo.com/community/blog/v5748dyo6sg93?Big-PathfinderStarfinder-Reference-Document-News)) avec notre crawler pour obtenir des objets JSON contenant entre autre le nom, les sorts et l'url de chaque monstre.
 
-Par exemple :
+Voici un exemple de monstre :
 ```json
 {
   "name": "kelpie",
@@ -93,8 +90,100 @@ Par exemple :
 ![exec prolocrawl](src/resources/img/crawler-exec-monsters.png)
 
 
-Wow ! Nous venons de finir la première question de l'introduction du devoir 2. En même temps, avec un enoncé de 26 pages...
+Wow ! Nous venons enfin de finir la première question de l'introduction du devoir 2. En même temps, avec un enoncé de 26 pages...
 
 ## Exercice 1
+
+Qu'on le veuille ou non, on va devoir utiliser Apache spark, et donc le scala (la légende raconte même que certains auraient réussi à installer pyspark sur leur machine, mais apparemment nous ne sommes pas les élus...).
+
+![exec prolocrawl](src/resources/img/ex1-scala.png)
+
+### La batch layer
+
+Le but de cette section est de transformer nos données crawlées en batchviews afin de faire plus facilement et plus rapidement des requêtes par la suite.
+
+| Type          | Nombre de batch |
+| ----------    | --------------: |
+| Nom (a-z)     | 26 + 1          | 
+| Composante    | 8*              |
+| Classe        | 130*            | 
+| Niveau        | 10*             |
+| Ecole         | 10*             |
+| Mot-clés      | 1               |
+| Index inversé | 1               |
+
+*Ceci est le nombre actuel de batchs views générés par notre application. Celle-ci étant bien conçue et bien pensée, le nombre de batch views peut s'adapter automatiquement en fonction des données trouvées par le Prolocrawl™ 7.0.
+
+#### [Creation des batchs views](https://github.com/louisquentinjoucla/bddtp2/blob/master/src/main/scala/Exercise1/BatchLayer.scala#L29-L177)
+
+Nous avons à notre dispositions deux fichiers JSON (les données crawlées). Spark va transformer pour nous les deux fichiers JSON en RDD, sur lequels nous allons effectuer des opérations élémentaires tels que map, flatMap, filter, groupbykey, etc.
+
+Prenons un premier exemple, nous voulons créer un index inversé des monstres.
+
+Nous avons des données de la forme:
+
+| Monstre       | Spells                                          |
+| ----------    | --------------:                                 |
+| Solar         | detect evil, heal, dictum, prismatic spray, etc.| 
+| Planetar      | detect evil, heal, prismatic spray, etc.        |
+| drake-rift    | slow                                            | 
+
+On aura une fois l'index inversé créee: 
+
+| Spell         | Monstres                                        |
+| ----------    | --------------:                                 |
+| detect devil  | Solar, Planetar, etc.                           | 
+| heal          | Solar, Planetar, etc.                           |
+| slow          | drake-rift, etc.                                | 
+
+Puis on sauvegardera ensuite la batchview en fichier texte, afin d'éviter de la recalculer à la prochaine exécution du serveur.
+
+Voici le code correspondant pour générer cette batchview:.
+
+```scala
+monsters.rdd
+  .map(row => (row.getAs[String]("name"), row.getAs[Seq[String]]("spells")))
+  .flatMap{case (monster, spells) => spells.map(spell => (spell, monster))}
+  .groupByKey()
+  .map{case (key, values) => (key, values.mkString("[", ";;", "]"))}
+  .saveAsTextFile(s"src/resources/batchviews/spells/monsters")
+```
+
+Prenons un second exemple, cette fois-ci nous voulons créer des batch views comportant les spells par école. On aurait donc pour chaque école un fichier de ce type (par exemple necromancy):
+
+| Spell           | School     |
+| ----------      | ------:    |
+| eyebite         | necromancy | 
+| false life      | necromancy |
+| finger of death | necromancy | 
+| gentle repose   | necromancy |
+
+La première étape consiste à préparer les données des batchs views des school.
+Une ligne du type `{name:"alter self", School:"transmutation (polymorph)"}` sera transformé en un tuple `(transmutation, alter self)`.
+
+Une fois cette transformation effectuée sur chaque sort, on les regroupes par école.
+
+```scala
+//Préparation des batch views school (school, [...spell_name])
+val spells_schools = spells.rdd
+  .map(row => (row.getAs[String]("School").split(" ")(0).toLowerCase, row.getAs[String]("name")))
+  .groupByKey()
+```
+
+Ensuite on va récolter ce nouveau rdd en tant que `Map[School -> List[Spells]]` et pour chaque clé du tableau (qui est une école), on va générer une nouvelle batchview contenant la liste des spells.
+
+```scala
+//Création des batch views school (spell_name, [school])
+spells_schools.collectAsMap().keys.foreach{case school => {
+  spells_schools
+    .filter{case (key, values) => key == school}
+    .flatMap{case (key, spells) => spells.map(spell => (spell, school))}
+    .map{case (spell, school) => (spell, s"[${school}]")}
+    .saveAsTextFile(s"src/resources/batchviews/spells/schools/${school}")
+}}
+```
+
+### La serving layer
+
 
 ## Exercice 2
