@@ -14,7 +14,7 @@
 
         <main id="app">
             <template>
-                <div class="search">
+                <div class="search" :class="{disabled:Number.isFinite(pending.start)}">
                     <img src="logo.png">
                     <div class="query">
                         <input type="text" name="query" v-model="query.name" placeholder="Search something !" autocomplete="off" @keyup.enter="submit()" @keyup="delayed_submit()">

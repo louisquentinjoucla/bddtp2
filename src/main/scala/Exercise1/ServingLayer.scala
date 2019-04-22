@@ -112,8 +112,6 @@ package object ServingLayer {
         .filter{case (keyword, spells) => misc.contains(keyword)}
         .flatMap{case (keyword, spells) => spells.map(spell => (spell, 1))}
         .reduceByKey((a, b) => a + b)
-
-        keywords_view.collect().foreach(x => println(x))
     }
 
     //Merge requests
@@ -132,7 +130,7 @@ package object ServingLayer {
         .join(keywords_view).map{case (spell, (left, right)) => (spell, left, right)}
         .sortBy(_._3, false)
         .map{case (spell, left, right) => (spell, left)}
-    } 
+    } else if (misc.length > 0) { view = spark.sparkContext.emptyRDD[(String, Iterable[String])] }
 
     
     val results =  view.take(limit+1).map{case (spell, spell_data) => spell_data.toList(0).asJson}
