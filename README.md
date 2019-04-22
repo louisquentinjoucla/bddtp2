@@ -47,7 +47,7 @@ Ce qui nous donne :
 
 > *cast spell assume form small medium creature humanoid type form assume following abilities gain listed ability darkvision feet low light vision scent swim feet small creature form take small humanoid gain size bonus dexterity medium creature form take medium humanoid gain size bonus strength*
 
-### Etape 2: Utiliser une bibliothèque trouvée sur le net pour obtenir les stemmers
+### Etape 2: Utiliser une bibliothèque trouvée sur le net pour obtenir les stems
 
 Au delà de la recherche google épuisante, cela consiste à prendre uniquement la racine des mots, pour grouper les mots clés. Par exemple si on a:
 
