@@ -38,12 +38,15 @@
             }
             //Else accept response
             else {
+                let marked = null
+                if (data.query.misc) marked = new RegExp(`\\b(${data.query.misc.split(" ").join("|")})\\b`, "gi")
                 data.pending.complete = performance.now() - data.pending.start
                 parsed.results = parsed.results.map(result => JSON.parse(result))
                 parsed.results.forEach(result => {
                     result.monsters = JSON.parse(result.monsters||"[]")
                     result.monsters.forEach(m => m.spells = m.spells.substr(1, m.spells.length-2).split(",").map(s => format(s)).join(", "))
                     result.components = result.components.substr(1, result.components.length-2).split(",").join(", ")
+                    if (marked) result.description = result.description.replace(marked, m => `<mark>${m}</mark>`)
                 })
                 data.response = parsed
             }
