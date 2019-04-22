@@ -32,8 +32,10 @@ video.background {
     top: 0;
     left: 0;
     opacity: 0.4;
-    width: 100vw;
     object-fit: cover;
+    object-position: 50% 50%;
+    width: 100vw;
+    height: 100vh;
     z-index: -1;
 }
 
