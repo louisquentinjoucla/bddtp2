@@ -96,7 +96,7 @@ Wow ! Nous venons enfin de finir la première question de l'introduction du devo
 
 # Exercice 1
 
-Qu'on le veuille ou non, on va devoir utiliser Apache spark, et donc le scala (la légende raconte même que certains auraient réussi à installer pyspark sur leur machine, mais apparemment nous ne sommes pas les élus...).
+Qu'on le veuille ou non, on va devoir utiliser Apache spark, et donc le scala (la légende raconte même que certains auraient réussi à installer pyspark sur leur machine, mais apparemment nous ne sommes pas les élus...). Dans cet exercice nous allons construire un moteur de recherche pour des sorts de pathfinder.
 
 ![exec prolocrawl](src/resources/img/ex1-scala.png)
 
