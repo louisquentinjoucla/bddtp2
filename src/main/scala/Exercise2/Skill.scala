@@ -9,7 +9,7 @@ package object Skill {
 
   val rand = scala.util.Random
 
-  val debug = false
+  val debug = true
 
   //Execute skill effect
   def execute(ida:Int, a:Monster, skill:String, idb:Int, b:Monster):Seq[(Int, String, Int)] = {
