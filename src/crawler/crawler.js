@@ -19,7 +19,7 @@ monsters = new Set()
 let spells = [];
 
 console.log('\t\t\x1b[34m%s\x1b[0m','+---------------------------+');
-console.log('\t\t\x1b[35m%s\x1b[0m','| Welcome to PROLOCRAWL 6.0 |');
+console.log('\t\t\x1b[35m%s\x1b[0m','| Welcome to PROLOCRAWL 7.0 |');
 console.log('\t\t\x1b[34m%s\x1b[0m','+---------------------------+\n');
 
 
@@ -135,6 +135,16 @@ async function crawl_spells(){
         let url = `http://www.dxcontent.com/SDB_SpellBlock.asp?SDBID=${id}`;
         await scrap_spell(url,id);
     }
+
+    console.log("Removing duplicates...")
+    // Remove duplicated spells (shitty website)
+    let size = spells.length
+    spells = spells.filter((spell, index, self) =>
+        index === self.findIndex((s) => (
+            s.name === spell.name
+        ))
+    )
+    console.log(`Succesfully removed duplicates ${size - spells.length}`)
 
     console.log('\n\x1b[32m%s\x1b[0m', 'Success !');
     console.log('\n\x1b[5m%s\x1b[0m', `Writing ${spells.length} spells to resources/JSON/spells.json...`);
