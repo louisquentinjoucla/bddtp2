@@ -33,6 +33,7 @@ video.background {
     left: 0;
     opacity: 0.4;
     height: 100vh;
+    object-fit: cover;
     z-index: -1;
 }
 
