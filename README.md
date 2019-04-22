@@ -183,7 +183,39 @@ spells_schools.collectAsMap().keys.foreach{case school => {
 }}
 ```
 
+L'ensemble des batchs views générées sont consultables dans le dossier [batchviews/spells](https://github.com/louisquentinjoucla/bddtp2/tree/master/src/resources/batchviews/spells)
+
+[much batchviews](src/resources/img/ex1-batchviews.png)
+
+
 ### La serving layer
+
+Cette couche va traiter les requêtes (transportées via des WebSockets) en utilisant les batch views. Cela va permettre de renvoyer efficacement une réponse à l'utilisateur.
+Au lancement du serveur, celui-ci va charger les batchviews en mémoire et attendre les futures requêtes.
+
+Les requêtes sont reçues au format json et ressemblent à ceci:
+```js
+{
+  name:"my spell", //Filtre par nom
+  advanced:false, //Indique s'il s'agit d'une requête "avancée"
+  levels:[], //Filtres de niveaux
+  components:[], //Filtres de composantes
+  classes:[], //Filtres de classes
+  schools:[], //Filtres d'école
+  misc:"", //Filtre de description
+  limit:10 //Nombre de résultats à afficher
+}
+```
+
+#### [Traitement des requêtes](https://github.com/louisquentinjoucla/bddtp2/blob/cd82c235c1f6d41fe5f0efdaf49355789905db34/src/main/scala/Exercise1/ServingLayer.scala#L23-L139)
+
+Tout d'abord on prendra le champ `name`, vu que pour celui-ci on a decoupé les batchs views selon les lettres de l'alphabet, on va selectionner la batch view qui correspond à la première lettre de la valeur associé à ce champ. Si le champ `name` n'est pas renseigné, nous avons une batch view regroupant toutes les spells. A noter que c'est uniquement dans ces batch views que l'on stock les informations des spells.
+
+Pour chaque champ, on va récupérer les données de la batch view qui lui est associée (à condition que le filtre ne soit pas vide). 
+
+Finalement, on fera une jointure entre les différentes batch view sélectionnées puis on retournera le résultat à l'interface utilisateur via la websocket.
+
+### Interface utilisateur
 
 
 ## Exercice 2
