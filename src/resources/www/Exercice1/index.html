@@ -46,7 +46,7 @@
 
                         <div class="filters">
                             <div class="name">Keywords:</div>
-                            <textarea class="filter" :class="{active:query.misc}" v-model="query.misc" placeholder="Search in description by keywords (may take a little bit more time than classic queries)"></textarea>
+                            <textarea class="filter" :class="{active:query.misc}" v-model="query.misc" placeholder="Search in description by keywords (may take a little bit more time than classic queries)" @keyup.enter="submit()" @keypress.enter="$event.preventDefault()"></textarea>
                         </div>
                     </div>
                 </div>
