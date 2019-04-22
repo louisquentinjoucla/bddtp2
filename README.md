@@ -261,7 +261,7 @@ Les résultats des requêtes comportent toutes les caractéristiques nécessaire
 
 Bon... Il va falloir en parler.
 
-## Les données de monstres et des skills
+## Les données des monstres et des skills
 
 ### Les monstres
 
@@ -523,3 +523,8 @@ Nous avons implémenté le combat 1, voici ce que nous avons obtenus:
 ![combat 1](src/resources/img/ex2-combat1.png)
 
 Le reste des logs du combat sont disponible [ici](https://github.com/louisquentinjoucla/bddtp2/blob/master/src/resources/www/Exercice2/battles/battle1_log).
+
+
+# Conclusion
+
+Merci et bravo pour la lecture.
