@@ -14,7 +14,7 @@
 
         <main id="app">
             <template>
-                <div class="search">
+                <div class="search" :class="{disabled:Number.isFinite(pending.start)}">
                     <img src="logo.png">
                     <div class="query">
                         <input type="text" name="query" v-model="query.name" placeholder="Search something !" autocomplete="off" @keyup.enter="submit()" @keyup="delayed_submit()">
@@ -46,7 +46,7 @@
 
                         <div class="filters">
                             <div class="name">Keywords:</div>
-                            <textarea class="filter" :class="{active:query.misc}" v-model="query.misc" placeholder="Search in description by keywords (may take a little bit more time than classic queries)"></textarea>
+                            <textarea class="filter" :class="{active:query.misc}" v-model="query.misc" placeholder="Search in description by keywords (may take a little bit more time than classic queries)" @keyup.enter="submit()" @keypress.enter="$event.preventDefault()"></textarea>
                         </div>
                     </div>
                 </div>
