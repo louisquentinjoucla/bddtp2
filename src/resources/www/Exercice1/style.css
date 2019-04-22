@@ -174,6 +174,13 @@ textarea.filter:focus {
     outline: none;
 }
 
+textarea.filter::selection {
+    background: #ffb7b7; /* WebKit/Blink Browsers */
+}
+textarea.filter::-moz-selection {
+    background: #ffb7b7; /* Gecko Browsers */
+}
+
 .results {
     padding: 1.5rem;
     margin-top: 10vh;
@@ -324,4 +331,11 @@ footer {
 
 .result h4.monsters {
     color: #EA4335;
+}
+
+mark {
+    background: yellow;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 0 6px 2;
 }

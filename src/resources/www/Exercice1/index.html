@@ -46,7 +46,7 @@
 
                         <div class="filters">
                             <div class="name">Keywords:</div>
-                            <textarea class="filter" :class="{active:query.misc}" v-model="query.misc" placeholder="Search in description by keywords"></textarea>
+                            <textarea class="filter" :class="{active:query.misc}" v-model="query.misc" placeholder="Search in description by keywords (may take a little bit more time than classic queries)"></textarea>
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                             <div v-for="result in results" class="result container" :key="result.name">
                                 <div class="title"><h2>{{ format('spell.name', result.name) }}</h2><a v-bind:href="result.url">🔗</a></div>
                                 <h4>Components : {{ format('spell.components', result.components) }}</h4>
-                                <p>{{ result.description }}</p>
+                                <p v-html="result.description"></p>
                                 <details class="details">
                                     <summary>Details</summary>
                                     <ul>
