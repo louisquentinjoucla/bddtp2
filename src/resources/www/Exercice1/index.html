@@ -45,8 +45,8 @@
                         </div>
 
                         <div class="filters">
-                            <div class="name">Miscelleanous:</div>
-                            <textarea class="filter" :class="{active:query.misc}" v-model="query.misc" placeholder="Search in description, casting time, range, ..."></textarea>
+                            <div class="name">Keywords:</div>
+                            <textarea class="filter" :class="{active:query.misc}" v-model="query.misc" placeholder="Search in description by keywords"></textarea>
                         </div>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                     <div class="results" v-if="response">
                         <h1 class="container">
                             {{ results.length > query.limit ? query.limit+"+" : results.length.toString() }} results<br>
-                            <small>{{ Math.min(results.length, query.limit) }} of {{ response.n }} results</small>
+                            <small>{{ Math.min(results.length, query.limit) }} of about {{ response.n }} results ({{ (pending.complete/1000).toFixed(2) }} seconds)</small>
                         </h1>
                         <transition-group name="list" tag="div">
                             <div v-for="result in results" class="result container" :key="result.name">

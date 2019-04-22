@@ -7,6 +7,7 @@ import io.circe.Json
 import io.circe.generic.auto._
 import io.circe.syntax._
 import io.circe.parser._
+import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.SparkSession
 
 //-------------------------------------------------------------------------------------------
@@ -27,7 +28,7 @@ package object ServingLayer {
     var levels = query.get[Seq[String]]("levels").getOrElse(List())
     val classes = query.get[Seq[String]]("classes").getOrElse(List())
     val init = query.get[Boolean]("init").getOrElse(false)
-    val misc = query.get[String]("misc").getOrElse("")
+    val misc = query.get[Seq[String]]("misc").getOrElse(List())
     val limit = query.get[Int]("limit").getOrElse(20)
 
     //Init filters
@@ -104,12 +105,16 @@ package object ServingLayer {
       })
     }
 
-
     //Search by description 
+    var keywords_view  = spark.sparkContext.emptyRDD[(String, Int)]
     if (misc.length > 0) {
-      val keywords = misc.split(" ")
-    }
+      keywords_view = BatchLayer.views("src/resources/batchviews/spells/keywords/all")
+        .filter{case (keyword, spells) => misc.contains(keyword)}
+        .flatMap{case (keyword, spells) => spells.map(spell => (spell, 1))}
+        .reduceByKey((a, b) => a + b)
 
+        keywords_view.collect().foreach(x => println(x))
+    }
 
     //Merge requests
     var view = name_view
@@ -120,6 +125,16 @@ package object ServingLayer {
 
     //Remove possibles duplicates
     view = view.groupByKey().map{case (spell, duplicates) => (spell, duplicates.toList(0))}
+
+    //Merge requests (2)
+    if (keywords_view.count() > 0) {
+      view = view
+        .join(keywords_view).map{case (spell, (left, right)) => (spell, left, right)}
+        .sortBy(_._3, false)
+        .map{case (spell, left, right) => (spell, left)}
+    } 
+
+    
     val results =  view.take(limit+1).map{case (spell, spell_data) => spell_data.toList(0).asJson}
 
     return Response("", results, view.count())
@@ -136,3 +151,4 @@ package object ServingLayer {
   }
 
 }
+
