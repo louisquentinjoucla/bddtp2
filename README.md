@@ -247,7 +247,170 @@ Les résultats des requêtes comportent toutes les caractéristiques nécessaire
 
 ### Disponible dès à présent sur tous appareils électronique possédant un navigateur digne de ce nom !
 
-[Une version incroyable](https://api-scala.herokuapp.com/) est disponible pour effectuer vos futures recherches et préparer vos prochaines parties.
+**[Une version incroyable](https://api-scala.herokuapp.com/)** en ligne est disponible pour effectuer vos futures recherches et préparer vos prochaines parties (et si vous êtes l'heureux détenteur d'un navigateur web).
 
+*NB : L'application est hébergé sur un serveur mutualisé gratuit. La première utilisation peut être un peu plus longue que prévu le temps que le serveur recharge l'application en mémoire (ça ressemble à un timeout mais ça n'en ai pas un !)*
 
 # Exercice 2
+
+~~Jusqu'à présent, le TP était formidable n'est-ce pas ?~~ Autant vous dire que maintenant nous passons a une partie moins extraordinaire, et pour cause, les développeurs sont partis en vacances dès le 23 avril. 🛫🏝️😂
+
+Bon... Il va falloir en parler.
+
+## Le « battle graph »
+
+Alors c'est un nom qui claque, mais au final, c'est juste que c'était trop long de faire une structure de graph classique, on a donc mis pas mal de choses dedans en plus du graph.
+
+Le gros de l'exercice 2 se trouve dans la fonction [`BattleGraph.next()`](https://github.com/louisquentinjoucla/bddtp2/blob/master/src/main/scala/Exercise2/Graph.scala#L58-L138) que nous allons détailler ci-dessous.
+
+### 1. Mise à jour des edges
+
+A chaque itération, on recrée tout les edges, il existe trois type de edges: déplacement, attaque corps à corps et attaque à distance. Pour chacun des edges on stock:
+
+`ID du monstre A, ID du monstre B, Si A et B sont de la même équipe, type de edge, %HP du monstre B`
+
+On génére les edges de la façon suivante:
+
+```scala
+//Génération des edges
+    val ids = vertices.map{case (id, monster) => (id)}.collect()
+    var links = Seq[(Int, Int, Int, Int, Int)]()
+    ids.foreach(ida => {
+      ids.foreach(idb => {
+        val a = monsters.value(ida)
+        val b = monsters.value(idb)
+        val team = if (a.get("team") == b.get("team")) 0 else 1
+        val distance = sqrt(pow(b.get("x") - a.get("x"), 2) + pow(b.get("y") - a.get("y"), 2) + pow(b.get("z") - a.get("z"), 2))    
+        //On ne fait pas de lien entre les ennemies, ils n'ont pas de sort de soin.
+        if (!((team == 0)&&(b.get("team") > 1))) {
+          val hp = (100*b.get("hp")/b.get("hpm")).toInt
+          //On crée un lien de mouvement
+          if ((team == 1)&&(ida != idb))
+            links = links ++ Seq((ida, idb, team, 0, hp))
+          //On crée un lien d'attaques mélée (oui même entre allier)
+          if ((distance < 10)&&(ida != idb))
+            links = links ++ Seq((ida, idb, team, 1, hp))
+          //On crée un lien d'attaque à distance (oui même entre allier)
+          if ((distance < 100)&&(ida != idb))
+            links = links ++ Seq((ida, idb, team, 2, hp))
+        }
+      })
+    })  
+```
+
+On stock ensuite les edges dans une dataset:
+
+```scala
+    edges = links.toDS()
+      .groupBy("_1")
+      .agg(collect_list(array("_1", "_2", "_3", "_4", "_5")))
+      .as[(Int, Seq[Seq[Int]])]
+      .map{case (id, edge) => (id, edge.map(e => (e(0), e(1), e(2), e(3), e(4))))} 
+```
+
+### 2. Calcul des actions par l'IA
+
+On va broadcast la liste des monstres et des edges de chaque monstre pour y avoir accès à travers toutes les transformations (ça nous sera probablement très utile par la suite).
+
+```scala
+val monsters = spark.sparkContext.broadcast(vertices.collect().toMap)
+val neighbors = spark.sparkContext.broadcast(edges.collect().toMap)
+```
+
+Pour chaque monstre, on va calculer ses prochaines actions via l'IA.
+
+```scala
+//Calcul des actions par l'IA
+.map{case (id, monster) => {
+  val m = monster
+  m.actions = AI.compute(m, neighbors.value(id))
+  (id, m)
+}}
+```
+
+### 3. Exécution des actions et merging des différences
+
+Ensuite, pour chacun des monstres, on va exécuter les actions qu'ils a choisi, en plus de lui conférer sa régéneration d'hp (s'il en a).
+
+```scala
+//Calcul des differences selon les actions de chaque monstre
+.flatMap{case (id, monster) => {
+  val computed = Seq((id, "hp", monster.get("regen"))) ++ monster.actions.flatMap{case (target, skill) => Skill.execute(id, monster, skill, target, monsters.value(target))}
+  computed
+}}
+```
+
+A ce stade là du code, on obtient un rdd contenant des tuples `(id, property, value)`.
+
+Par exemple : 
+```scala
+(0, "hp", +15) //Le monstre 0 s'est régén de 15 hp
+(0, "hp", -24) //Le monstre 0 a subi des dégâts d'attaque et a perdu 24 hp
+(0, "hp", -33) //Le monstre 0 a subi des dégâts d'attaque et a perdu 33 hp
+(0, "x", +12) //Le monstre 0 s'est déplacé en x de 12 durant ce tour
+(0, "y", +18) //Le monstre 0 s'est déplacé en y de 18 durant ce tour
+```
+
+On va ensuite merge les différences selon le type ainsi que la cible, pour pouvoir les appliquer plus facilement :
+
+```scala
+//Merge des differences
+.groupBy("_1", "_2")
+.agg(sum("_3").alias("_3"))
+.groupBy("_1")
+.agg(collect_list(array("_2", "_3")).alias("_d"))
+.as[(Int, Seq[Seq[String]])]
+```
+
+Ce qui donnerait, si nous reprenons l'exemple du dessus :
+```scala
+(0, //Le monstre 0
+Seq( //Liste des différences
+  (0, "hp", -42), //= +15 -24 - 33 
+  (0, "x", +12), //Le monstre 0 s'est déplacé en x de 12 durant ce tour
+  (0, "y", +18) //Le monstre 0 s'est déplacé en y de 18 durant ce tour
+))
+```
+
+### 4. Application des différences
+
+On va ensuite appliquer les différences à partir de ce qui a été récupéré dans la partie précédente. 
+On va aussi réinitialiser la liste des actions du monstre.
+
+```scala
+//Application des différences
+.map{case (id, diffs) => {
+  val m = monsters.value(id)
+  m.actions = Seq() //Réinitialisation des actions du monstres
+  diffs
+    .map(diff => { (diff(0), diff(1).toInt)})
+    .foreach{case (k, v) => m.set(k, m.get(k) + v)} //Application de la différence
+  m.set("hp", min(m.get("hp"), m.get("hpm"))) //Vérification qu'on ne dépasse pas les hp max du monstre
+  (id, m)
+}}
+```
+
+### 5. Suppression des monstres morts
+
+C'est juste un filtre pour éliminer les plus faibles #darwin.
+
+```scala
+//Filtre des monstres selon s'ils ont un nombre de hp positif
+.filter(m => {
+  if ((debug)&&(m._2.get("hp") <= 0)) println(s"${m._2.name} (${m._1}) is ko")
+  m._2.get("hp") > 0
+})
+```
+
+### 6. Vérification de la condition d'arrêt
+
+Pour savoir s'il y a un vainqueur, on vérifie juste qu'il ne reste qu'une seule équipe en lice.
+
+```scala
+//Vérification qu'il reste qu'une seule équipe
+val teams = Set(vertices.map(m => m._2.get("team")).collect():_*)
+if (teams.size <= 1) {
+  println(s"Team ${teams.head} has won the battle")
+  ended = true
+}
+```
