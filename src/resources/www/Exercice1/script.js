@@ -16,7 +16,7 @@
         response:null,
         connected:false,
         init:false,
-        pending:{start:NaN, complete:NaN},
+        pending:{start:0, complete:0},
         components:[], classes:[], schools:[], levels:[]
     }
 
@@ -39,9 +39,8 @@
             //Else accept response
             else {
                 let marked = null
-                if (data.query.misc) marked = new RegExp(`\\b(${data.query.misc.split(" ").join("|")})\\b`, "gi")
+                if (data.query.misc) marked = new RegExp(`\\b(${data.query.misc.split(" ").join("|")})[a-z]*\\b`, "gi")
                 data.pending.complete = performance.now() - data.pending.start
-                data.pending.start = NaN
                 parsed.results = parsed.results.map(result => JSON.parse(result))
                 parsed.results.forEach(result => {
                     result.monsters = JSON.parse(result.monsters||"[]")

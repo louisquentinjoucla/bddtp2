@@ -74,7 +74,7 @@
                                         <li v-for="monster in result.monsters" class="monster">
                                             <b><a v-bind:href="monster.url">{{ format('text', monster.name) }}</a></b>
                                             <ul>
-                                                <li v-for="(value, prop) in monster" v-if="!/^(?:name|url)$/.test(prop)"><b>{{ format('text', prop) }}</b> : {{ value }}</li>
+                                                <li v-for="(value, prop) in monster" v-if="!/^(?:name|url|keywords)$/.test(prop)"><b>{{ format('text', prop) }}</b> : {{ value }}</li>
                                             </ul>
                                         </li>
                                     </ul>
