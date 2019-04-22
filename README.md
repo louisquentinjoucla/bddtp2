@@ -2,7 +2,9 @@
 
 Ce TP a été réalisé par Simon Lecoq et Louis-Quentin Joucla dans le cadre du cours 8INF803 de l'université du Québec à Chicoutimi (UQAC).
 
-## Crawler
+___
+
+# Crawler
 
 Le premier objectif de ce TP est de créer un crawler récupérant les données du JdR Pathfinder™. 
 Le crawler a été réalisé sous NodeJS.
@@ -10,7 +12,7 @@ Le crawler a été réalisé sous NodeJS.
 Comme pour le TP1, on va faire face à des sites très homogènes, ce sera donc un plaisir d'améliorer notre crawler.
 Il n'y aura donc aucune utilité à gérer les [doubles](http://www.dxcontent.com/SDB_SpellBlock.asp?SDBID=925) [doublons](http://www.dxcontent.com/SDB_SpellBlock.asp?SDBID=1754), les [erreurs typographiques](http://www.dxcontent.com/SDB_SpellBlock.asp?SDBID=1701) dans les noms de classes, les [pages supprimées](http://www.dxcontent.com/SDB_SpellBlock.asp?SDBID=1841), ... En plus de devoir normaliser les noms de spells car on utilise deux sites, un pour les spells et un pour les monstres.
 
-### Les spells
+## Les spells
 
 Pour construire les données de spells, nous avons mis à jour le [Prolocrawl™ v3.0](https://github.com/louisquentinjoucla/bddtp1), qui est passé à la version 7.0 ! Celui-ci inclus de nouvelles fonctionnalités, tels que la récupération automatisée d'urls informatiques, des caractéristiques et spécifités de chacun des spells, etc.
 
@@ -33,7 +35,7 @@ Voici par exemple le détail d'un spell généré par le Prolocrawl™ 7.0 :
 Les lecteurs aguéris remarqueront la présence d'un champ `"keywords"` (plus communément "clés-mots" en français).
 Les ingénieurs de Prolocrawl™ 7.0 ont su copier des moteurs de recherches bancales dans le but de vous fournir, une experience utilisateur **très**.
 
-#### Etape 1: Supprimer les stopwords
+### Etape 1: Supprimer les stopwords
 
 Les stopswords sont les mots inutiles de langue anglaise sans lesquels il ne serait pas possible de former une phrase grammaticalement correcte.
 Reprenons par exemple la description du spell ci-dessus auquel nous allons enlever les *stopwords*:
@@ -45,7 +47,7 @@ Ce qui nous donne :
 
 > cast spell assume form small medium creature humanoid type form assume following abilities gain listed ability darkvision feet low light vision scent swim feet small creature form take small humanoid gain size bonus dexterity medium creature form take medium humanoid gain size bonus strength
 
-#### Etape 2: Utiliser une bibliothèque trouvée sur le net pour obtenir les stemmers
+### Etape 2: Utiliser une bibliothèque trouvée sur le net pour obtenir les stemmers
 
 Au delà de la recherche google épuisante, cela consiste à prendre uniquement la racine des mots, pour grouper les mots clés. Par exemple si on a:
 
@@ -63,15 +65,15 @@ Après avoir retiré les doublons, on obtient finalement le champ `"keywords"` t
 
 > cast spell assum form small medium creatur humanoid type follow abil gain list darkvis feet low light vision scent swim take size bonu dexter strength
 
-#### Etape 3: ???
+### Etape 3: ???
 
 Laissez la magie de Prolocrawl™ 7.0 opérer.
 
-#### Etape 4: Profit
+### Etape 4: Profit
 
 ![exec prolocrawl](src/resources/img/crawler-exec-spells.png)
 
-### Les monstres
+## Les monstres
 
 Pour construire notre fabuleux bestiaire, nous avons parcouru les tréfonds de legacy.aonprd.com ([on remercie la communauté de l'avoir ramené à la vie](https://paizo.com/community/blog/v5748dyo6sg93?Big-PathfinderStarfinder-Reference-Document-News)) avec notre crawler pour obtenir des objets JSON contenant entre autre le nom, les sorts et l'url de chaque monstre.
 
@@ -92,13 +94,13 @@ Voici un exemple de monstre :
 
 Wow ! Nous venons enfin de finir la première question de l'introduction du devoir 2. En même temps, avec un enoncé de 26 pages...
 
-## Exercice 1
+# Exercice 1
 
 Qu'on le veuille ou non, on va devoir utiliser Apache spark, et donc le scala (la légende raconte même que certains auraient réussi à installer pyspark sur leur machine, mais apparemment nous ne sommes pas les élus...).
 
 ![exec prolocrawl](src/resources/img/ex1-scala.png)
 
-### La batch layer
+## La batch layer
 
 Le but de cette section est de transformer nos données crawlées en batchviews afin de faire plus facilement et plus rapidement des requêtes par la suite.
 
@@ -114,7 +116,7 @@ Le but de cette section est de transformer nos données crawlées en batchviews 
 
 *Ceci est le nombre actuel de batchs views générés par notre application. Celle-ci étant bien conçue et bien pensée, le nombre de batch views peut s'adapter automatiquement en fonction des données trouvées par le Prolocrawl™ 7.0.
 
-#### [Creation des batchs views](https://github.com/louisquentinjoucla/bddtp2/blob/master/src/main/scala/Exercise1/BatchLayer.scala#L29-L177)
+### [Creation des batchs views](https://github.com/louisquentinjoucla/bddtp2/blob/master/src/main/scala/Exercise1/BatchLayer.scala#L29-L177)
 
 Nous avons à notre dispositions deux fichiers JSON (les données crawlées). Spark va transformer pour nous les deux fichiers JSON en RDD, sur lequels nous allons effectuer des opérations élémentaires tels que map, flatMap, filter, groupbykey, etc.
 
@@ -123,7 +125,7 @@ Prenons un premier exemple, nous voulons créer un index inversé des monstres.
 Nous avons des données de la forme:
 
 | Monstre       | Spells                                          |
-| ----------    | --------------:                                 |
+| ----------    | --------------                                  |
 | Solar         | detect evil, heal, dictum, prismatic spray, etc.| 
 | Planetar      | detect evil, heal, prismatic spray, etc.        |
 | drake-rift    | slow                                            | 
@@ -131,7 +133,7 @@ Nous avons des données de la forme:
 On aura une fois l'index inversé créee: 
 
 | Spell         | Monstres                                        |
-| ----------    | --------------:                                 |
+| ----------    | --------------                                  |
 | detect devil  | Solar, Planetar, etc.                           | 
 | heal          | Solar, Planetar, etc.                           |
 | slow          | drake-rift, etc.                                | 
@@ -152,7 +154,7 @@ monsters.rdd
 Prenons un second exemple, cette fois-ci nous voulons créer des batch views comportant les spells par école. On aurait donc pour chaque école un fichier de ce type (par exemple necromancy):
 
 | Spell           | School     |
-| ----------      | ------:    |
+| ----------      | ------     |
 | eyebite         | necromancy | 
 | false life      | necromancy |
 | finger of death | necromancy | 
@@ -185,10 +187,10 @@ spells_schools.collectAsMap().keys.foreach{case school => {
 
 L'ensemble des batchs views générées sont consultables dans le dossier [batchviews/spells](https://github.com/louisquentinjoucla/bddtp2/tree/master/src/resources/batchviews/spells)
 
-[much batchviews](src/resources/img/ex1-batchviews.png)
+![much batchviews](src/resources/img/ex1-batchviews.png)
 
 
-### La serving layer
+## La serving layer
 
 Cette couche va traiter les requêtes (transportées via des WebSockets) en utilisant les batch views. Cela va permettre de renvoyer efficacement une réponse à l'utilisateur.
 Au lancement du serveur, celui-ci va charger les batchviews en mémoire et attendre les futures requêtes.
@@ -207,7 +209,7 @@ Les requêtes sont reçues au format json et ressemblent à ceci:
 }
 ```
 
-#### [Traitement des requêtes](https://github.com/louisquentinjoucla/bddtp2/blob/cd82c235c1f6d41fe5f0efdaf49355789905db34/src/main/scala/Exercise1/ServingLayer.scala#L23-L139)
+### [Traitement des requêtes](https://github.com/louisquentinjoucla/bddtp2/blob/cd82c235c1f6d41fe5f0efdaf49355789905db34/src/main/scala/Exercise1/ServingLayer.scala#L23-L139)
 
 Tout d'abord on prendra le champ `name`, vu que pour celui-ci on a decoupé les batchs views selon les lettres de l'alphabet, on va selectionner la batch view qui correspond à la première lettre de la valeur associé à ce champ. Si le champ `name` n'est pas renseigné, nous avons une batch view regroupant toutes les spells. A noter que c'est uniquement dans ces batch views que l'on stock les informations des spells.
 
@@ -215,7 +217,7 @@ Pour chaque champ, on va récupérer les données de la batch view qui lui est a
 
 Finalement, on fera une jointure entre les différentes batch view sélectionnées puis on retournera le résultat à l'interface utilisateur via la websocket.
 
-### Interface utilisateur
+## Interface utilisateur
 
 
-## Exercice 2
+# Exercice 2
