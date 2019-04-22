@@ -508,7 +508,7 @@ Certains diront peut-être que c'est de la magie noire ou que la science est all
 Et pourtant, l'IA a été rédigée en seulement 38 lignes de code (dont 10 lignes vides).
 Et là vous vous dites surement, mais comment ces génies ont-ils fait ?
 
-![ia](src/resources/img/ia.png)
+![ia](src/resources/img/ia.jpg)
 
 Globalement, les monstres ont un comportement très primitif :
 * Ils s'attaquent aux plus faibles (i.e. ceux qui ont le moins d'hp)
