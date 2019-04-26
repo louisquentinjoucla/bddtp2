@@ -259,6 +259,8 @@ Les résultats des requêtes comportent toutes les caractéristiques nécessaire
 
 ~~Jusqu'à présent, le TP était formidable n'est-ce pas ?~~ Autant vous dire que maintenant nous passons a une partie moins extraordinaire, et pour cause, les développeurs sont partis en vacances dès le 23 avril. 🛫🏝️😂
 
+![génie](src/resources/img/vac.jpg)
+
 Bon... Il va falloir en parler.
 
 ## Les données des monstres et des skills
