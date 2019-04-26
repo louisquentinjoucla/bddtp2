@@ -47,7 +47,7 @@ Ce qui nous donne :
 
 > *cast spell assume form small medium creature humanoid type form assume following abilities gain listed ability darkvision feet low light vision scent swim feet small creature form take small humanoid gain size bonus dexterity medium creature form take medium humanoid gain size bonus strength*
 
-### Etape 2: Utiliser une bibliothèque trouvée sur le net pour obtenir les stemmers
+### Etape 2: Utiliser une bibliothèque trouvée sur le net pour obtenir les stems
 
 Au delà de la recherche google épuisante, cela consiste à prendre uniquement la racine des mots, pour grouper les mots clés. Par exemple si on a:
 
@@ -261,7 +261,7 @@ Les résultats des requêtes comportent toutes les caractéristiques nécessaire
 
 Bon... Il va falloir en parler.
 
-## Les données de monstres et des skills
+## Les données des monstres et des skills
 
 ### Les monstres
 
@@ -508,7 +508,7 @@ Certains diront peut-être que c'est de la magie noire ou que la science est all
 Et pourtant, l'IA a été rédigée en seulement 38 lignes de code (dont 10 lignes vides).
 Et là vous vous dites surement, mais comment ces génies ont-ils fait ?
 
-![ia](src/resources/img/ia.png)
+![ia](src/resources/img/ia.jpg)
 
 Globalement, les monstres ont un comportement très primitif :
 * Ils s'attaquent aux plus faibles (i.e. ceux qui ont le moins d'hp)
@@ -523,3 +523,8 @@ Nous avons implémenté le combat 1, voici ce que nous avons obtenus:
 ![combat 1](src/resources/img/ex2-combat1.png)
 
 Le reste des logs du combat sont disponible [ici](https://github.com/louisquentinjoucla/bddtp2/blob/master/src/resources/www/Exercice2/battles/battle1_log).
+
+
+# Conclusion
+
+Merci et bravo pour la lecture.
